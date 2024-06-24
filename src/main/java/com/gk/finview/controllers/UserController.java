@@ -1,10 +1,9 @@
 package main.java.com.gk.finview.controllers;
 
-import main.java.com.gk.finview.factories.UserServiceFactory;
 import main.java.com.gk.finview.models.User;
 import main.java.com.gk.finview.services.UserService;
-import main.java.com.gk.finview.services.exceptions.UserAlreadyExistsException;
-import main.java.com.gk.finview.services.exceptions.UserNotFoundException;
+import main.java.com.gk.finview.services.exceptions.ResourceAlreadyExistsException;
+import main.java.com.gk.finview.services.exceptions.ResourceNotFoundException;
 
 public class UserController {
     private final UserService userService;
@@ -17,7 +16,7 @@ public class UserController {
         try {
             return this.userService.createUser(user);
         } catch (Exception error) {
-            if (error instanceof  UserAlreadyExistsException) {
+            if (error instanceof ResourceAlreadyExistsException) {
                 throw new RuntimeException(error.getMessage());
             }
 
@@ -29,7 +28,7 @@ public class UserController {
         try {
             return this.userService.updateUser(user);
         } catch (Exception error) {
-            if (error instanceof UserNotFoundException) {
+            if (error instanceof ResourceNotFoundException) {
                 throw new RuntimeException(error.getMessage());
             }
 
@@ -41,7 +40,7 @@ public class UserController {
         try {
             return this.userService.getUserById(id);
         } catch (Exception error) {
-            if (error instanceof UserNotFoundException) {
+            if (error instanceof ResourceNotFoundException) {
                 throw new RuntimeException(error.getMessage());
             }
 
@@ -53,7 +52,7 @@ public class UserController {
         try {
             return this.userService.deleteUserById(id);
         } catch (Exception error) {
-            if (error instanceof UserNotFoundException) {
+            if (error instanceof ResourceNotFoundException) {
                 throw new RuntimeException(error.getMessage());
             }
 
