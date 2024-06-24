@@ -24,7 +24,7 @@ public class CategoryController {
             return this.categoryService.updateCategory(category);
         } catch (Exception error) {
             if (error instanceof ResourceNotFoundException) {
-                throw new RuntimeException(error.getMessage());
+                throw new RuntimeException("Ops! Categoria não encontrada.");
             }
 
             throw new RuntimeException("Ops! Ocorreu um erro ao atualizar a categoria.");
@@ -36,7 +36,7 @@ public class CategoryController {
             return this.categoryService.getCategoryById(id);
         } catch (Exception error) {
             if (error instanceof ResourceNotFoundException) {
-                throw new RuntimeException(error.getMessage());
+                throw new RuntimeException("Ops! Categoria não encontrada.");
             }
 
             throw new RuntimeException("Ops! Ocorreu um erro ao buscar a categoria.");
@@ -48,7 +48,7 @@ public class CategoryController {
             this.categoryService.deleteCategoryById(id);
         } catch (Exception error) {
             if (error instanceof ResourceNotFoundException) {
-                throw new RuntimeException(error.getMessage());
+                throw new RuntimeException("Ops! Categoria não encontrada.");
             }
 
             throw new RuntimeException("Ops! Ocorreu um erro ao deletar a categoria.");
