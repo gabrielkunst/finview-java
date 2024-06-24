@@ -5,13 +5,8 @@ import main.java.com.gk.finview.repositories.inMemory.InMemoryUserRepository;
 import main.java.com.gk.finview.services.UserService;
 
 public class UserServiceFactory {
-    private final UserRepository userRepository;
-
-    public UserServiceFactory () {
-        this.userRepository = new InMemoryUserRepository();
-    }
-
-    public UserService createUserService() {
+    public static UserService createUserService() {
+        UserRepository userRepository = new InMemoryUserRepository();
         return new UserService(userRepository);
     }
 }

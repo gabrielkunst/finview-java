@@ -9,9 +9,8 @@ import main.java.com.gk.finview.services.exceptions.UserNotFoundException;
 public class UserController {
     private final UserService userService;
 
-    public UserController () {
-        UserServiceFactory userServiceFactory = new UserServiceFactory();
-        this.userService = userServiceFactory.createUserService();
+    public UserController (UserService userService) {
+        this.userService = userService;
     }
 
     public User createUser (User user) {
