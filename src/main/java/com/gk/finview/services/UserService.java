@@ -12,35 +12,53 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User createUser(User user) throws ResourceAlreadyExistsException {
-        User userFromDB = this.userRepository.getUserById(user.getId());
+    public void createUser(User user) throws ResourceAlreadyExistsException {
+        User userFromDB = this.userRepository.getUserByEmail(user.getEmail());
 
         if (userFromDB != null) {
             throw new ResourceAlreadyExistsException();
         }
 
-        return this.userRepository.createUser(user);
+        this.userRepository.createUser(user);
     }
 
     public User getUserById(int id) throws ResourceNotFoundException {
+        User user = this.userRepository.getUserById(id);
+
+        if (user == null) {
+            throw new ResourceNotFoundException();
+        }
+
+        return user;
+    }
+
+    public User getUserByEmail(String email) throws ResourceNotFoundException {
+        User user = this.userRepository.getUserByEmail(email);
+
+        if (user == null) {
+            throw new ResourceNotFoundException();
+        }
+
+        return user;
+    }
+
+    public void deleteUserById(int id) throws ResourceNotFoundException {
         User userFromDB = this.userRepository.getUserById(id);
 
         if (userFromDB == null) {
             throw new ResourceNotFoundException();
         }
 
-        return userFromDB;
+        this.userRepository.deleteUserById(id);
     }
 
-    public User deleteUserById(int id) throws ResourceNotFoundException {
-        this.getUserById(id);
+    public void updateUser(User user) throws ResourceNotFoundException {
+        User userFromDB = this.userRepository.getUserById(user.getId());
 
-        return this.userRepository.deleteUserById(id);
-    }
+        if (userFromDB == null) {
+            throw new ResourceNotFoundException();
+        }
 
-    public User updateUser(User user) throws ResourceNotFoundException {
-        this.getUserById(user.getId());
-
-        return this.userRepository.updateUser(user);
+        this.userRepository.updateUserById(user.getId(), user);
     }
 }

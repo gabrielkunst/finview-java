@@ -1430,43 +1430,43 @@ public class MainPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void registerSubmitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerSubmitButtonMouseClicked
-        String fullName = registerNameInput.getText();
-        String email = registerEmailInput.getText();
-        String cpf = registerCPFInput.getText();
-        String street = registerStreetInput.getText();
-        String neighborhood = registerNeighborhoodInput.getText();
-        String city = registerCityInput.getText();
-        String state = registerStateInput.getText();
-        String zipcode = registerZipcodeInput.getText();
-        
-        UserService userService = UserServiceFactory.createUserService();
-        UserController userController = new UserController(userService);
-
-        Address address = new Address();
-        address.setCity(city);
-        address.setNeighborhood(neighborhood);
-        address.setStreet(street);
-        address.setState(state);
-        address.setZipcode(zipcode);
-
-        User user = new User();
-        user.setName(fullName);
-        user.setEmail(email);
-        user.setCpf(cpf);
-        user.setAddress(address);
-        user.setRoleId(1);
-
-        userController.createUser(user);
-        
-        registerNameInput.setText("");
-        registerEmailInput.setText("");
-        registerCPFInput.setText("");
-        registerPasswordInput.setText("");
-        registerStreetInput.setText("");
-        registerZipcodeInput.setText("");
-        registerNeighborhoodInput.setText("");
-        registerCityInput.setText("");
-        registerStateInput.setText("");
+//        String fullName = registerNameInput.getText();
+//        String email = registerEmailInput.getText();
+//        String cpf = registerCPFInput.getText();
+//        String street = registerStreetInput.getText();
+//        String neighborhood = registerNeighborhoodInput.getText();
+//        String city = registerCityInput.getText();
+//        String state = registerStateInput.getText();
+//        String zipcode = registerZipcodeInput.getText();
+//
+//        UserService userService = UserServiceFactory.createUserService();
+//        UserController userController = new UserController(userService);
+//
+//        Address address = new Address();
+//        address.setCity(city);
+//        address.setNeighborhood(neighborhood);
+//        address.setStreet(street);
+//        address.setState(state);
+//        address.setZipcode(zipcode);
+//
+//        User user = new User();
+//        user.setName(fullName);
+//        user.setEmail(email);
+//        user.setCpf(cpf);
+//        user.setAddress(address);
+//        user.setRoleId(1);
+//
+//        userController.createUser(user);
+//
+//        registerNameInput.setText("");
+//        registerEmailInput.setText("");
+//        registerCPFInput.setText("");
+//        registerPasswordInput.setText("");
+//        registerStreetInput.setText("");
+//        registerZipcodeInput.setText("");
+//        registerNeighborhoodInput.setText("");
+//        registerCityInput.setText("");
+//        registerStateInput.setText("");
     }//GEN-LAST:event_registerSubmitButtonMouseClicked
 
     private void loginSubmitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginSubmitButtonMouseClicked

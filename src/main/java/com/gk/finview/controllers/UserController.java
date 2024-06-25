@@ -12,27 +12,27 @@ public class UserController {
         this.userService = userService;
     }
 
-    public User createUser (User user) {
+    public void createUser (User user) {
         try {
-            return this.userService.createUser(user);
+            this.userService.createUser(user);
         } catch (Exception error) {
             if (error instanceof ResourceAlreadyExistsException) {
                 throw new RuntimeException(error.getMessage());
             }
 
-            throw new RuntimeException("Ops! Ocorreu um erro ao criar o usuário.");
+            throw new RuntimeException("Ops! Ocorreu um erro ao criar o usuário." + error.getMessage());
         }
     }
 
-    public User updateUser (User user) {
+    public void updateUser (User user) {
         try {
-            return this.userService.updateUser(user);
+            this.userService.updateUser(user);
         } catch (Exception error) {
             if (error instanceof ResourceNotFoundException) {
                 throw new RuntimeException(error.getMessage());
             }
 
-            throw new RuntimeException("Ops! Ocorreu um erro ao atualizar o usuário.");
+            throw new RuntimeException("Ops! Ocorreu um erro ao atualizar o usuário." + error.getMessage());
         }
     }
 
@@ -44,19 +44,31 @@ public class UserController {
                 throw new RuntimeException(error.getMessage());
             }
 
-            throw new RuntimeException("Ops! Ocorreu um erro ao buscar o usuário.");
+            throw new RuntimeException("Ops! Ocorreu um erro ao buscar o usuário." + error.getMessage());
         }
     }
 
-    public User deleteUserById (int id) {
+    public User getUserByEmail (String email) {
         try {
-            return this.userService.deleteUserById(id);
+            return this.userService.getUserByEmail(email);
         } catch (Exception error) {
             if (error instanceof ResourceNotFoundException) {
                 throw new RuntimeException(error.getMessage());
             }
 
-            throw new RuntimeException("Ops! Ocorreu um erro ao deletar o usuário.");
+            throw new RuntimeException("Ops! Ocorreu um erro ao buscar o usuário." + error.getMessage());
+        }
+    }
+
+    public void deleteUserById (int id) {
+        try {
+            this.userService.deleteUserById(id);
+        } catch (Exception error) {
+            if (error instanceof ResourceNotFoundException) {
+                throw new RuntimeException(error.getMessage());
+            }
+
+            throw new RuntimeException("Ops! Ocorreu um erro ao deletar o usuário." + error.getMessage());
         }
     }
 }

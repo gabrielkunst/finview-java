@@ -1,27 +1,28 @@
 package main.java.com.gk.finview.models;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 public class User {
     private int id;
     private String name;
     private String cpf;
     private String email;
-    private Address address;
+    private String passwordHash;
+    private int addressId;
     private int roleId;
-    private LocalDateTime createdAt;
-    private LocalDateTime deletedAt;
+    private Date createdAt;
+    private Date deletedAt;
 
     public User() {
-        this.createdAt = LocalDateTime.now();
     }
 
-    public User(int id, String name, String cpf, String email, Address address, int roleId, LocalDateTime createdAt, LocalDateTime deletedAt) {
+    public User(int id, String name, String cpf, String email, String passwordHash, int addressId, int roleId, Date createdAt, Date deletedAt) {
         this.id = id;
         this.name = name;
         this.cpf = cpf;
         this.email = email;
-        this.address = address;
+        this.passwordHash = passwordHash;
+        this.addressId = addressId;
         this.roleId = roleId;
         this.createdAt = createdAt;
         this.deletedAt = deletedAt;
@@ -59,12 +60,20 @@ public class User {
         this.email = email;
     }
 
-    public Address getAddress() {
-        return address;
+    public String getPasswordHash() {
+        return passwordHash;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
+    }
+
+    public int getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(int addressId) {
+        this.addressId = addressId;
     }
 
     public int getRoleId() {
@@ -75,19 +84,19 @@ public class User {
         this.roleId = roleId;
     }
 
-    public LocalDateTime getCreatedAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 
-    public LocalDateTime getDeletedAt() {
+    public Date getDeletedAt() {
         return deletedAt;
     }
 
-    public void setDeletedAt(LocalDateTime deletedAt) {
+    public void setDeletedAt(Date deletedAt) {
         this.deletedAt = deletedAt;
     }
 
@@ -98,7 +107,8 @@ public class User {
                 ", name='" + name + '\'' +
                 ", cpf='" + cpf + '\'' +
                 ", email='" + email + '\'' +
-                ", address=" + address +
+                ", passwordHash='" + passwordHash + '\'' +
+                ", addressId=" + addressId +
                 ", roleId=" + roleId +
                 ", createdAt=" + createdAt +
                 ", deletedAt=" + deletedAt +

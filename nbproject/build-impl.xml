@@ -43,7 +43,7 @@ is divided into following sections:
         <property file="nbproject/private/private.properties"/>
     </target>
     <target name="-pre-init-libraries">
-        <property location=".\lib\nblibraries.properties" name="libraries.path"/>
+        <property location=".\main.java.com.gk.finview.lib\nblibraries.properties" name="libraries.path"/>
         <dirname file="${libraries.path}" property="libraries.dir.nativedirsep"/>
         <pathconvert dirsep="/" property="libraries.dir">
             <path path="${libraries.dir.nativedirsep}"/>
@@ -1020,7 +1020,7 @@ is divided into following sections:
                         <filtermapper>
                             <replacestring from=" " to="%20"/>
                         </filtermapper>
-                        <globmapper from="*" to="lib/*"/>
+                        <globmapper from="*" to="main.java.com.gk.finview.lib/*"/>
                     </chainedmapper>
                 </pathconvert>
                 <taskdef classname="org.netbeans.modules.java.j2seproject.copylibstask.CopyLibs" classpath="${libs.CopyLibs.classpath}" name="copylibs"/>
@@ -1522,7 +1522,7 @@ is divided into following sections:
         <condition else="" property="javadoc.html5.cmd.line.arg" value="-html5">
             <and>
                 <isset property="javadoc.html5"/>
-                <available file="${jdk.home}${file.separator}lib${file.separator}jrt-fs.jar"/>
+                <available file="${jdk.home}${file.separator}main.java.com.gk.finview.lib${file.separator}jrt-fs.jar"/>
             </and>
         </condition>
         <javadoc additionalparam="-J-Dfile.encoding=${file.encoding} ${javadoc.additionalparam}" author="${javadoc.author}" charset="UTF-8" destdir="${dist.javadoc.dir}" docencoding="UTF-8" encoding="${javadoc.encoding.used}" failonerror="true" noindex="${javadoc.noindex}" nonavbar="${javadoc.nonavbar}" notree="${javadoc.notree}" private="${javadoc.private}" source="${javac.source}" splitindex="${javadoc.splitindex}" use="${javadoc.use}" useexternalfile="true" version="${javadoc.version}" windowtitle="${javadoc.windowtitle}">
