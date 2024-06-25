@@ -4,6 +4,21 @@
  */
 package main.java.com.gk.finview.views;
 
+import java.time.LocalDateTime;
+import main.java.com.gk.finview.controllers.TransactionController;
+import main.java.com.gk.finview.controllers.UserController;
+import main.java.com.gk.finview.factories.TransactionServiceFactory;
+import main.java.com.gk.finview.services.UserService;
+import main.java.com.gk.finview.factories.UserServiceFactory;
+import main.java.com.gk.finview.models.User;
+import main.java.com.gk.finview.models.Address;
+import main.java.com.gk.finview.models.Category;
+import main.java.com.gk.finview.models.PaymentMethod;
+import main.java.com.gk.finview.models.PaymentStatus;
+import main.java.com.gk.finview.models.Transaction;
+import main.java.com.gk.finview.models.TransactionType;
+import main.java.com.gk.finview.services.TransactionService;
+
 /**
  *
  * @author gk
@@ -15,7 +30,7 @@ public class MainPanel extends javax.swing.JFrame {
      */
     public MainPanel() {
         initComponents();
-        
+
         LoginView.setVisible(false);
         CadastrarView.setVisible(false);
         TransactionsView.setVisible(false);
@@ -39,32 +54,32 @@ public class MainPanel extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        registerNameInput = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        registerEmailInput = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        registerCPFInput = new javax.swing.JFormattedTextField();
         jPanel6 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jPasswordField4 = new javax.swing.JPasswordField();
+        registerPasswordInput = new javax.swing.JPasswordField();
         jPanel7 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
+        registerZipcodeInput = new javax.swing.JFormattedTextField();
         jPanel8 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        registerStreetInput = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        registerNeighborhoodInput = new javax.swing.JTextField();
         jPanel10 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        registerCityInput = new javax.swing.JTextField();
         jPanel13 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        registerStateInput = new javax.swing.JTextField();
+        registerSubmitButton = new javax.swing.JButton();
         LoginView = new javax.swing.JInternalFrame();
         LoginPanelView = new javax.swing.JPanel();
         jPanel16 = new javax.swing.JPanel();
@@ -72,11 +87,11 @@ public class MainPanel extends javax.swing.JFrame {
         jPanel11 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        loginEmailInput = new javax.swing.JTextField();
         jPanel19 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
-        jPasswordField5 = new javax.swing.JPasswordField();
-        jButton3 = new javax.swing.JButton();
+        loginPasswordInput = new javax.swing.JPasswordField();
+        loginSubmitButton = new javax.swing.JButton();
         TransactionsView = new javax.swing.JInternalFrame();
         TransactionsPanelView = new javax.swing.JPanel();
         jPanel18 = new javax.swing.JPanel();
@@ -85,31 +100,31 @@ public class MainPanel extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel20 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        transactionNameInput = new javax.swing.JTextField();
         jPanel21 = new javax.swing.JPanel();
         jPanel26 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
+        transactionAmountInput = new javax.swing.JTextField();
         jPanel27 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        transactionPaymentMethodSelect = new javax.swing.JComboBox<>();
         jPanel28 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        transactionPaymentStatusSelect = new javax.swing.JComboBox<>();
         jPanel22 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        transactionDescriptionInput = new javax.swing.JTextField();
         jPanel23 = new javax.swing.JPanel();
         jPanel24 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        transactionTypeSelect = new javax.swing.JComboBox<>();
         jPanel25 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        transactionCategorySelect = new javax.swing.JComboBox<>();
+        transactionCancelButton = new javax.swing.JButton();
+        transactionSaveButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        transactionsTable = new javax.swing.JTable();
         CategoriesView = new javax.swing.JInternalFrame();
         CategoriesPanelView = new javax.swing.JPanel();
         jPanel36 = new javax.swing.JPanel();
@@ -137,7 +152,7 @@ public class MainPanel extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Finanças");
+        setTitle("Controle de Gastos");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
@@ -162,7 +177,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1))
+                    .addComponent(registerNameInput))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -171,7 +186,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(registerNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -187,7 +202,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
+                    .addComponent(registerEmailInput, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -196,7 +211,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(registerEmailInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -205,7 +220,7 @@ public class MainPanel extends javax.swing.JFrame {
         jLabel7.setText("CPF");
 
         try {
-            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+            registerCPFInput.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -218,7 +233,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
+                    .addComponent(registerCPFInput, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -227,7 +242,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(registerCPFInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -243,7 +258,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPasswordField4, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
+                    .addComponent(registerPasswordInput, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -252,7 +267,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(registerPasswordInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -261,7 +276,7 @@ public class MainPanel extends javax.swing.JFrame {
         jLabel9.setText("CEP");
 
         try {
-            jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
+            registerZipcodeInput.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -274,7 +289,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jFormattedTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
+                    .addComponent(registerZipcodeInput, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
@@ -283,7 +298,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(registerZipcodeInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -299,7 +314,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
+                    .addComponent(registerStreetInput, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
@@ -308,7 +323,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(registerStreetInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -324,7 +339,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
+                    .addComponent(registerNeighborhoodInput, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel9Layout.setVerticalGroup(
@@ -333,7 +348,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(registerNeighborhoodInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -349,7 +364,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
+                    .addComponent(registerCityInput, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
@@ -358,7 +373,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(registerCityInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -374,7 +389,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
+                    .addComponent(registerStateInput, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel13Layout.setVerticalGroup(
@@ -383,16 +398,21 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel15)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(registerStateInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         jPanel3.add(jPanel13);
 
-        jButton2.setText("Registrar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        registerSubmitButton.setText("Registrar");
+        registerSubmitButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                registerSubmitButtonMouseClicked(evt);
+            }
+        });
+        registerSubmitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                registerSubmitButtonActionPerformed(evt);
             }
         });
 
@@ -406,7 +426,7 @@ public class MainPanel extends javax.swing.JFrame {
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 601, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(registerSubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -416,7 +436,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(registerSubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
@@ -493,7 +513,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE))
+                    .addComponent(loginEmailInput, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel12Layout.setVerticalGroup(
@@ -502,7 +522,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(loginEmailInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -518,7 +538,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPasswordField5, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE))
+                    .addComponent(loginPasswordInput, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel19Layout.setVerticalGroup(
@@ -527,16 +547,21 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel17)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(loginPasswordInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         jPanel11.add(jPanel19);
 
-        jButton3.setText("Entrar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        loginSubmitButton.setText("Entrar");
+        loginSubmitButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loginSubmitButtonMouseClicked(evt);
+            }
+        });
+        loginSubmitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                loginSubmitButtonActionPerformed(evt);
             }
         });
 
@@ -550,7 +575,7 @@ public class MainPanel extends javax.swing.JFrame {
                     .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(loginSubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -560,7 +585,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(loginSubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
@@ -629,6 +654,12 @@ public class MainPanel extends javax.swing.JFrame {
 
         jLabel1.setText("Nome da transação");
 
+        transactionNameInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transactionNameInputActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
         jPanel20.setLayout(jPanel20Layout);
         jPanel20Layout.setHorizontalGroup(
@@ -637,7 +668,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
-                    .addComponent(jTextField2))
+                    .addComponent(transactionNameInput))
                 .addGap(0, 0, 0))
         );
         jPanel20Layout.setVerticalGroup(
@@ -646,7 +677,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(transactionNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
 
@@ -664,7 +695,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE))
+                    .addComponent(transactionAmountInput, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE))
                 .addGap(0, 0, 0))
         );
         jPanel26Layout.setVerticalGroup(
@@ -673,7 +704,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(transactionAmountInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
 
@@ -681,10 +712,10 @@ public class MainPanel extends javax.swing.JFrame {
 
         jLabel18.setText("Pagamento");
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Crédito", "Débito" }));
-        jComboBox4.addActionListener(new java.awt.event.ActionListener() {
+        transactionPaymentMethodSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Crédito", "Débito" }));
+        transactionPaymentMethodSelect.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox4ActionPerformed(evt);
+                transactionPaymentMethodSelectActionPerformed(evt);
             }
         });
 
@@ -695,7 +726,7 @@ public class MainPanel extends javax.swing.JFrame {
             .addGroup(jPanel27Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox4, 0, 149, Short.MAX_VALUE)
+                    .addComponent(transactionPaymentMethodSelect, 0, 149, Short.MAX_VALUE)
                     .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)))
         );
         jPanel27Layout.setVerticalGroup(
@@ -704,21 +735,21 @@ public class MainPanel extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(jLabel18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(transactionPaymentMethodSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanel21.add(jPanel27);
 
         jLabel19.setText("Estado");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pago", "Pendente" }));
+        transactionPaymentStatusSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pago", "Pendente" }));
 
         javax.swing.GroupLayout jPanel28Layout = new javax.swing.GroupLayout(jPanel28);
         jPanel28.setLayout(jPanel28Layout);
         jPanel28Layout.setHorizontalGroup(
             jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
-            .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(transactionPaymentStatusSelect, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel28Layout.setVerticalGroup(
             jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -726,7 +757,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(jLabel19)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(transactionPaymentStatusSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanel21.add(jPanel28);
@@ -743,7 +774,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
-                    .addComponent(jTextField9))
+                    .addComponent(transactionDescriptionInput))
                 .addGap(0, 0, 0))
         );
         jPanel22Layout.setVerticalGroup(
@@ -752,7 +783,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(transactionDescriptionInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
 
@@ -762,10 +793,10 @@ public class MainPanel extends javax.swing.JFrame {
 
         jLabel13.setText("Tipo");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Entrada", "Saida" }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        transactionTypeSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Entrada", "Saida" }));
+        transactionTypeSelect.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                transactionTypeSelectActionPerformed(evt);
             }
         });
 
@@ -776,7 +807,7 @@ public class MainPanel extends javax.swing.JFrame {
             .addGroup(jPanel24Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox2, 0, 229, Short.MAX_VALUE)
+                    .addComponent(transactionTypeSelect, 0, 229, Short.MAX_VALUE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanel24Layout.setVerticalGroup(
@@ -785,17 +816,17 @@ public class MainPanel extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(transactionTypeSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanel23.add(jPanel24);
 
         jLabel16.setText("Categoria");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alimentação", "Saúde" }));
-        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+        transactionCategorySelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alimentação", "Saúde" }));
+        transactionCategorySelect.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox3ActionPerformed(evt);
+                transactionCategorySelectActionPerformed(evt);
             }
         });
 
@@ -806,7 +837,7 @@ public class MainPanel extends javax.swing.JFrame {
             .addGroup(jPanel25Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox3, 0, 229, Short.MAX_VALUE)
+                    .addComponent(transactionCategorySelect, 0, 229, Short.MAX_VALUE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)))
         );
         jPanel25Layout.setVerticalGroup(
@@ -815,7 +846,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(transactionCategorySelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanel23.add(jPanel25);
@@ -839,17 +870,27 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap(10, Short.MAX_VALUE))
         );
 
-        jButton1.setText("Cancelar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        transactionCancelButton.setText("Cancelar");
+        transactionCancelButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                transactionCancelButtonMouseClicked(evt);
+            }
+        });
+        transactionCancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                transactionCancelButtonActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Salvar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        transactionSaveButton.setText("Salvar");
+        transactionSaveButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                transactionSaveButtonMouseClicked(evt);
+            }
+        });
+        transactionSaveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                transactionSaveButtonActionPerformed(evt);
             }
         });
 
@@ -863,9 +904,9 @@ public class MainPanel extends javax.swing.JFrame {
                     .addComponent(jPanel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel30Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(transactionSaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(transactionCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel30Layout.setVerticalGroup(
@@ -875,12 +916,12 @@ public class MainPanel extends javax.swing.JFrame {
                 .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
                 .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton4))
+                    .addComponent(transactionCancelButton)
+                    .addComponent(transactionSaveButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        transactionsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"Energético", null, "R$ 10.00", "PIX", "Pago", "Saída", "Lazer", "2024-05-24"},
                 {"Salário", "Trabalho X", "R$ 1,200.00", "PIX", "Pago", "Entrada", null, "2024-05-24"},
@@ -906,7 +947,7 @@ public class MainPanel extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(transactionsTable);
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
@@ -1312,11 +1353,11 @@ public class MainPanel extends javax.swing.JFrame {
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
     }//GEN-LAST:event_jMenu1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void registerSubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerSubmitButtonActionPerformed
+    }//GEN-LAST:event_registerSubmitButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void loginSubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginSubmitButtonActionPerformed
+    }//GEN-LAST:event_loginSubmitButtonActionPerformed
 
     private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
     }//GEN-LAST:event_jMenu2ActionPerformed
@@ -1346,25 +1387,25 @@ public class MainPanel extends javax.swing.JFrame {
     private void jMenuItem1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseClicked
     }//GEN-LAST:event_jMenuItem1MouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void transactionCancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionCancelButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_transactionCancelButtonActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void transactionSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionSaveButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_transactionSaveButtonActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+    private void transactionTypeSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionTypeSelectActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    }//GEN-LAST:event_transactionTypeSelectActionPerformed
 
-    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+    private void transactionCategorySelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionCategorySelectActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox3ActionPerformed
+    }//GEN-LAST:event_transactionCategorySelectActionPerformed
 
-    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
+    private void transactionPaymentMethodSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionPaymentMethodSelectActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox4ActionPerformed
+    }//GEN-LAST:event_transactionPaymentMethodSelectActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         LoginView.setVisible(false);
@@ -1387,6 +1428,91 @@ public class MainPanel extends javax.swing.JFrame {
         TransactionsView.setVisible(false);
         CategoriesView.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void registerSubmitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerSubmitButtonMouseClicked
+        String fullName = registerNameInput.getText();
+        String email = registerEmailInput.getText();
+        String cpf = registerCPFInput.getText();
+        String street = registerStreetInput.getText();
+        String neighborhood = registerNeighborhoodInput.getText();
+        String city = registerCityInput.getText();
+        String state = registerStateInput.getText();
+        String zipcode = registerZipcodeInput.getText();
+        
+        UserService userService = UserServiceFactory.createUserService();
+        UserController userController = new UserController(userService);
+
+        Address address = new Address();
+        address.setCity(city);
+        address.setNeighborhood(neighborhood);
+        address.setStreet(street);
+        address.setState(state);
+        address.setZipcode(zipcode);
+
+        User user = new User();
+        user.setName(fullName);
+        user.setEmail(email);
+        user.setCpf(cpf);
+        user.setAddress(address);
+        user.setRoleId(1);
+
+        userController.createUser(user);
+        
+        registerNameInput.setText("");
+        registerEmailInput.setText("");
+        registerCPFInput.setText("");
+        registerPasswordInput.setText("");
+        registerStreetInput.setText("");
+        registerZipcodeInput.setText("");
+        registerNeighborhoodInput.setText("");
+        registerCityInput.setText("");
+        registerStateInput.setText("");
+    }//GEN-LAST:event_registerSubmitButtonMouseClicked
+
+    private void loginSubmitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginSubmitButtonMouseClicked
+        String email = loginEmailInput.getText();
+        String password = loginPasswordInput.getText();
+        
+        loginEmailInput.setText("");
+        loginPasswordInput.setText("");
+    }//GEN-LAST:event_loginSubmitButtonMouseClicked
+
+    private void transactionNameInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionNameInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_transactionNameInputActionPerformed
+
+    private void transactionSaveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transactionSaveButtonMouseClicked
+        String transactionName = transactionNameInput.getText();
+        String transactionDescription = transactionDescriptionInput.getText();
+        String transactionAmount = transactionAmountInput.getText();
+        TransactionType transactionType = new TransactionType();
+        PaymentStatus transactionStatus = new PaymentStatus();
+        PaymentMethod transactionPaymentMethod = new PaymentMethod();
+        User createdBy = new User();
+        Category transactionCategory = new Category();
+        
+        Transaction newTransaction = new Transaction();
+        newTransaction.setAmount(Float.parseFloat(transactionAmount));
+        newTransaction.setName(transactionName);
+        newTransaction.setDescription(transactionDescription);
+        newTransaction.setPaidAt("paid".equals(transactionStatus.getValue()) ? LocalDateTime.now() : null);
+        newTransaction.setCategory(transactionCategory);
+        newTransaction.setCreatedBy(createdBy);
+        newTransaction.setPaymentMethod(transactionPaymentMethod);
+        newTransaction.setPaymentStatus(transactionStatus);
+        newTransaction.setTransactionType(transactionType);
+        
+        TransactionService transactionService = TransactionServiceFactory.createTransactionService();
+        TransactionController transactionController = new TransactionController(transactionService);
+        
+        // create transaction   
+    }//GEN-LAST:event_transactionSaveButtonMouseClicked
+
+    private void transactionCancelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transactionCancelButtonMouseClicked
+        transactionNameInput.setText("");
+        transactionDescriptionInput.setText("");
+        transactionAmountInput.setText("");
+    }//GEN-LAST:event_transactionCancelButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1432,19 +1558,9 @@ public class MainPanel extends javax.swing.JFrame {
     private javax.swing.JInternalFrame LoginView;
     private javax.swing.JPanel TransactionsPanelView;
     private javax.swing.JInternalFrame TransactionsView;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1510,23 +1626,33 @@ public class MainPanel extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JPasswordField jPasswordField4;
-    private javax.swing.JPasswordField jPasswordField5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField loginEmailInput;
+    private javax.swing.JPasswordField loginPasswordInput;
+    private javax.swing.JButton loginSubmitButton;
+    private javax.swing.JFormattedTextField registerCPFInput;
+    private javax.swing.JTextField registerCityInput;
+    private javax.swing.JTextField registerEmailInput;
+    private javax.swing.JTextField registerNameInput;
+    private javax.swing.JTextField registerNeighborhoodInput;
+    private javax.swing.JPasswordField registerPasswordInput;
+    private javax.swing.JTextField registerStateInput;
+    private javax.swing.JTextField registerStreetInput;
+    private javax.swing.JButton registerSubmitButton;
+    private javax.swing.JFormattedTextField registerZipcodeInput;
+    private javax.swing.JTextField transactionAmountInput;
+    private javax.swing.JButton transactionCancelButton;
+    private javax.swing.JComboBox<String> transactionCategorySelect;
+    private javax.swing.JTextField transactionDescriptionInput;
+    private javax.swing.JTextField transactionNameInput;
+    private javax.swing.JComboBox<String> transactionPaymentMethodSelect;
+    private javax.swing.JComboBox<String> transactionPaymentStatusSelect;
+    private javax.swing.JButton transactionSaveButton;
+    private javax.swing.JComboBox<String> transactionTypeSelect;
+    private javax.swing.JTable transactionsTable;
     // End of variables declaration//GEN-END:variables
 }

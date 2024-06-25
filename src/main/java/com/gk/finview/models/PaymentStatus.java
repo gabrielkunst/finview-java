@@ -4,6 +4,9 @@ public class PaymentStatus {
     private int id;
     private String name;
     private String value;
+    
+    public PaymentStatus() {
+    }
 
     public PaymentStatus(int id, String name, String value) {
         this.id = id;

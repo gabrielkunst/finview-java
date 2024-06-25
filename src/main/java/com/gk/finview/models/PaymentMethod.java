@@ -4,6 +4,9 @@ public class PaymentMethod {
     private int id;
     private String name;
     private String value;
+    
+    public PaymentMethod(){
+    }
 
     public PaymentMethod(int id, String name, String value) {
         this.id = id;

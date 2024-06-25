@@ -68,7 +68,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="title" type="java.lang.String" value="Finan&#xe7;as"/>
+    <Property name="title" type="java.lang.String" value="Controle de Gastos"/>
     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
       <Color id="Default Cursor"/>
     </Property>
@@ -260,7 +260,7 @@
                                       <Component id="jPanel3" pref="601" max="32767" attributes="0"/>
                                       <Group type="102" alignment="1" attributes="0">
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                          <Component id="jButton2" min="-2" pref="176" max="-2" attributes="0"/>
+                                          <Component id="registerSubmitButton" min="-2" pref="176" max="-2" attributes="0"/>
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -274,7 +274,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace pref="32" max="32767" attributes="0"/>
-                                  <Component id="jButton2" min="-2" pref="31" max="-2" attributes="0"/>
+                                  <Component id="registerSubmitButton" min="-2" pref="31" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -296,7 +296,7 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="1" attributes="0">
                                               <Component id="jLabel5" max="32767" attributes="0"/>
-                                              <Component id="jTextField1" max="32767" attributes="0"/>
+                                              <Component id="registerNameInput" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
@@ -308,7 +308,7 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="registerNameInput" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -320,7 +320,7 @@
                                     <Property name="text" type="java.lang.String" value="Nome Completo"/>
                                   </Properties>
                                 </Component>
-                                <Component class="javax.swing.JTextField" name="jTextField1">
+                                <Component class="javax.swing.JTextField" name="registerNameInput">
                                 </Component>
                               </SubComponents>
                             </Container>
@@ -333,7 +333,7 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="1" attributes="0">
                                               <Component id="jLabel6" alignment="1" max="32767" attributes="0"/>
-                                              <Component id="jTextField4" alignment="1" pref="288" max="32767" attributes="0"/>
+                                              <Component id="registerEmailInput" alignment="1" pref="288" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
@@ -345,7 +345,7 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextField4" min="-2" max="-2" attributes="0"/>
+                                          <Component id="registerEmailInput" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -357,7 +357,7 @@
                                     <Property name="text" type="java.lang.String" value="Email"/>
                                   </Properties>
                                 </Component>
-                                <Component class="javax.swing.JTextField" name="jTextField4">
+                                <Component class="javax.swing.JTextField" name="registerEmailInput">
                                 </Component>
                               </SubComponents>
                             </Container>
@@ -370,7 +370,7 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jLabel7" max="32767" attributes="0"/>
-                                              <Component id="jFormattedTextField1" pref="288" max="32767" attributes="0"/>
+                                              <Component id="registerCPFInput" pref="288" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
@@ -382,7 +382,7 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="jFormattedTextField1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="registerCPFInput" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -394,7 +394,7 @@
                                     <Property name="text" type="java.lang.String" value="CPF"/>
                                   </Properties>
                                 </Component>
-                                <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField1">
+                                <Component class="javax.swing.JFormattedTextField" name="registerCPFInput">
                                   <Properties>
                                     <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
                                       <Format format="###.###.###-##" subtype="-1" type="5"/>
@@ -412,7 +412,7 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jLabel8" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jPasswordField4" alignment="0" pref="288" max="32767" attributes="0"/>
+                                              <Component id="registerPasswordInput" alignment="0" pref="288" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
@@ -424,7 +424,7 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jPasswordField4" min="-2" max="-2" attributes="0"/>
+                                          <Component id="registerPasswordInput" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -436,7 +436,7 @@
                                     <Property name="text" type="java.lang.String" value="Senha"/>
                                   </Properties>
                                 </Component>
-                                <Component class="javax.swing.JPasswordField" name="jPasswordField4">
+                                <Component class="javax.swing.JPasswordField" name="registerPasswordInput">
                                 </Component>
                               </SubComponents>
                             </Container>
@@ -449,7 +449,7 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jLabel9" alignment="1" max="32767" attributes="0"/>
-                                              <Component id="jFormattedTextField2" alignment="0" pref="288" max="32767" attributes="0"/>
+                                              <Component id="registerZipcodeInput" alignment="0" pref="288" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
@@ -461,7 +461,7 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jFormattedTextField2" min="-2" max="-2" attributes="0"/>
+                                          <Component id="registerZipcodeInput" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -473,7 +473,7 @@
                                     <Property name="text" type="java.lang.String" value="CEP"/>
                                   </Properties>
                                 </Component>
-                                <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField2">
+                                <Component class="javax.swing.JFormattedTextField" name="registerZipcodeInput">
                                   <Properties>
                                     <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
                                       <Format format="#####-###" subtype="-1" type="5"/>
@@ -491,7 +491,7 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="1" attributes="0">
                                               <Component id="jLabel10" alignment="1" max="32767" attributes="0"/>
-                                              <Component id="jTextField5" alignment="1" pref="288" max="32767" attributes="0"/>
+                                              <Component id="registerStreetInput" alignment="1" pref="288" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
@@ -503,7 +503,7 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextField5" min="-2" max="-2" attributes="0"/>
+                                          <Component id="registerStreetInput" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -515,7 +515,7 @@
                                     <Property name="text" type="java.lang.String" value="Endere&#xe7;o"/>
                                   </Properties>
                                 </Component>
-                                <Component class="javax.swing.JTextField" name="jTextField5">
+                                <Component class="javax.swing.JTextField" name="registerStreetInput">
                                 </Component>
                               </SubComponents>
                             </Container>
@@ -528,7 +528,7 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="1" attributes="0">
                                               <Component id="jLabel11" alignment="1" max="32767" attributes="0"/>
-                                              <Component id="jTextField6" alignment="1" pref="288" max="32767" attributes="0"/>
+                                              <Component id="registerNeighborhoodInput" alignment="1" pref="288" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
@@ -540,7 +540,7 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextField6" min="-2" max="-2" attributes="0"/>
+                                          <Component id="registerNeighborhoodInput" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -552,7 +552,7 @@
                                     <Property name="text" type="java.lang.String" value="Bairro"/>
                                   </Properties>
                                 </Component>
-                                <Component class="javax.swing.JTextField" name="jTextField6">
+                                <Component class="javax.swing.JTextField" name="registerNeighborhoodInput">
                                 </Component>
                               </SubComponents>
                             </Container>
@@ -565,7 +565,7 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jLabel12" max="32767" attributes="0"/>
-                                              <Component id="jTextField7" alignment="0" pref="288" max="32767" attributes="0"/>
+                                              <Component id="registerCityInput" alignment="0" pref="288" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
@@ -577,7 +577,7 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextField7" min="-2" max="-2" attributes="0"/>
+                                          <Component id="registerCityInput" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -589,7 +589,7 @@
                                     <Property name="text" type="java.lang.String" value="Cidade"/>
                                   </Properties>
                                 </Component>
-                                <Component class="javax.swing.JTextField" name="jTextField7">
+                                <Component class="javax.swing.JTextField" name="registerCityInput">
                                 </Component>
                               </SubComponents>
                             </Container>
@@ -602,7 +602,7 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jLabel15" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jTextField10" alignment="0" pref="288" max="32767" attributes="0"/>
+                                              <Component id="registerStateInput" alignment="0" pref="288" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
@@ -614,7 +614,7 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextField10" min="-2" max="-2" attributes="0"/>
+                                          <Component id="registerStateInput" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -626,18 +626,19 @@
                                     <Property name="text" type="java.lang.String" value="UF"/>
                                   </Properties>
                                 </Component>
-                                <Component class="javax.swing.JTextField" name="jTextField10">
+                                <Component class="javax.swing.JTextField" name="registerStateInput">
                                 </Component>
                               </SubComponents>
                             </Container>
                           </SubComponents>
                         </Container>
-                        <Component class="javax.swing.JButton" name="jButton2">
+                        <Component class="javax.swing.JButton" name="registerSubmitButton">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Registrar"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="registerSubmitButtonMouseClicked"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registerSubmitButtonActionPerformed"/>
                           </Events>
                         </Component>
                       </SubComponents>
@@ -742,7 +743,7 @@
                                       <Component id="jPanel11" alignment="0" max="32767" attributes="0"/>
                                       <Group type="102" alignment="1" attributes="0">
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                          <Component id="jButton3" min="-2" pref="176" max="-2" attributes="0"/>
+                                          <Component id="loginSubmitButton" min="-2" pref="176" max="-2" attributes="0"/>
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -756,7 +757,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jPanel11" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace pref="32" max="32767" attributes="0"/>
-                                  <Component id="jButton3" min="-2" pref="31" max="-2" attributes="0"/>
+                                  <Component id="loginSubmitButton" min="-2" pref="31" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -778,7 +779,7 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="1" attributes="0">
                                               <Component id="jLabel14" alignment="1" max="32767" attributes="0"/>
-                                              <Component id="jTextField8" alignment="1" pref="426" max="32767" attributes="0"/>
+                                              <Component id="loginEmailInput" alignment="1" pref="426" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
@@ -790,7 +791,7 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jTextField8" min="-2" max="-2" attributes="0"/>
+                                          <Component id="loginEmailInput" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -802,7 +803,7 @@
                                     <Property name="text" type="java.lang.String" value="Email"/>
                                   </Properties>
                                 </Component>
-                                <Component class="javax.swing.JTextField" name="jTextField8">
+                                <Component class="javax.swing.JTextField" name="loginEmailInput">
                                 </Component>
                               </SubComponents>
                             </Container>
@@ -815,7 +816,7 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jLabel17" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jPasswordField5" alignment="0" pref="426" max="32767" attributes="0"/>
+                                              <Component id="loginPasswordInput" alignment="0" pref="426" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
@@ -827,7 +828,7 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jPasswordField5" min="-2" max="-2" attributes="0"/>
+                                          <Component id="loginPasswordInput" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -839,18 +840,19 @@
                                     <Property name="text" type="java.lang.String" value="Senha"/>
                                   </Properties>
                                 </Component>
-                                <Component class="javax.swing.JPasswordField" name="jPasswordField5">
+                                <Component class="javax.swing.JPasswordField" name="loginPasswordInput">
                                 </Component>
                               </SubComponents>
                             </Container>
                           </SubComponents>
                         </Container>
-                        <Component class="javax.swing.JButton" name="jButton3">
+                        <Component class="javax.swing.JButton" name="loginSubmitButton">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Entrar"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="loginSubmitButtonMouseClicked"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="loginSubmitButtonActionPerformed"/>
                           </Events>
                         </Component>
                       </SubComponents>
@@ -958,9 +960,9 @@
                                       <Component id="jPanel29" max="32767" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                          <Component id="jButton4" min="-2" pref="120" max="-2" attributes="0"/>
+                                          <Component id="transactionSaveButton" min="-2" pref="120" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                          <Component id="jButton1" min="-2" pref="120" max="-2" attributes="0"/>
+                                          <Component id="transactionCancelButton" min="-2" pref="120" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -974,8 +976,8 @@
                                   <Component id="jPanel29" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="transactionCancelButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="transactionSaveButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
@@ -1024,7 +1026,7 @@
                                               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="jLabel1" pref="471" max="32767" attributes="0"/>
-                                                  <Component id="jTextField2" max="32767" attributes="0"/>
+                                                  <Component id="transactionNameInput" max="32767" attributes="0"/>
                                               </Group>
                                               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                           </Group>
@@ -1036,7 +1038,7 @@
                                               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jTextField2" min="-2" max="-2" attributes="0"/>
+                                              <Component id="transactionNameInput" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -1048,7 +1050,10 @@
                                         <Property name="text" type="java.lang.String" value="Nome da transa&#xe7;&#xe3;o"/>
                                       </Properties>
                                     </Component>
-                                    <Component class="javax.swing.JTextField" name="jTextField2">
+                                    <Component class="javax.swing.JTextField" name="transactionNameInput">
+                                      <Events>
+                                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="transactionNameInputActionPerformed"/>
+                                      </Events>
                                     </Component>
                                   </SubComponents>
                                 </Container>
@@ -1070,7 +1075,7 @@
                                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
                                                       <Component id="jLabel4" alignment="0" max="32767" attributes="0"/>
-                                                      <Component id="jTextField11" alignment="0" pref="149" max="32767" attributes="0"/>
+                                                      <Component id="transactionAmountInput" alignment="0" pref="149" max="32767" attributes="0"/>
                                                   </Group>
                                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                               </Group>
@@ -1082,7 +1087,7 @@
                                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="jTextField11" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="transactionAmountInput" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
@@ -1094,7 +1099,7 @@
                                             <Property name="text" type="java.lang.String" value="Valor"/>
                                           </Properties>
                                         </Component>
-                                        <Component class="javax.swing.JTextField" name="jTextField11">
+                                        <Component class="javax.swing.JTextField" name="transactionAmountInput">
                                         </Component>
                                       </SubComponents>
                                     </Container>
@@ -1106,7 +1111,7 @@
                                               <Group type="102" alignment="0" attributes="0">
                                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="jComboBox4" pref="149" max="32767" attributes="0"/>
+                                                      <Component id="transactionPaymentMethodSelect" pref="149" max="32767" attributes="0"/>
                                                       <Component id="jLabel18" pref="149" max="32767" attributes="0"/>
                                                   </Group>
                                               </Group>
@@ -1118,7 +1123,7 @@
                                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                                   <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="32767" attributes="0"/>
-                                                  <Component id="jComboBox4" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="transactionPaymentMethodSelect" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                         </DimensionLayout>
@@ -1129,7 +1134,7 @@
                                             <Property name="text" type="java.lang.String" value="Pagamento"/>
                                           </Properties>
                                         </Component>
-                                        <Component class="javax.swing.JComboBox" name="jComboBox4">
+                                        <Component class="javax.swing.JComboBox" name="transactionPaymentMethodSelect">
                                           <Properties>
                                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                               <StringArray count="2">
@@ -1139,7 +1144,7 @@
                                             </Property>
                                           </Properties>
                                           <Events>
-                                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox4ActionPerformed"/>
+                                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="transactionPaymentMethodSelectActionPerformed"/>
                                           </Events>
                                           <AuxValues>
                                             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -1153,7 +1158,7 @@
                                         <DimensionLayout dim="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jLabel19" alignment="0" pref="149" max="32767" attributes="0"/>
-                                              <Component id="jComboBox1" alignment="1" max="32767" attributes="0"/>
+                                              <Component id="transactionPaymentStatusSelect" alignment="1" max="32767" attributes="0"/>
                                           </Group>
                                         </DimensionLayout>
                                         <DimensionLayout dim="1">
@@ -1162,7 +1167,7 @@
                                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                                   <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="32767" attributes="0"/>
-                                                  <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="transactionPaymentStatusSelect" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                         </DimensionLayout>
@@ -1173,7 +1178,7 @@
                                             <Property name="text" type="java.lang.String" value="Estado"/>
                                           </Properties>
                                         </Component>
-                                        <Component class="javax.swing.JComboBox" name="jComboBox1">
+                                        <Component class="javax.swing.JComboBox" name="transactionPaymentStatusSelect">
                                           <Properties>
                                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                               <StringArray count="2">
@@ -1199,7 +1204,7 @@
                                               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="jLabel3" alignment="0" pref="471" max="32767" attributes="0"/>
-                                                  <Component id="jTextField9" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="transactionDescriptionInput" alignment="0" max="32767" attributes="0"/>
                                               </Group>
                                               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                           </Group>
@@ -1211,7 +1216,7 @@
                                               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jTextField9" min="-2" max="-2" attributes="0"/>
+                                              <Component id="transactionDescriptionInput" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -1223,7 +1228,7 @@
                                         <Property name="text" type="java.lang.String" value="Descri&#xe7;&#xe3;o"/>
                                       </Properties>
                                     </Component>
-                                    <Component class="javax.swing.JTextField" name="jTextField9">
+                                    <Component class="javax.swing.JTextField" name="transactionDescriptionInput">
                                     </Component>
                                   </SubComponents>
                                 </Container>
@@ -1244,7 +1249,7 @@
                                               <Group type="102" alignment="0" attributes="0">
                                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="jComboBox2" pref="229" max="32767" attributes="0"/>
+                                                      <Component id="transactionTypeSelect" pref="229" max="32767" attributes="0"/>
                                                       <Component id="jLabel13" max="32767" attributes="0"/>
                                                   </Group>
                                               </Group>
@@ -1256,7 +1261,7 @@
                                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                                   <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="32767" attributes="0"/>
-                                                  <Component id="jComboBox2" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="transactionTypeSelect" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                         </DimensionLayout>
@@ -1267,7 +1272,7 @@
                                             <Property name="text" type="java.lang.String" value="Tipo"/>
                                           </Properties>
                                         </Component>
-                                        <Component class="javax.swing.JComboBox" name="jComboBox2">
+                                        <Component class="javax.swing.JComboBox" name="transactionTypeSelect">
                                           <Properties>
                                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                               <StringArray count="2">
@@ -1277,7 +1282,7 @@
                                             </Property>
                                           </Properties>
                                           <Events>
-                                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox2ActionPerformed"/>
+                                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="transactionTypeSelectActionPerformed"/>
                                           </Events>
                                           <AuxValues>
                                             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -1293,7 +1298,7 @@
                                               <Group type="102" alignment="0" attributes="0">
                                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="jComboBox3" pref="229" max="32767" attributes="0"/>
+                                                      <Component id="transactionCategorySelect" pref="229" max="32767" attributes="0"/>
                                                       <Component id="jLabel16" pref="229" max="32767" attributes="0"/>
                                                   </Group>
                                               </Group>
@@ -1305,7 +1310,7 @@
                                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                                   <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="32767" attributes="0"/>
-                                                  <Component id="jComboBox3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="transactionCategorySelect" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                         </DimensionLayout>
@@ -1316,7 +1321,7 @@
                                             <Property name="text" type="java.lang.String" value="Categoria"/>
                                           </Properties>
                                         </Component>
-                                        <Component class="javax.swing.JComboBox" name="jComboBox3">
+                                        <Component class="javax.swing.JComboBox" name="transactionCategorySelect">
                                           <Properties>
                                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                               <StringArray count="2">
@@ -1326,7 +1331,7 @@
                                             </Property>
                                           </Properties>
                                           <Events>
-                                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox3ActionPerformed"/>
+                                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="transactionCategorySelectActionPerformed"/>
                                           </Events>
                                           <AuxValues>
                                             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -1340,20 +1345,22 @@
                             </Container>
                           </SubComponents>
                         </Container>
-                        <Component class="javax.swing.JButton" name="jButton1">
+                        <Component class="javax.swing.JButton" name="transactionCancelButton">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Cancelar"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="transactionCancelButtonMouseClicked"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="transactionCancelButtonActionPerformed"/>
                           </Events>
                         </Component>
-                        <Component class="javax.swing.JButton" name="jButton4">
+                        <Component class="javax.swing.JButton" name="transactionSaveButton">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Salvar"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="transactionSaveButtonMouseClicked"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="transactionSaveButtonActionPerformed"/>
                           </Events>
                         </Component>
                       </SubComponents>
@@ -1365,7 +1372,7 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTable" name="jTable1">
+                        <Component class="javax.swing.JTable" name="transactionsTable">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="8" rowCount="4">
