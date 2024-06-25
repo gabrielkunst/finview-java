@@ -20,7 +20,7 @@ public class UserController {
                 throw new RuntimeException(error.getMessage());
             }
 
-            throw new RuntimeException("Ops! Ocorreu um erro ao criar o usuário." + error.getMessage());
+            throw new RuntimeException("Ops! Ocorreu um erro ao criar o usuário.");
         }
     }
 
@@ -32,7 +32,7 @@ public class UserController {
                 throw new RuntimeException(error.getMessage());
             }
 
-            throw new RuntimeException("Ops! Ocorreu um erro ao atualizar o usuário." + error.getMessage());
+            throw new RuntimeException("Ops! Ocorreu um erro ao atualizar o usuário.");
         }
     }
 
@@ -44,7 +44,7 @@ public class UserController {
                 throw new RuntimeException(error.getMessage());
             }
 
-            throw new RuntimeException("Ops! Ocorreu um erro ao buscar o usuário." + error.getMessage());
+            throw new RuntimeException("Ops! Ocorreu um erro ao buscar o usuário.");
         }
     }
 
@@ -56,7 +56,7 @@ public class UserController {
                 throw new RuntimeException(error.getMessage());
             }
 
-            throw new RuntimeException("Ops! Ocorreu um erro ao buscar o usuário." + error.getMessage());
+            throw new RuntimeException("Ops! Ocorreu um erro ao buscar o usuário.");
         }
     }
 
@@ -68,7 +68,7 @@ public class UserController {
                 throw new RuntimeException(error.getMessage());
             }
 
-            throw new RuntimeException("Ops! Ocorreu um erro ao deletar o usuário." + error.getMessage());
+            throw new RuntimeException("Ops! Ocorreu um erro ao deletar o usuário.");
         }
     }
 }
