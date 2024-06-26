@@ -14,7 +14,7 @@ public class TransactionTypeController {
 
     public List<TransactionType> getTransactionTypes() {
         try {
-            return transactionTypeService.getTransactionTypes();
+            return this.transactionTypeService.getTransactionTypes();
         } catch (Exception error) {
             throw new RuntimeException("Ops! Ocorreu um erro ao buscar os tipos de transação.");
         }

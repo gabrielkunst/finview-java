@@ -13,6 +13,6 @@ public class TransactionTypeService {
     }
 
     public List<TransactionType> getTransactionTypes() {
-        return transactionTypeRepository.getTransactionTypes();
+        return this.transactionTypeRepository.getTransactionTypes();
     }
 }
