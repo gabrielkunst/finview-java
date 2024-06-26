@@ -26,7 +26,7 @@ public class PaymentMethodController {
             return this.paymentMethodService.getPaymentMethodById(id);
         } catch (Exception error) {
             if (error instanceof ResourceNotFoundException) {
-                throw new RuntimeException(error.getMessage());
+                throw new RuntimeException("Ops! O método de pagamento não foi encontrado.");
             }
 
             throw new RuntimeException("Ops! Ocorreu um erro ao buscar o método de pagamento.");

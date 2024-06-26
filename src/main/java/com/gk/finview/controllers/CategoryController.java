@@ -19,7 +19,7 @@ public class CategoryController {
             this.categoryService.createCategory(category);
         } catch (Exception error) {
             if (error instanceof ResourceAlreadyExistsException) {
-                throw new RuntimeException(error.getMessage());
+                throw new RuntimeException("Ops! A categoria já existe.");
             }
 
             throw new RuntimeException("Ops! Ocorreu um erro ao criar a categoria.");
@@ -31,7 +31,7 @@ public class CategoryController {
             this.categoryService.updateCategory(category);
         } catch (Exception error) {
             if (error instanceof ResourceNotFoundException) {
-                throw new RuntimeException(error.getMessage());
+                throw new RuntimeException("Ops! A categoria não foi encontrada.");
             }
 
             throw new RuntimeException("Ops! Ocorreu um erro ao atualizar a categoria.");
@@ -43,7 +43,7 @@ public class CategoryController {
             return this.categoryService.getCategoryById(id);
         } catch (Exception error) {
             if (error instanceof ResourceNotFoundException) {
-                throw new RuntimeException(error.getMessage());
+                throw new RuntimeException("Ops! A categoria não foi encontrada.");
             }
 
             throw new RuntimeException("Ops! Ocorreu um erro ao buscar a categoria.");
@@ -55,7 +55,7 @@ public class CategoryController {
             return this.categoryService.getCategoriesByUserId(userId);
         } catch (Exception error) {
             if (error instanceof ResourceNotFoundException) {
-                throw new RuntimeException(error.getMessage());
+                throw new RuntimeException("Ops! As categorias não foram encontradas.");
             }
 
             throw new RuntimeException("Ops! Ocorreu um erro ao buscar as categorias.");
@@ -67,7 +67,7 @@ public class CategoryController {
             this.categoryService.deleteCategoryById(id);
         } catch (Exception error) {
             if (error instanceof ResourceNotFoundException) {
-                throw new RuntimeException(error.getMessage());
+                throw new RuntimeException("Ops! A categoria não foi encontrada.");
             }
 
             throw new RuntimeException("Ops! Ocorreu um erro ao deletar a categoria.");

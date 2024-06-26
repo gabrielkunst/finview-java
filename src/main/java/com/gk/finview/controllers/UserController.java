@@ -17,7 +17,7 @@ public class UserController {
             this.userService.createUser(user);
         } catch (Exception error) {
             if (error instanceof ResourceAlreadyExistsException) {
-                throw new RuntimeException(error.getMessage());
+                throw new RuntimeException("Ops! O usuário já existe.");
             }
 
             throw new RuntimeException("Ops! Ocorreu um erro ao criar o usuário.");
@@ -29,7 +29,7 @@ public class UserController {
             this.userService.updateUser(user);
         } catch (Exception error) {
             if (error instanceof ResourceNotFoundException) {
-                throw new RuntimeException(error.getMessage());
+                throw new RuntimeException("Ops! O usuário não foi encontrado.");
             }
 
             throw new RuntimeException("Ops! Ocorreu um erro ao atualizar o usuário.");
@@ -41,7 +41,7 @@ public class UserController {
             return this.userService.getUserById(id);
         } catch (Exception error) {
             if (error instanceof ResourceNotFoundException) {
-                throw new RuntimeException(error.getMessage());
+                throw new RuntimeException("Ops! O usuário não foi encontrado.");
             }
 
             throw new RuntimeException("Ops! Ocorreu um erro ao buscar o usuário.");
@@ -53,7 +53,7 @@ public class UserController {
             return this.userService.getUserByEmail(email);
         } catch (Exception error) {
             if (error instanceof ResourceNotFoundException) {
-                throw new RuntimeException(error.getMessage());
+                throw new RuntimeException("Ops! O usuário não foi encontrado.");
             }
 
             throw new RuntimeException("Ops! Ocorreu um erro ao buscar o usuário.");
@@ -65,7 +65,7 @@ public class UserController {
             this.userService.deleteUserById(id);
         } catch (Exception error) {
             if (error instanceof ResourceNotFoundException) {
-                throw new RuntimeException(error.getMessage());
+                throw new RuntimeException("Ops! O usuário não foi encontrado.");
             }
 
             throw new RuntimeException("Ops! Ocorreu um erro ao deletar o usuário.");
