@@ -8,16 +8,24 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import main.java.com.gk.finview.controllers.UserController;
+import main.java.com.gk.finview.controllers.TransactionController;
 import main.java.com.gk.finview.factories.UserControllerFactory;
 import main.java.com.gk.finview.lib.DB;
 import main.java.com.gk.finview.models.User;
 import java.sql.Connection;
+import java.util.Date;
+import java.util.List;
+import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
 import main.java.com.gk.finview.controllers.AddressController;
 import main.java.com.gk.finview.factories.AddressControllerFactory;
+import main.java.com.gk.finview.factories.TransactionControllerFactory;
 import main.java.com.gk.finview.models.Address;
+import main.java.com.gk.finview.models.Transaction;
+
 
 public class MainFrame extends javax.swing.JFrame {
     private User loggedUser;
@@ -54,6 +62,8 @@ public class MainFrame extends javax.swing.JFrame {
         MenuLogin.setVisible(false);
         MenuTools.setVisible(true);
         MenuLogout.setVisible(true);
+        
+        loadTransactionsTable();
     }
 
     private void DoLogout() {
@@ -130,31 +140,28 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel20 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        transactionNameInput = new javax.swing.JTextField();
+        TransactionsTransactionNameInput = new javax.swing.JTextField();
         jPanel21 = new javax.swing.JPanel();
         jPanel26 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        transactionAmountInput = new javax.swing.JTextField();
+        TransactionsTransactionAmountInput = new javax.swing.JTextField();
         jPanel27 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
-        transactionPaymentMethodSelect = new javax.swing.JComboBox<>();
-        jPanel28 = new javax.swing.JPanel();
-        jLabel19 = new javax.swing.JLabel();
-        transactionPaymentStatusSelect = new javax.swing.JComboBox<>();
+        TransactionsTransactionMethodSelect = new javax.swing.JComboBox<>();
         jPanel22 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        transactionDescriptionInput = new javax.swing.JTextField();
+        TransactionsTransactionDescriptionInput = new javax.swing.JTextField();
         jPanel23 = new javax.swing.JPanel();
         jPanel24 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        transactionTypeSelect = new javax.swing.JComboBox<>();
+        TransactionsTransactionTypeSelect = new javax.swing.JComboBox<>();
         jPanel25 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
-        transactionCategorySelect = new javax.swing.JComboBox<>();
-        transactionCancelButton = new javax.swing.JButton();
-        transactionSaveButton = new javax.swing.JButton();
+        TransactionsTransactionCategorySelect = new javax.swing.JComboBox<>();
+        TransactionsResetBtn = new javax.swing.JButton();
+        TransactionsSubmitBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        transactionsTable = new javax.swing.JTable();
+        TransactionsTable = new javax.swing.JTable();
         CategoriesView = new javax.swing.JInternalFrame();
         CategoriesPanelView = new javax.swing.JPanel();
         jPanel36 = new javax.swing.JPanel();
@@ -676,7 +683,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
-                    .addComponent(transactionNameInput))
+                    .addComponent(TransactionsTransactionNameInput))
                 .addGap(0, 0, 0))
         );
         jPanel20Layout.setVerticalGroup(
@@ -685,7 +692,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(transactionNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TransactionsTransactionNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
 
@@ -703,7 +710,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(transactionAmountInput, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE))
+                    .addComponent(TransactionsTransactionAmountInput, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE))
                 .addGap(0, 0, 0))
         );
         jPanel26Layout.setVerticalGroup(
@@ -712,7 +719,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(transactionAmountInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TransactionsTransactionAmountInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
 
@@ -720,7 +727,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jLabel18.setText("Pagamento");
 
-        transactionPaymentMethodSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Crédito", "Débito" }));
+        TransactionsTransactionMethodSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Crédito", "Débito" }));
 
         javax.swing.GroupLayout jPanel27Layout = new javax.swing.GroupLayout(jPanel27);
         jPanel27.setLayout(jPanel27Layout);
@@ -729,8 +736,8 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(jPanel27Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(transactionPaymentMethodSelect, 0, 149, Short.MAX_VALUE)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)))
+                    .addComponent(TransactionsTransactionMethodSelect, 0, 229, Short.MAX_VALUE)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)))
         );
         jPanel27Layout.setVerticalGroup(
             jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -738,32 +745,10 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(jLabel18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(transactionPaymentMethodSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(TransactionsTransactionMethodSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanel21.add(jPanel27);
-
-        jLabel19.setText("Estado");
-
-        transactionPaymentStatusSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pago", "Pendente" }));
-
-        javax.swing.GroupLayout jPanel28Layout = new javax.swing.GroupLayout(jPanel28);
-        jPanel28.setLayout(jPanel28Layout);
-        jPanel28Layout.setHorizontalGroup(
-            jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
-            .addComponent(transactionPaymentStatusSelect, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel28Layout.setVerticalGroup(
-            jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel28Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jLabel19)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(transactionPaymentStatusSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jPanel21.add(jPanel28);
 
         jPanel2.add(jPanel21);
 
@@ -777,7 +762,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
-                    .addComponent(transactionDescriptionInput))
+                    .addComponent(TransactionsTransactionDescriptionInput))
                 .addGap(0, 0, 0))
         );
         jPanel22Layout.setVerticalGroup(
@@ -786,7 +771,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(transactionDescriptionInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TransactionsTransactionDescriptionInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
 
@@ -796,7 +781,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jLabel13.setText("Tipo");
 
-        transactionTypeSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Entrada", "Saida" }));
+        TransactionsTransactionTypeSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Entrada", "Saida" }));
 
         javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
         jPanel24.setLayout(jPanel24Layout);
@@ -805,7 +790,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(jPanel24Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(transactionTypeSelect, 0, 229, Short.MAX_VALUE)
+                    .addComponent(TransactionsTransactionTypeSelect, 0, 229, Short.MAX_VALUE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanel24Layout.setVerticalGroup(
@@ -814,14 +799,14 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(transactionTypeSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(TransactionsTransactionTypeSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanel23.add(jPanel24);
 
         jLabel16.setText("Categoria");
 
-        transactionCategorySelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alimentação", "Saúde" }));
+        TransactionsTransactionCategorySelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alimentação", "Saúde" }));
 
         javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
         jPanel25.setLayout(jPanel25Layout);
@@ -830,7 +815,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(jPanel25Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(transactionCategorySelect, 0, 229, Short.MAX_VALUE)
+                    .addComponent(TransactionsTransactionCategorySelect, 0, 229, Short.MAX_VALUE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)))
         );
         jPanel25Layout.setVerticalGroup(
@@ -839,7 +824,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(transactionCategorySelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(TransactionsTransactionCategorySelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanel23.add(jPanel25);
@@ -863,9 +848,14 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(10, Short.MAX_VALUE))
         );
 
-        transactionCancelButton.setText("Cancelar");
+        TransactionsResetBtn.setText("Limpar");
 
-        transactionSaveButton.setText("Salvar");
+        TransactionsSubmitBtn.setText("Criar");
+        TransactionsSubmitBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TransactionsSubmitBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel30Layout = new javax.swing.GroupLayout(jPanel30);
         jPanel30.setLayout(jPanel30Layout);
@@ -877,9 +867,9 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(jPanel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel30Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(transactionSaveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(TransactionsSubmitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
-                        .addComponent(transactionCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(TransactionsResetBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel30Layout.setVerticalGroup(
@@ -889,27 +879,24 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
                 .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(transactionCancelButton)
-                    .addComponent(transactionSaveButton))
+                    .addComponent(TransactionsResetBtn)
+                    .addComponent(TransactionsSubmitBtn))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        transactionsTable.setModel(new javax.swing.table.DefaultTableModel(
+        TransactionsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Energético", null, "R$ 10.00", "PIX", "Pago", "Saída", "Lazer", "2024-05-24"},
-                {"Salário", "Trabalho X", "R$ 1,200.00", "PIX", "Pago", "Entrada", null, "2024-05-24"},
-                {"Gasolina", "17L Aditivada", "R$ 100.00", "PIX", "Pago", "Saída", "Carro", "2024-05-24"},
-                {"Spotify", "Assinatura", "R$ 10.00", "Crédito", "Pago", "Saída", "Lazer", "2024-05-24"}
+
             },
             new String [] {
-                "Nome", "Descrição", "Valor", "Pagamento", "Estado", "Tipo", "Categoria", "Criado em"
+                "Nome", "Valor", "Pagamento", "Tipo", "Categoria", "Criado em"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -920,7 +907,7 @@ public class MainFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(transactionsTable);
+        jScrollPane1.setViewportView(TransactionsTable);
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
@@ -1385,6 +1372,7 @@ public class MainFrame extends javax.swing.JFrame {
         TransactionsView.setVisible(true);
 
         TransactionsView.requestFocus();
+        loadTransactionsTable();
     }//GEN-LAST:event_MenuTools1ActionPerformed
 
     private void RegisterSubmitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterSubmitBtnActionPerformed
@@ -1450,7 +1438,82 @@ public class MainFrame extends javax.swing.JFrame {
             } catch (Exception error) {
                 JOptionPane.showMessageDialog(null, error.getMessage());
             }
+            
+            DB.closeConnection();
     }//GEN-LAST:event_RegisterSubmitBtnActionPerformed
+
+    private void loadTransactionsTable() {
+        try {
+            Connection connection = DB.getConnection();
+            TransactionController transactionController = TransactionControllerFactory.createTransactionController(connection);
+            
+            List<Transaction> transactions = transactionController.getTransactionsByUserId(loggedUser.getId());
+            
+            DefaultTableModel model = (DefaultTableModel) TransactionsTable.getModel();
+            
+            for (Transaction transaction : transactions) {
+                Vector row = new Vector();
+                row.add(transaction.getName());
+                row.add(transaction.getAmount());
+                row.add(transaction.getPaymentMethodId());
+                row.add(transaction.getTransactionTypeId());
+                row.add(transaction.getCategoryId());
+                row.add(transaction.getCreatedAt().toString());
+               
+                model.addRow(row);
+            }
+        } catch (Exception error) {
+            JOptionPane.showMessageDialog(null, error.getMessage());
+        }
+    }
+    
+    private void TransactionsSubmitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TransactionsSubmitBtnActionPerformed
+        try {
+            String name = TransactionsTransactionNameInput.getText().trim();
+            String description = TransactionsTransactionDescriptionInput.getText().trim();
+            String amount = TransactionsTransactionAmountInput.getText().trim();
+            
+            if (name.isEmpty() || amount.isEmpty()) {
+                throw new RuntimeException("Ops! Nome da transação e o valor são obrigatórios.");
+            }
+            
+            Transaction transaction = new Transaction();
+
+            
+            try {
+                Double amountAsDouble = Double.parseDouble(amount);
+                transaction.setAmount(amountAsDouble);
+            } catch (NumberFormatException error) {
+                throw new RuntimeException("Ops! O valor não é um número válido.");
+            }
+            
+            
+            transaction.setAmount(Float.parseFloat(amount));
+            transaction.setName(name);
+            transaction.setDescription(description.isEmpty() ? null : description);
+            transaction.setCategoryId(2);
+            transaction.setCreatedBy(loggedUser.getId());
+            transaction.setPaidAt(new Date());
+            transaction.setPaymentMethodId(1);
+            transaction.setTransactionTypeId(1);
+            
+            Connection connection = DB.getConnection();
+            TransactionController transactionController = TransactionControllerFactory.createTransactionController(connection);
+            
+            transactionController.createTransaction(transaction);
+            
+            loadTransactionsTable();
+            
+            TransactionsTransactionNameInput.setText("");
+            TransactionsTransactionDescriptionInput.setText("");
+            TransactionsTransactionAmountInput.setText("");
+            TransactionsTransactionCategorySelect.setSelectedIndex(0);
+            TransactionsTransactionMethodSelect.setSelectedIndex(0);
+            TransactionsTransactionTypeSelect.setSelectedIndex(0);
+        } catch (Exception error) {
+            JOptionPane.showMessageDialog(null, error.getMessage());
+        }
+    }//GEN-LAST:event_TransactionsSubmitBtnActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -1521,6 +1584,15 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JInternalFrame RegisterView;
     private javax.swing.JFormattedTextField RegisterZipcodeInput;
     private javax.swing.JPanel TransactionsPanelView;
+    private javax.swing.JButton TransactionsResetBtn;
+    private javax.swing.JButton TransactionsSubmitBtn;
+    private javax.swing.JTable TransactionsTable;
+    private javax.swing.JTextField TransactionsTransactionAmountInput;
+    private javax.swing.JComboBox<String> TransactionsTransactionCategorySelect;
+    private javax.swing.JTextField TransactionsTransactionDescriptionInput;
+    private javax.swing.JComboBox<String> TransactionsTransactionMethodSelect;
+    private javax.swing.JTextField TransactionsTransactionNameInput;
+    private javax.swing.JComboBox<String> TransactionsTransactionTypeSelect;
     private javax.swing.JInternalFrame TransactionsView;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1532,7 +1604,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
@@ -1562,7 +1633,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel25;
     private javax.swing.JPanel jPanel26;
     private javax.swing.JPanel jPanel27;
-    private javax.swing.JPanel jPanel28;
     private javax.swing.JPanel jPanel29;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel30;
@@ -1583,15 +1653,5 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField transactionAmountInput;
-    private javax.swing.JButton transactionCancelButton;
-    private javax.swing.JComboBox<String> transactionCategorySelect;
-    private javax.swing.JTextField transactionDescriptionInput;
-    private javax.swing.JTextField transactionNameInput;
-    private javax.swing.JComboBox<String> transactionPaymentMethodSelect;
-    private javax.swing.JComboBox<String> transactionPaymentStatusSelect;
-    private javax.swing.JButton transactionSaveButton;
-    private javax.swing.JComboBox<String> transactionTypeSelect;
-    private javax.swing.JTable transactionsTable;
     // End of variables declaration//GEN-END:variables
 }

@@ -16,6 +16,7 @@ public class Transaction {
     private Date deletedAt;
 
     public Transaction() {
+        this.createdAt = new Date();
     }
 
     public Transaction(int id, String name, String description, double amount, int transactionTypeId, int paymentMethodId, int categoryId, int createdBy, Date paidAt, Date createdAt, Date deletedAt) {

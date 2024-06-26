@@ -6,8 +6,10 @@ import main.java.com.gk.finview.repositories.TransactionRepository;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class MySQLTransactionRepository implements TransactionRepository {
     private final Connection connection;
@@ -17,11 +19,11 @@ public class MySQLTransactionRepository implements TransactionRepository {
     }
 
     @Override
-    public void createTransaction(Transaction transaction) {
-        String sql = "INSERT INTO transacao (nome, descricao, valor, tipo_id, metodo_id, categoria_id, usuario_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    public Transaction createTransaction(Transaction transaction) {
+        String sql = "INSERT INTO transacao (nome, descricao, valor, tipo_id, metodo_id, categoria_id, usuario_id, status_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
-            PreparedStatement preparedStatement = this.connection.prepareStatement(sql);
+            PreparedStatement preparedStatement = this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             preparedStatement.setString(1, transaction.getName());
             preparedStatement.setString(2, transaction.getDescription());
@@ -30,9 +32,19 @@ public class MySQLTransactionRepository implements TransactionRepository {
             preparedStatement.setInt(5, transaction.getPaymentMethodId());
             preparedStatement.setInt(6, transaction.getCategoryId());
             preparedStatement.setInt(7, transaction.getCreatedBy());
+            preparedStatement.setInt(8, 2);
 
             preparedStatement.executeUpdate();
+            
+            ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+            
+            if (generatedKeys.next()) {
+                transaction.setId(generatedKeys.getInt(1));
+            }
+            
+            return transaction;
         } catch (Exception error) {
+            System.out.println(error.getMessage());
             throw new RuntimeException("Error creating transaction " + error.getMessage());
         }
     }

@@ -13,8 +13,8 @@ public class TransactionService {
         this.transactionRepository = transactionRepository;
     }
 
-    public void createTransaction(Transaction transaction) {
-        this.transactionRepository.createTransaction(transaction);
+    public Transaction createTransaction(Transaction transaction) {
+        return this.transactionRepository.createTransaction(transaction);
     }
 
     public Transaction getTransactionById(int id) {

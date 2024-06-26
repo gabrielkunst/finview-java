@@ -13,9 +13,9 @@ public class TransactionController {
         this.transactionService = transactionService;
     }
 
-    public void createTransaction(Transaction transaction) {
+    public Transaction createTransaction(Transaction transaction) {
         try {
-            this.transactionService.createTransaction(transaction);
+            return this.transactionService.createTransaction(transaction);
         } catch (Exception error) {
             throw new RuntimeException("Ops! Ocorreu um erro ao criar a transação");
         }
