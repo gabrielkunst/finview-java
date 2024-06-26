@@ -19,7 +19,7 @@ public class MySQLUserRepository implements UserRepository {
         String sql = "INSERT INTO usuario (nome, cpf, email, senha, endereco_id, cargo_id) VALUES (?, ?, ?, ?, ?, ?)";
 
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            PreparedStatement preparedStatement = this.connection.prepareStatement(sql);
 
             preparedStatement.setString(1, user.getName());
             preparedStatement.setString(2, user.getCpf());
@@ -40,7 +40,7 @@ public class MySQLUserRepository implements UserRepository {
         String sql = "SELECT * FROM usuario WHERE usuario_id = ?";
 
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            PreparedStatement preparedStatement = this.connection.prepareStatement(sql);
             preparedStatement.setString(1, String.valueOf(id));
 
             ResultSet result = preparedStatement.executeQuery();
@@ -70,7 +70,7 @@ public class MySQLUserRepository implements UserRepository {
         String sql = "SELECT * FROM usuario WHERE email = ?";
 
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            PreparedStatement preparedStatement = this.connection.prepareStatement(sql);
             preparedStatement.setString(1, email);
 
             ResultSet result = preparedStatement.executeQuery();
@@ -101,7 +101,7 @@ public class MySQLUserRepository implements UserRepository {
         String sql = "UPDATE usuario SET nome = ?, cpf = ?, email = ?, senha = ? WHERE usuario_id = ?";
 
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            PreparedStatement preparedStatement = this.connection.prepareStatement(sql);
 
             preparedStatement.setString(1, user.getName());
             preparedStatement.setString(2, user.getCpf());
@@ -120,7 +120,7 @@ public class MySQLUserRepository implements UserRepository {
         String sql = "UPDATE usuario SET deletado_em = NOW() WHERE usuario_id = ?";
 
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            PreparedStatement preparedStatement = this.connection.prepareStatement(sql);
             preparedStatement.setString(1, String.valueOf(id));
 
             preparedStatement.executeUpdate();

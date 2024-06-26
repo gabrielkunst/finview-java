@@ -6,12 +6,7 @@ package main.java.com.gk.finview.views;
 
 import java.time.LocalDateTime;
 import main.java.com.gk.finview.controllers.TransactionController;
-import main.java.com.gk.finview.controllers.UserController;
-import main.java.com.gk.finview.factories.TransactionServiceFactory;
-import main.java.com.gk.finview.services.UserService;
-import main.java.com.gk.finview.factories.UserServiceFactory;
 import main.java.com.gk.finview.models.User;
-import main.java.com.gk.finview.models.Address;
 import main.java.com.gk.finview.models.Category;
 import main.java.com.gk.finview.models.PaymentMethod;
 import main.java.com.gk.finview.models.PaymentStatus;
@@ -1482,29 +1477,29 @@ public class MainPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_transactionNameInputActionPerformed
 
     private void transactionSaveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transactionSaveButtonMouseClicked
-        String transactionName = transactionNameInput.getText();
-        String transactionDescription = transactionDescriptionInput.getText();
-        String transactionAmount = transactionAmountInput.getText();
-        TransactionType transactionType = new TransactionType();
-        PaymentStatus transactionStatus = new PaymentStatus();
-        PaymentMethod transactionPaymentMethod = new PaymentMethod();
-        User createdBy = new User();
-        Category transactionCategory = new Category();
-        
-        Transaction newTransaction = new Transaction();
-        newTransaction.setAmount(Float.parseFloat(transactionAmount));
-        newTransaction.setName(transactionName);
-        newTransaction.setDescription(transactionDescription);
-        newTransaction.setPaidAt("paid".equals(transactionStatus.getValue()) ? LocalDateTime.now() : null);
-        newTransaction.setCategory(transactionCategory);
-        newTransaction.setCreatedBy(createdBy);
-        newTransaction.setPaymentMethod(transactionPaymentMethod);
-        newTransaction.setPaymentStatus(transactionStatus);
-        newTransaction.setTransactionType(transactionType);
-        
-        TransactionService transactionService = TransactionServiceFactory.createTransactionService();
-        TransactionController transactionController = new TransactionController(transactionService);
-        
+//        String transactionName = transactionNameInput.getText();
+//        String transactionDescription = transactionDescriptionInput.getText();
+//        String transactionAmount = transactionAmountInput.getText();
+//        TransactionType transactionType = new TransactionType();
+//        PaymentStatus transactionStatus = new PaymentStatus();
+//        PaymentMethod transactionPaymentMethod = new PaymentMethod();
+//        User createdBy = new User();
+//        Category transactionCategory = new Category();
+//
+//        Transaction newTransaction = new Transaction();
+//        newTransaction.setAmount(Float.parseFloat(transactionAmount));
+//        newTransaction.setName(transactionName);
+//        newTransaction.setDescription(transactionDescription);
+//        newTransaction.setPaidAt("paid".equals(transactionStatus.getValue()) ? LocalDateTime.now() : null);
+//        newTransaction.setCategory(transactionCategory);
+//        newTransaction.setCreatedBy(createdBy);
+//        newTransaction.setPaymentMethod(transactionPaymentMethod);
+//        newTransaction.setPaymentStatus(transactionStatus);
+//        newTransaction.setTransactionType(transactionType);
+//
+//        TransactionService transactionService = TransactionServiceFactory.createTransactionService();
+//        TransactionController transactionController = new TransactionController(transactionService);
+//
         // create transaction   
     }//GEN-LAST:event_transactionSaveButtonMouseClicked
 

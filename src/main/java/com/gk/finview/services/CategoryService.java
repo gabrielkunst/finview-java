@@ -4,6 +4,8 @@ import main.java.com.gk.finview.models.Category;
 import main.java.com.gk.finview.repositories.CategoryRepository;
 import main.java.com.gk.finview.services.exceptions.ResourceNotFoundException;
 
+import java.util.List;
+
 public class CategoryService {
     private final CategoryRepository categoryRepository;
 
@@ -11,30 +13,41 @@ public class CategoryService {
         this.categoryRepository = categoryRepository;
     }
 
-    public Category createCategory(Category category) {
-        return categoryRepository.createCategory(category);
-    }
-
-    public Category updateCategory(Category category) {
-        this.getCategoryById(category.getId());
-
-        return categoryRepository.updateCategory(category);
+    public void createCategory(Category category) {
+        this.categoryRepository.createCategory(category);
     }
 
     public Category getCategoryById(int id) {
         Category categoryFromDB = this.categoryRepository.getCategoryById(id);
 
-        if (categoryFromDB == null)  {
+        if (categoryFromDB == null) {
             throw new ResourceNotFoundException();
         }
 
         return categoryFromDB;
     }
 
+    public List<Category> getCategoriesByUserId(int userId) {
+        return this.categoryRepository.getCategoriesByUserId(userId);
+    }
+
+    public void updateCategory(Category category) {
+        Category categoryFromDB = this.categoryRepository.getCategoryById(category.getId());
+
+        if (categoryFromDB == null) {
+            throw new ResourceNotFoundException();
+        }
+
+        this.categoryRepository.updateCategoryById(category.getId(), category);
+    }
+
     public void deleteCategoryById(int id) {
-        this.getCategoryById(id);
+        Category categoryFromDB = this.categoryRepository.getCategoryById(id);
 
+        if (categoryFromDB == null) {
+            throw new ResourceNotFoundException();
+        }
 
-        categoryRepository.deleteCategoryById(id);
+        this.categoryRepository.deleteCategoryById(id);
     }
 }

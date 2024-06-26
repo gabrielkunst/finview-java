@@ -1,19 +1,18 @@
 package main.java.com.gk.finview.models;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 public class Category {
     private int id;
     private String name;
     private int createdBy;
-    private LocalDateTime createdAt;
+    private Date createdAt;
     private String color;
 
     public Category() {
-        this.createdAt = LocalDateTime.now();
     }
 
-    public Category(int id, String name, int createdBy, LocalDateTime createdAt, String color) {
+    public Category(int id, String name, int createdBy, Date createdAt, String color) {
         this.id = id;
         this.name = name;
         this.createdBy = createdBy;
@@ -45,11 +44,11 @@ public class Category {
         this.createdBy = createdBy;
     }
 
-    public LocalDateTime getCreatedAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 
