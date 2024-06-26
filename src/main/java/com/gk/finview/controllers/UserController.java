@@ -12,9 +12,9 @@ public class UserController {
         this.userService = userService;
     }
 
-    public void createUser (User user) {
+    public User createUser (User user) {
         try {
-            this.userService.createUser(user);
+            return this.userService.createUser(user);
         } catch (Exception error) {
             if (error instanceof ResourceAlreadyExistsException) {
                 throw new RuntimeException("Ops! O usuário já existe.");

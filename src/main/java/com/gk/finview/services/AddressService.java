@@ -11,8 +11,8 @@ public class AddressService {
         this.addressRepository = addressRepository;
     }
 
-    public void createAddress(Address address) {
-        this.addressRepository.createAddress(address);
+    public Address createAddress(Address address) {
+        return this.addressRepository.createAddress(address);
     }
 
     public Address getAddressById(int id) {

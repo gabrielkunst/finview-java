@@ -6,6 +6,7 @@ import main.java.com.gk.finview.repositories.UserRepository;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class MySQLUserRepository implements UserRepository {
     private final Connection connection;
@@ -15,11 +16,11 @@ public class MySQLUserRepository implements UserRepository {
     }
 
     @Override
-    public void createUser(User user) {
+    public User createUser(User user) {
         String sql = "INSERT INTO usuario (nome, cpf, email, senha, endereco_id, cargo_id) VALUES (?, ?, ?, ?, ?, ?)";
 
         try {
-            PreparedStatement preparedStatement = this.connection.prepareStatement(sql);
+            PreparedStatement preparedStatement = this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             preparedStatement.setString(1, user.getName());
             preparedStatement.setString(2, user.getCpf());
@@ -29,6 +30,14 @@ public class MySQLUserRepository implements UserRepository {
             preparedStatement.setString(6, String.valueOf(user.getRoleId()));
 
             preparedStatement.executeUpdate();
+            
+            ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+            
+            if (generatedKeys.next()) {
+                user.setId(generatedKeys.getInt(1));
+            }
+          
+            return user;
         } catch (Exception error) {
             throw new RuntimeException("Error creating user: " + error.getMessage());
         }

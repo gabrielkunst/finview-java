@@ -11,9 +11,9 @@ public class AddressController {
         this.addressService = addressService;
     }
 
-    public void createAddress(Address address) {
+    public Address createAddress(Address address) {
         try {
-            this.addressService.createAddress(address);
+            return this.addressService.createAddress(address);
         } catch (Exception error) {
             throw new RuntimeException("Ops! Ocorreu um erro ao criar o endereço.");
         }

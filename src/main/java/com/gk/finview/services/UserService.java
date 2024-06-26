@@ -12,14 +12,14 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public void createUser(User user) throws ResourceAlreadyExistsException {
+    public User createUser(User user) throws ResourceAlreadyExistsException {
         User userFromDB = this.userRepository.getUserByEmail(user.getEmail());
 
         if (userFromDB != null) {
             throw new ResourceAlreadyExistsException();
         }
 
-        this.userRepository.createUser(user);
+        return this.userRepository.createUser(user);
     }
 
     public User getUserById(int id) throws ResourceNotFoundException {

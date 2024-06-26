@@ -6,6 +6,7 @@ import main.java.com.gk.finview.repositories.AddressRepository;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class MySQLAddressRepository implements AddressRepository {
     private final Connection connection;
@@ -15,11 +16,11 @@ public class MySQLAddressRepository implements AddressRepository {
     }
 
     @Override
-    public void createAddress(Address address) {
+    public Address createAddress(Address address) {
         String sql = "INSERT INTO endereco (cep, rua, bairro, cidade, uf) VALUES (?, ?, ?, ?, ?)";
 
         try {
-            PreparedStatement preparedStatement = this.connection.prepareStatement(sql);
+            PreparedStatement preparedStatement = this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             preparedStatement.setString(1, address.getZipcode());
             preparedStatement.setString(2, address.getStreet());
@@ -28,6 +29,14 @@ public class MySQLAddressRepository implements AddressRepository {
             preparedStatement.setString(5, address.getState());
 
             preparedStatement.executeUpdate();
+            
+            ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+            
+            if (generatedKeys.next()) {
+                address.setId(generatedKeys.getInt(1));
+            }
+          
+            return address;
         } catch (Exception error) {
             throw new RuntimeException("Error creating address " + error.getMessage());
         }

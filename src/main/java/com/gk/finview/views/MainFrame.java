@@ -1406,6 +1406,10 @@ public class MainFrame extends javax.swing.JFrame {
                 if (!validateEmail(email)) {
                     throw new RuntimeException("Ops! Email inválido.");
                 }
+                
+                if (password.length() < 6) {
+                    throw new RuntimeException("Ops! A senhha precisa ter no mínimo 6 caracteres");
+                }
 
                 Connection connection = DB.getConnection();
                 UserController userController = UserControllerFactory.createUserController(connection);
@@ -1425,14 +1429,14 @@ public class MainFrame extends javax.swing.JFrame {
                 newUser.setEmail(email);
                 newUser.setRoleId(2);
                 newUser.setPasswordHash(password);
-                newUser.setAddressId(2);
 
-                addressController.createAddress(newAddress);
-                userController.createUser(newUser);
+                Address createdAddress = addressController.createAddress(newAddress);
+                newUser.setAddressId(createdAddress.getId());
+                
+                User createdUser = userController.createUser(newUser);
 
-                User fetchedUser = userController.getUserByEmail(email);
                 JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso.");
-                this.DoLogin(fetchedUser);
+                this.DoLogin(createdUser);
 
                 RegisterNameInput.setText("");
                 RegisterEmailInput.setText("");
