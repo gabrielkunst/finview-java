@@ -1,20 +1,16 @@
 package main.java.com.gk.finview.factories;
 
+import main.java.com.gk.finview.controllers.UserController;
 import main.java.com.gk.finview.repositories.UserRepository;
 import main.java.com.gk.finview.repositories.mySQL.MySQLUserRepository;
 import main.java.com.gk.finview.services.UserService;
 
 import java.sql.Connection;
 
-public class UserServiceFactory {
-    private final Connection connection;
-
-    public UserServiceFactory(Connection connection) {
-        this.connection = connection;
-    }
-
-    public UserService createUserService() {
+public class UserControllerFactory {
+    public static UserController createUserController(Connection connection) {
         UserRepository userRepository = new MySQLUserRepository(connection);
-        return new UserService(userRepository);
+        UserService userService = new UserService(userRepository);
+        return new UserController(userService);
     }
 }
