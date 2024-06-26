@@ -1,34 +1,32 @@
 package main.java.com.gk.finview.models;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 public class Transaction {
     private int id;
     private String name;
     private String description;
-    private float amount;
-    private TransactionType transactionType;
-    private PaymentMethod paymentMethod;
-    private Category category;
-    private User createdBy;
-    private PaymentStatus paymentStatus;
-    private LocalDateTime paidAt;
-    private LocalDateTime createdAt;
-    private LocalDateTime deletedAt;
+    private double amount;
+    private int transactionTypeId;
+    private int paymentMethodId;
+    private int categoryId;
+    private int createdBy;
+    private Date paidAt;
+    private Date createdAt;
+    private Date deletedAt;
 
     public Transaction() {
     }
 
-    public Transaction(int id, String name, String description, float amount, TransactionType transactionType, PaymentMethod paymentMethod, Category category, User createdBy, PaymentStatus paymentStatus, LocalDateTime paidAt, LocalDateTime createdAt, LocalDateTime deletedAt) {
+    public Transaction(int id, String name, String description, double amount, int transactionTypeId, int paymentMethodId, int categoryId, int createdBy, Date paidAt, Date createdAt, Date deletedAt) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.amount = amount;
-        this.transactionType = transactionType;
-        this.paymentMethod = paymentMethod;
-        this.category = category;
+        this.transactionTypeId = transactionTypeId;
+        this.paymentMethodId = paymentMethodId;
+        this.categoryId = categoryId;
         this.createdBy = createdBy;
-        this.paymentStatus = paymentStatus;
         this.paidAt = paidAt;
         this.createdAt = createdAt;
         this.deletedAt = deletedAt;
@@ -58,75 +56,67 @@ public class Transaction {
         this.description = description;
     }
 
-    public float getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(float amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
-    public TransactionType getTransactionType() {
-        return transactionType;
+    public int getTransactionTypeId() {
+        return transactionTypeId;
     }
 
-    public void setTransactionType(TransactionType transactionType) {
-        this.transactionType = transactionType;
+    public void setTransactionTypeId(int transactionTypeId) {
+        this.transactionTypeId = transactionTypeId;
     }
 
-    public PaymentMethod getPaymentMethod() {
-        return paymentMethod;
+    public int getPaymentMethodId() {
+        return paymentMethodId;
     }
 
-    public void setPaymentMethod(PaymentMethod paymentMethod) {
-        this.paymentMethod = paymentMethod;
+    public void setPaymentMethodId(int paymentMethodId) {
+        this.paymentMethodId = paymentMethodId;
     }
 
-    public Category getCategory() {
-        return category;
+    public int getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
-    public User getCreatedBy() {
+    public int getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(User createdBy) {
+    public void setCreatedBy(int createdBy) {
         this.createdBy = createdBy;
     }
 
-    public PaymentStatus getPaymentStatus() {
-        return paymentStatus;
-    }
-
-    public void setPaymentStatus(PaymentStatus paymentStatus) {
-        this.paymentStatus = paymentStatus;
-    }
-
-    public LocalDateTime getPaidAt() {
+    public Date getPaidAt() {
         return paidAt;
     }
 
-    public void setPaidAt(LocalDateTime paidAt) {
+    public void setPaidAt(Date paidAt) {
         this.paidAt = paidAt;
     }
 
-    public LocalDateTime getCreatedAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 
-    public LocalDateTime getDeletedAt() {
+    public Date getDeletedAt() {
         return deletedAt;
     }
 
-    public void setDeletedAt(LocalDateTime deletedAt) {
+    public void setDeletedAt(Date deletedAt) {
         this.deletedAt = deletedAt;
     }
 
@@ -137,11 +127,10 @@ public class Transaction {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", amount=" + amount +
-                ", transactionType=" + transactionType +
-                ", paymentMethod=" + paymentMethod +
-                ", category=" + category +
+                ", transactionTypeId=" + transactionTypeId +
+                ", paymentMethodId=" + paymentMethodId +
+                ", categoryId=" + categoryId +
                 ", createdBy=" + createdBy +
-                ", paymentStatus=" + paymentStatus +
                 ", paidAt=" + paidAt +
                 ", createdAt=" + createdAt +
                 ", deletedAt=" + deletedAt +
