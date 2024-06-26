@@ -6,25 +6,20 @@ package main.java.com.gk.finview.views;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import javax.swing.JOptionPane;
-import main.java.com.gk.finview.controllers.UserController;
-import main.java.com.gk.finview.controllers.TransactionController;
-import main.java.com.gk.finview.factories.UserControllerFactory;
+import javax.swing.*;
+
+import main.java.com.gk.finview.controllers.*;
+import main.java.com.gk.finview.factories.*;
 import main.java.com.gk.finview.lib.DB;
-import main.java.com.gk.finview.models.User;
+import main.java.com.gk.finview.models.*;
+
 import java.sql.Connection;
 import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
-import main.java.com.gk.finview.controllers.AddressController;
-import main.java.com.gk.finview.factories.AddressControllerFactory;
-import main.java.com.gk.finview.factories.TransactionControllerFactory;
-import main.java.com.gk.finview.models.Address;
-import main.java.com.gk.finview.models.Transaction;
 
 
 public class MainFrame extends javax.swing.JFrame {
@@ -64,6 +59,9 @@ public class MainFrame extends javax.swing.JFrame {
         MenuLogout.setVisible(true);
         
         loadTransactionsTable();
+        loadTransactionsPaymentMethods();
+        loadTransactionsCategories();
+        loadTransactionsTypes();
     }
 
     private void DoLogout() {
@@ -1442,15 +1440,57 @@ public class MainFrame extends javax.swing.JFrame {
             DB.closeConnection();
     }//GEN-LAST:event_RegisterSubmitBtnActionPerformed
 
+    private void loadTransactionsCategories() {
+        try {
+            Connection connection = DB.getConnection();
+            CategoryController categoryController = CategoryControllerFactory.createCategoryController(connection);
+
+            List<Category> categories = categoryController.getCategoriesByUserId(loggedUser.getId());
+
+            DefaultComboBoxModel model = (DefaultComboBoxModel) TransactionsTransactionCategorySelect.getModel();
+
+            model.removeAllElements();
+
+            for (Category category : categories) {
+                model.addElement(category.getName());
+            }
+        } catch (Exception error) {
+            JOptionPane.showMessageDialog(null, error.getMessage());
+        }
+    }
+
+    private void loadTransactionsTypes() {
+        try {
+            Connection connection = DB.getConnection();
+            TransactionTypeController transactionTypeController = TransactionTypeControllerFactory.createTransactionTypeController(connection);
+
+            List<TransactionType> transactionTypes = transactionTypeController.getTransactionTypes();
+
+            DefaultComboBoxModel model = (DefaultComboBoxModel) TransactionsTransactionTypeSelect.getModel();
+
+            model.removeAllElements();
+
+            for (TransactionType transactionType : transactionTypes) {
+                model.addElement(transactionType.getName());
+            }
+        } catch (Exception error) {
+            JOptionPane.showMessageDialog(null, error.getMessage());
+        }
+    }
+
     private void loadTransactionsTable() {
         try {
             Connection connection = DB.getConnection();
             TransactionController transactionController = TransactionControllerFactory.createTransactionController(connection);
-            
+
             List<Transaction> transactions = transactionController.getTransactionsByUserId(loggedUser.getId());
-            
+
             DefaultTableModel model = (DefaultTableModel) TransactionsTable.getModel();
-            
+
+            while (model.getRowCount() > 0) {
+                model.getDataVector().removeAllElements();
+            }
+
             for (Transaction transaction : transactions) {
                 Vector row = new Vector();
                 row.add(transaction.getName());
@@ -1461,6 +1501,25 @@ public class MainFrame extends javax.swing.JFrame {
                 row.add(transaction.getCreatedAt().toString());
                
                 model.addRow(row);
+            }
+        } catch (Exception error) {
+            JOptionPane.showMessageDialog(null, error.getMessage());
+        }
+    }
+
+    private void loadTransactionsPaymentMethods() {
+        try {
+            Connection connection = DB.getConnection();
+            PaymentMethodController paymentMethodController = PaymentMethodControllerFactory.createPaymentMethodController(connection);
+
+            List<PaymentMethod> paymentMethods = paymentMethodController.getPaymentMethods();
+
+            DefaultComboBoxModel model = (DefaultComboBoxModel) TransactionsTransactionMethodSelect.getModel();
+
+            model.removeAllElements();
+
+            for (PaymentMethod paymentMethod : paymentMethods) {
+                model.addElement(paymentMethod);
             }
         } catch (Exception error) {
             JOptionPane.showMessageDialog(null, error.getMessage());

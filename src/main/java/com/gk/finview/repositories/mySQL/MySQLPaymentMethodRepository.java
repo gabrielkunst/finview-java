@@ -6,6 +6,7 @@ import main.java.com.gk.finview.repositories.PaymentMethodRepository;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +37,8 @@ public class MySQLPaymentMethodRepository implements PaymentMethodRepository {
             }
 
             return paymentMethods;
-        } catch (Exception error) {
+        } catch (SQLException error) {
+            System.err.println(error.getMessage());
             throw new RuntimeException("Error getting payment methods");
         }
     }
@@ -60,7 +62,8 @@ public class MySQLPaymentMethodRepository implements PaymentMethodRepository {
             }
 
             return paymentMethod;
-        } catch (Exception error) {
+        } catch (SQLException error) {
+            System.err.println(error.getMessage());
             throw new RuntimeException("Error getting payment method with id " + id);
         }
     }

@@ -6,6 +6,7 @@ import main.java.com.gk.finview.repositories.CategoryRepository;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +29,8 @@ public class MySQLCategoryRepository implements CategoryRepository {
             preparedStatement.setString(3, category.getColor());
 
             preparedStatement.executeUpdate();
-        } catch (Exception error) {
+        } catch (SQLException error) {
+            System.err.println(error.getMessage());
             throw new RuntimeException("Error creating category: " + error.getMessage());
         }
     }
@@ -45,7 +47,8 @@ public class MySQLCategoryRepository implements CategoryRepository {
             preparedStatement.setString(3, String.valueOf(id));
 
             preparedStatement.executeUpdate();
-        } catch (Exception error) {
+        } catch (SQLException error) {
+            System.err.println(error.getMessage());
             throw new RuntimeException("Error updating category: " + error.getMessage());
         }
     }
@@ -72,7 +75,8 @@ public class MySQLCategoryRepository implements CategoryRepository {
             }
 
             return category;
-        } catch (Exception error) {
+        } catch (SQLException error) {
+            System.err.println(error.getMessage());
             throw new RuntimeException("Error getting category: " + error.getMessage());
         }
     }
@@ -101,7 +105,8 @@ public class MySQLCategoryRepository implements CategoryRepository {
             }
 
             return categories;
-        } catch (Exception error) {
+        } catch (SQLException error) {
+            System.err.println(error.getMessage());
             throw new RuntimeException("Error getting categories: " + error.getMessage());
         }
     }
@@ -115,7 +120,8 @@ public class MySQLCategoryRepository implements CategoryRepository {
             preparedStatement.setString(1, String.valueOf(id));
 
             preparedStatement.executeUpdate();
-        } catch (Exception error) {
+        } catch (SQLException error) {
+            System.err.println(error.getMessage());
             throw new RuntimeException("Error deleting category: " + error.getMessage());
         }
     }

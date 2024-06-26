@@ -3,10 +3,7 @@ package main.java.com.gk.finview.repositories.mySQL;
 import main.java.com.gk.finview.models.Transaction;
 import main.java.com.gk.finview.repositories.TransactionRepository;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,8 +40,8 @@ public class MySQLTransactionRepository implements TransactionRepository {
             }
             
             return transaction;
-        } catch (Exception error) {
-            System.out.println(error.getMessage());
+        } catch (SQLException error) {
+            System.err.println(error.getMessage());
             throw new RuntimeException("Error creating transaction " + error.getMessage());
         }
     }
@@ -76,7 +73,8 @@ public class MySQLTransactionRepository implements TransactionRepository {
             }
 
             return transaction;
-        } catch (Exception error) {
+        } catch (SQLException error) {
+            System.err.println(error.getMessage());
             throw new RuntimeException("Error getting transaction by id " + error.getMessage());
         }
     }
@@ -110,7 +108,8 @@ public class MySQLTransactionRepository implements TransactionRepository {
             }
 
             return transactions;
-        } catch (Exception error) {
+        } catch (SQLException error) {
+            System.err.println(error.getMessage());
             throw new RuntimeException("Error getting transactions by user id " + error.getMessage());
         }
     }
@@ -132,7 +131,8 @@ public class MySQLTransactionRepository implements TransactionRepository {
             preparedStatement.setInt(8, id);
 
             preparedStatement.executeUpdate();
-        } catch (Exception error) {
+        } catch (SQLException error) {
+            System.err.println(error.getMessage());
             throw new RuntimeException("Error updating transaction by id " + error.getMessage());
         }
     }
@@ -146,7 +146,8 @@ public class MySQLTransactionRepository implements TransactionRepository {
             preparedStatement.setInt(1, id);
 
             preparedStatement.executeUpdate();
-        } catch (Exception error) {
+        } catch (SQLException error) {
+            System.err.println(error.getMessage());
             throw new RuntimeException("Error deleting transaction by id " + error.getMessage());
         }
     }

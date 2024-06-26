@@ -3,10 +3,7 @@ package main.java.com.gk.finview.repositories.mySQL;
 import main.java.com.gk.finview.models.User;
 import main.java.com.gk.finview.repositories.UserRepository;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 
 public class MySQLUserRepository implements UserRepository {
     private final Connection connection;
@@ -38,7 +35,8 @@ public class MySQLUserRepository implements UserRepository {
             }
           
             return user;
-        } catch (Exception error) {
+        } catch (SQLException error) {
+            System.err.println(error.getMessage());
             throw new RuntimeException("Error creating user: " + error.getMessage());
         }
 
@@ -70,7 +68,8 @@ public class MySQLUserRepository implements UserRepository {
             }
 
             return user;
-        } catch (Exception error) {
+        } catch (SQLException error) {
+            System.err.println(error.getMessage());
             throw new RuntimeException("Error getting user: " + error.getMessage());
         }
     }
@@ -100,7 +99,8 @@ public class MySQLUserRepository implements UserRepository {
             }
 
             return user;
-        } catch (Exception error) {
+        } catch (SQLException error) {
+            System.err.println(error.getMessage());
             throw new RuntimeException("Error getting user: " + error.getMessage());
         }
     }
@@ -119,7 +119,8 @@ public class MySQLUserRepository implements UserRepository {
             preparedStatement.setString(5, String.valueOf(id));
 
             preparedStatement.executeUpdate();
-        } catch (Exception error) {
+        } catch (SQLException error) {
+            System.err.println(error.getMessage());
             throw new RuntimeException("Error updating user: " + error.getMessage());
         }
     }
@@ -133,7 +134,8 @@ public class MySQLUserRepository implements UserRepository {
             preparedStatement.setString(1, String.valueOf(id));
 
             preparedStatement.executeUpdate();
-        } catch (Exception error) {
+        } catch (SQLException error) {
+            System.err.println(error.getMessage());
             throw new RuntimeException("Error deleting user: " + error.getMessage());
         }
     }

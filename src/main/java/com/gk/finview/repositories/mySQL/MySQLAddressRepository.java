@@ -3,10 +3,7 @@ package main.java.com.gk.finview.repositories.mySQL;
 import main.java.com.gk.finview.models.Address;
 import main.java.com.gk.finview.repositories.AddressRepository;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 
 public class MySQLAddressRepository implements AddressRepository {
     private final Connection connection;
@@ -37,7 +34,8 @@ public class MySQLAddressRepository implements AddressRepository {
             }
           
             return address;
-        } catch (Exception error) {
+        } catch (SQLException error) {
+            System.err.println(error.getMessage());
             throw new RuntimeException("Error creating address " + error.getMessage());
         }
     }
@@ -66,7 +64,8 @@ public class MySQLAddressRepository implements AddressRepository {
             }
 
             return address;
-        } catch (Exception error) {
+        } catch (SQLException error) {
+            System.err.println(error.getMessage());
             throw new RuntimeException("Error getting address " + error.getMessage());
         }
     }
@@ -86,7 +85,8 @@ public class MySQLAddressRepository implements AddressRepository {
             preparedStatement.setInt(6, id);
 
             preparedStatement.executeUpdate();
-        } catch (Exception error) {
+        } catch (SQLException error) {
+            System.err.println(error.getMessage());
             throw new RuntimeException("Error updating address " + error.getMessage());
         }
     }
@@ -101,7 +101,8 @@ public class MySQLAddressRepository implements AddressRepository {
             preparedStatement.setInt(1, id);
 
             preparedStatement.executeUpdate();
-        } catch (Exception error) {
+        } catch (SQLException error) {
+            System.err.println(error.getMessage());
             throw new RuntimeException("Error deleting address " + error.getMessage());
         }
     }
