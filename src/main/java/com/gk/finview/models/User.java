@@ -14,6 +14,7 @@ public class User {
     private Date deletedAt;
 
     public User() {
+        this.createdAt = new Date();
     }
 
     public User(int id, String name, String cpf, String email, String passwordHash, int addressId, int roleId, Date createdAt, Date deletedAt) {

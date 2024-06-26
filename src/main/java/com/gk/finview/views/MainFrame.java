@@ -42,22 +42,31 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void DoLogin(User user) {
         this.loggedUser = user;
+
+        LoginView.setVisible(false);
+        RegisterView.setVisible(false);
+        CategoriesView.setVisible(false);
+        TransactionsView.setVisible(true);
+
         MenuRegister.setVisible(false);
         MenuLogin.setVisible(false);
         MenuTools.setVisible(true);
-        TransactionsView.setVisible(true);
         MenuLogout.setVisible(true);
     }
 
     private void DoLogout() {
         TransactionsView.setVisible(false);
+        RegisterView.setVisible(false);
         CategoriesView.setVisible(false);
         LoginView.setVisible(true);
+
         MenuTools.setVisible(false);
         MenuLogout.setVisible(false);
         MenuRegister.setVisible(true);
         MenuLogin.setVisible(true);
+
         LoginView.requestFocus();
+
         this.loggedUser = null;
     }
 
@@ -152,14 +161,14 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel39 = new javax.swing.JPanel();
         jPanel40 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        CategoriesCategoryNameInput = new javax.swing.JTextField();
         jPanel41 = new javax.swing.JPanel();
         jPanel42 = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
-        jTextField13 = new javax.swing.JTextField();
+        CategoriesCategoryColorInput = new javax.swing.JTextField();
         jPanel44 = new javax.swing.JPanel();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        CategoriesCancelBtn = new javax.swing.JButton();
+        CategoriesSaveBtn = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         Menu = new javax.swing.JMenuBar();
@@ -985,7 +994,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
-                    .addComponent(jTextField3))
+                    .addComponent(CategoriesCategoryNameInput))
                 .addGap(0, 0, 0))
         );
         jPanel40Layout.setVerticalGroup(
@@ -994,7 +1003,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(CategoriesCategoryNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
 
@@ -1012,7 +1021,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addGroup(jPanel42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField13, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
+                    .addComponent(CategoriesCategoryColorInput, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
                 .addGap(0, 0, 0))
         );
         jPanel42Layout.setVerticalGroup(
@@ -1021,7 +1030,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(jLabel22)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(CategoriesCategoryColorInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
 
@@ -1059,9 +1068,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(10, Short.MAX_VALUE))
         );
 
-        jButton6.setText("Cancelar");
+        CategoriesCancelBtn.setText("Cancelar");
 
-        jButton7.setText("Salvar");
+        CategoriesSaveBtn.setText("Salvar");
 
         javax.swing.GroupLayout jPanel37Layout = new javax.swing.GroupLayout(jPanel37);
         jPanel37.setLayout(jPanel37Layout);
@@ -1073,9 +1082,9 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(jPanel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel37Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(CategoriesSaveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(CategoriesCancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel37Layout.setVerticalGroup(
@@ -1085,8 +1094,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(jPanel38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
                 .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton6)
-                    .addComponent(jButton7))
+                    .addComponent(CategoriesCancelBtn)
+                    .addComponent(CategoriesSaveBtn))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1312,19 +1321,35 @@ public class MainFrame extends javax.swing.JFrame {
 
             LoginPasswordInput.setText("");
         } catch (Exception error) {
-            JOptionPane.showMessageDialog(null, "Ops! Credenciais inválidas.");
+            JOptionPane.showMessageDialog(null, error.getMessage());
         }
     }//GEN-LAST:event_LoginSubmitBtnMouseClicked
 
     private void MenuRegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuRegisterMouseClicked
         LoginView.setVisible(false);
         RegisterView.setVisible(true);
+
         RegisterView.requestFocus();
+
+        LoginPasswordInput.setText("");
+        LoginEmailInput.setText("");
     }//GEN-LAST:event_MenuRegisterMouseClicked
 
     private void MenuLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuLoginMouseClicked
         LoginView.setVisible(true);
         RegisterView.setVisible(false);
+
+        LoginView.requestFocus();
+
+        RegisterNameInput.setText("");
+        RegisterEmailInput.setText("");
+        RegisterCPFInput.setText("");
+        RegisterZipcodeInput.setText("");
+        RegisterStreetInput.setText("");
+        RegisterNeighborhoodInput.setText("");
+        RegisterPasswordInput.setText("");
+        RegisterCityInput.setText("");
+        RegisterStateInput.setText("");
     }//GEN-LAST:event_MenuLoginMouseClicked
 
     private void MenuLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuLogoutMouseClicked
@@ -1334,12 +1359,14 @@ public class MainFrame extends javax.swing.JFrame {
     private void MenuTools2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuTools2ActionPerformed
         CategoriesView.setVisible(true);
         TransactionsView.setVisible(false);
+
         CategoriesView.requestFocus();
     }//GEN-LAST:event_MenuTools2ActionPerformed
 
     private void MenuTools1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuTools1ActionPerformed
         CategoriesView.setVisible(false);
         TransactionsView.setVisible(true);
+
         TransactionsView.requestFocus();
     }//GEN-LAST:event_MenuTools1ActionPerformed
 
@@ -1353,16 +1380,34 @@ public class MainFrame extends javax.swing.JFrame {
                 String neighborhood = RegisterNeighborhoodInput.getText();
                 String city = RegisterCityInput.getText();
                 String state = RegisterStateInput.getText();
-                
-                User newUser = new User();
-                Address newAddress = new Address();
-                
+                String password = RegisterPasswordInput.getText();
+
                 Connection connection = DB.getConnection();
                 UserController userController = UserControllerFactory.createUserController(connection);
                 AddressController addressController = AddressControllerFactory.createAddressController(connection);
-                
+
+                User newUser = new User();
+                Address newAddress = new Address();
+
+                newAddress.setNeighborhood(neighborhood);
+                newAddress.setZipcode(zipcode);
+                newAddress.setCity(city);
+                newAddress.setStreet(street);
+                newAddress.setState(state);
+
+                newUser.setName(name);
+                newUser.setCpf(cpf);
+                newUser.setEmail(email);
+                newUser.setRoleId(2);
+                newUser.setPasswordHash(password);
+                newUser.setAddressId(2);
+
                 addressController.createAddress(newAddress);
                 userController.createUser(newUser);
+
+                User fetchedUser = userController.getUserByEmail(email);
+                JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso.");
+                this.DoLogin(fetchedUser);
 
                 RegisterNameInput.setText("");
                 RegisterEmailInput.setText("");
@@ -1370,6 +1415,7 @@ public class MainFrame extends javax.swing.JFrame {
                 RegisterZipcodeInput.setText("");
                 RegisterStreetInput.setText("");
                 RegisterNeighborhoodInput.setText("");
+                RegisterPasswordInput.setText("");
                 RegisterCityInput.setText("");
                 RegisterStateInput.setText("");
             } catch (Exception error) {
@@ -1413,7 +1459,11 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton CategoriesCancelBtn;
+    private javax.swing.JTextField CategoriesCategoryColorInput;
+    private javax.swing.JTextField CategoriesCategoryNameInput;
     private javax.swing.JPanel CategoriesPanelView;
+    private javax.swing.JButton CategoriesSaveBtn;
     private javax.swing.JInternalFrame CategoriesView;
     private javax.swing.JDesktopPane DesktopPane;
     private javax.swing.JTextField LoginEmailInput;
@@ -1443,8 +1493,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField RegisterZipcodeInput;
     private javax.swing.JPanel TransactionsPanelView;
     private javax.swing.JInternalFrame TransactionsView;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1506,8 +1554,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField transactionAmountInput;
     private javax.swing.JButton transactionCancelButton;
     private javax.swing.JComboBox<String> transactionCategorySelect;
