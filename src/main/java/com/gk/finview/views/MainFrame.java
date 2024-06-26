@@ -12,6 +12,8 @@ import main.java.com.gk.finview.factories.UserControllerFactory;
 import main.java.com.gk.finview.lib.DB;
 import main.java.com.gk.finview.models.User;
 import java.sql.Connection;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JFrame;
 import main.java.com.gk.finview.controllers.AddressController;
 import main.java.com.gk.finview.factories.AddressControllerFactory;
@@ -1300,10 +1302,25 @@ public class MainFrame extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_MenuExitMouseClicked
 
+    private boolean validateEmail(String email) {
+        String regex = "^[\\w!#$%&amp;'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&amp;'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
     private void LoginSubmitBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginSubmitBtnMouseClicked
         try {
-            String email = LoginEmailInput.getText();
-            String password = LoginPasswordInput.getText();
+            String email = LoginEmailInput.getText().trim();
+            String password = LoginPasswordInput.getText().trim();
+
+            if (email.isEmpty() || password.isEmpty()) {
+                throw new RuntimeException("Ops! Email e senha são campos obrigatórios.");
+            }
+            
+            if (!validateEmail(email)) {
+                throw new RuntimeException("Ops! Email inválido.");
+            }
             
             Connection connection = DB.getConnection();
             
@@ -1372,15 +1389,23 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void RegisterSubmitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterSubmitBtnActionPerformed
             try {
-                String name = RegisterNameInput.getText();
-                String email = RegisterEmailInput.getText();
-                String cpf = RegisterCPFInput.getText();
-                String zipcode = RegisterZipcodeInput.getText();
-                String street = RegisterStreetInput.getText();
-                String neighborhood = RegisterNeighborhoodInput.getText();
-                String city = RegisterCityInput.getText();
-                String state = RegisterStateInput.getText();
-                String password = RegisterPasswordInput.getText();
+                String name = RegisterNameInput.getText().trim();
+                String email = RegisterEmailInput.getText().trim();
+                String cpf = RegisterCPFInput.getText().trim();
+                String zipcode = RegisterZipcodeInput.getText().trim();
+                String street = RegisterStreetInput.getText().trim();
+                String neighborhood = RegisterNeighborhoodInput.getText().trim();
+                String city = RegisterCityInput.getText().trim();
+                String state = RegisterStateInput.getText().trim();
+                String password = RegisterPasswordInput.getText().trim();
+                
+                if (name.isEmpty() || email.isEmpty() || cpf.isEmpty() || zipcode.isEmpty() || street.isEmpty() || neighborhood.isEmpty() || city.isEmpty() || state.isEmpty() || password.isEmpty()) {
+                    throw new RuntimeException("Ops! Todos os campos são obrigatórios.");
+                }
+                
+                if (!validateEmail(email)) {
+                    throw new RuntimeException("Ops! Email inválido.");
+                }
 
                 Connection connection = DB.getConnection();
                 UserController userController = UserControllerFactory.createUserController(connection);
