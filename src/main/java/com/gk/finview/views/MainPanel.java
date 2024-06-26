@@ -4,16 +4,6 @@
  */
 package main.java.com.gk.finview.views;
 
-import java.time.LocalDateTime;
-import main.java.com.gk.finview.controllers.TransactionController;
-import main.java.com.gk.finview.models.User;
-import main.java.com.gk.finview.models.Category;
-import main.java.com.gk.finview.models.PaymentMethod;
-import main.java.com.gk.finview.models.PaymentStatus;
-import main.java.com.gk.finview.models.Transaction;
-import main.java.com.gk.finview.models.TransactionType;
-import main.java.com.gk.finview.services.TransactionService;
-
 /**
  *
  * @author gk
