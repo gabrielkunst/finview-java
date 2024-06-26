@@ -4,22 +4,44 @@
  */
 package main.java.com.gk.finview.views;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import javax.swing.JOptionPane;
+import main.java.com.gk.finview.controllers.UserController;
+import main.java.com.gk.finview.factories.UserControllerFactory;
+import main.java.com.gk.finview.lib.DB;
+import main.java.com.gk.finview.models.User;
+import java.sql.Connection;
+import javax.swing.JFrame;
+
 /**
  *
  * @author gk
  */
-public class MainPanel extends javax.swing.JFrame {
-
+public class MainFrame extends javax.swing.JFrame {
+    private User loggedUser;
+    
     /**
      * Creates new form MainPanel
      */
-    public MainPanel() {
+    public MainFrame() {
         initComponents();
-
-        LoginView.setVisible(false);
-        CadastrarView.setVisible(false);
+        
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        setSize(screenSize.width, screenSize.height);
+        setLocationRelativeTo(null);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setVisible(true);
+        
+        LoginView.setVisible(true);
+        RegisterView.setVisible(false);
         TransactionsView.setVisible(false);
         CategoriesView.setVisible(false);
+        
+        MenuTools.setVisible(false);
+        MenuLogout.setVisible(false);   
+       
+        LoginView.requestFocus();   
     }
 
     /**
@@ -31,40 +53,40 @@ public class MainPanel extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
-        CadastrarView = new javax.swing.JInternalFrame();
-        CadastrarPanelView = new javax.swing.JPanel();
+        DesktopPane = new javax.swing.JDesktopPane();
+        RegisterView = new javax.swing.JInternalFrame();
+        RegisterPanelView = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        registerNameInput = new javax.swing.JTextField();
+        RegisterNameInput = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        registerEmailInput = new javax.swing.JTextField();
+        RegisterEmailInput = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        registerCPFInput = new javax.swing.JFormattedTextField();
+        RegisterCPFInput = new javax.swing.JFormattedTextField();
         jPanel6 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        registerPasswordInput = new javax.swing.JPasswordField();
+        RegisterPasswordInput = new javax.swing.JPasswordField();
         jPanel7 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        registerZipcodeInput = new javax.swing.JFormattedTextField();
+        RegisterZipcodeInput = new javax.swing.JFormattedTextField();
         jPanel8 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        registerStreetInput = new javax.swing.JTextField();
+        RegisterStreetInput = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
-        registerNeighborhoodInput = new javax.swing.JTextField();
+        RegisterNeighborhoodInput = new javax.swing.JTextField();
         jPanel10 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
-        registerCityInput = new javax.swing.JTextField();
+        RegisterCityInput = new javax.swing.JTextField();
         jPanel13 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
-        registerStateInput = new javax.swing.JTextField();
-        registerSubmitButton = new javax.swing.JButton();
+        RegisterStateInput = new javax.swing.JTextField();
+        RegisterSubmitBtn = new javax.swing.JButton();
         LoginView = new javax.swing.JInternalFrame();
         LoginPanelView = new javax.swing.JPanel();
         jPanel16 = new javax.swing.JPanel();
@@ -72,11 +94,11 @@ public class MainPanel extends javax.swing.JFrame {
         jPanel11 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
-        loginEmailInput = new javax.swing.JTextField();
+        LoginEmailInput = new javax.swing.JTextField();
         jPanel19 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
-        loginPasswordInput = new javax.swing.JPasswordField();
-        loginSubmitButton = new javax.swing.JButton();
+        LoginPasswordInput = new javax.swing.JPasswordField();
+        LoginSubmitBtn = new javax.swing.JButton();
         TransactionsView = new javax.swing.JInternalFrame();
         TransactionsPanelView = new javax.swing.JPanel();
         jPanel18 = new javax.swing.JPanel();
@@ -128,27 +150,26 @@ public class MainPanel extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
+        Menu = new javax.swing.JMenuBar();
+        MenuRegister = new javax.swing.JMenu();
+        MenuLogin = new javax.swing.JMenu();
+        MenuTools = new javax.swing.JMenu();
+        MenuTools1 = new javax.swing.JMenuItem();
+        MenuTools2 = new javax.swing.JMenuItem();
+        MenuLogout = new javax.swing.JMenu();
+        MenuExit = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Controle de Gastos");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
-        jDesktopPane1.setPreferredSize(new java.awt.Dimension(1920, 1080));
+        DesktopPane.setPreferredSize(new java.awt.Dimension(1920, 1080));
 
-        CadastrarView.setClosable(true);
-        CadastrarView.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        CadastrarView.setIconifiable(true);
-        CadastrarView.setResizable(true);
-        CadastrarView.setTitle("Cadastro");
-        CadastrarView.setVisible(true);
+        RegisterView.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        RegisterView.setTitle("Cadastro");
+        RegisterView.setVisible(true);
 
         jPanel3.setLayout(new java.awt.GridLayout(5, 1));
 
@@ -162,7 +183,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(registerNameInput))
+                    .addComponent(RegisterNameInput))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -171,7 +192,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(registerNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RegisterNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -187,7 +208,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(registerEmailInput, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
+                    .addComponent(RegisterEmailInput, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -196,7 +217,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(registerEmailInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RegisterEmailInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -205,7 +226,7 @@ public class MainPanel extends javax.swing.JFrame {
         jLabel7.setText("CPF");
 
         try {
-            registerCPFInput.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+            RegisterCPFInput.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -218,7 +239,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(registerCPFInput, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
+                    .addComponent(RegisterCPFInput, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -227,7 +248,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(registerCPFInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RegisterCPFInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -243,7 +264,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(registerPasswordInput, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
+                    .addComponent(RegisterPasswordInput, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -252,7 +273,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(registerPasswordInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RegisterPasswordInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -261,7 +282,7 @@ public class MainPanel extends javax.swing.JFrame {
         jLabel9.setText("CEP");
 
         try {
-            registerZipcodeInput.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
+            RegisterZipcodeInput.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -274,7 +295,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(registerZipcodeInput, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
+                    .addComponent(RegisterZipcodeInput, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
@@ -283,7 +304,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(registerZipcodeInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RegisterZipcodeInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -299,7 +320,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(registerStreetInput, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
+                    .addComponent(RegisterStreetInput, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
@@ -308,7 +329,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(registerStreetInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RegisterStreetInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -324,7 +345,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(registerNeighborhoodInput, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
+                    .addComponent(RegisterNeighborhoodInput, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel9Layout.setVerticalGroup(
@@ -333,7 +354,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(registerNeighborhoodInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RegisterNeighborhoodInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -349,7 +370,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(registerCityInput, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
+                    .addComponent(RegisterCityInput, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
@@ -358,7 +379,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(registerCityInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RegisterCityInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -374,7 +395,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(registerStateInput, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
+                    .addComponent(RegisterStateInput, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel13Layout.setVerticalGroup(
@@ -383,23 +404,13 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel15)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(registerStateInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RegisterStateInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         jPanel3.add(jPanel13);
 
-        registerSubmitButton.setText("Registrar");
-        registerSubmitButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                registerSubmitButtonMouseClicked(evt);
-            }
-        });
-        registerSubmitButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registerSubmitButtonActionPerformed(evt);
-            }
-        });
+        RegisterSubmitBtn.setText("Registrar");
 
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
@@ -411,7 +422,7 @@ public class MainPanel extends javax.swing.JFrame {
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 601, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(registerSubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(RegisterSubmitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -421,7 +432,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(registerSubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(RegisterSubmitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
@@ -441,49 +452,47 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout CadastrarPanelViewLayout = new javax.swing.GroupLayout(CadastrarPanelView);
-        CadastrarPanelView.setLayout(CadastrarPanelViewLayout);
-        CadastrarPanelViewLayout.setHorizontalGroup(
-            CadastrarPanelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CadastrarPanelViewLayout.createSequentialGroup()
+        javax.swing.GroupLayout RegisterPanelViewLayout = new javax.swing.GroupLayout(RegisterPanelView);
+        RegisterPanelView.setLayout(RegisterPanelViewLayout);
+        RegisterPanelViewLayout.setHorizontalGroup(
+            RegisterPanelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RegisterPanelViewLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(40, 40, 40))
         );
-        CadastrarPanelViewLayout.setVerticalGroup(
-            CadastrarPanelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CadastrarPanelViewLayout.createSequentialGroup()
+        RegisterPanelViewLayout.setVerticalGroup(
+            RegisterPanelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RegisterPanelViewLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40))
         );
 
-        javax.swing.GroupLayout CadastrarViewLayout = new javax.swing.GroupLayout(CadastrarView.getContentPane());
-        CadastrarView.getContentPane().setLayout(CadastrarViewLayout);
-        CadastrarViewLayout.setHorizontalGroup(
-            CadastrarViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout RegisterViewLayout = new javax.swing.GroupLayout(RegisterView.getContentPane());
+        RegisterView.getContentPane().setLayout(RegisterViewLayout);
+        RegisterViewLayout.setHorizontalGroup(
+            RegisterViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 717, Short.MAX_VALUE)
-            .addGroup(CadastrarViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(CadastrarViewLayout.createSequentialGroup()
+            .addGroup(RegisterViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(RegisterViewLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(CadastrarPanelView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(RegisterPanelView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
         );
-        CadastrarViewLayout.setVerticalGroup(
-            CadastrarViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        RegisterViewLayout.setVerticalGroup(
+            RegisterViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 462, Short.MAX_VALUE)
-            .addGroup(CadastrarViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(CadastrarViewLayout.createSequentialGroup()
+            .addGroup(RegisterViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(RegisterViewLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(CadastrarPanelView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(RegisterPanelView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        LoginView.setClosable(true);
         LoginView.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        LoginView.setIconifiable(true);
-        LoginView.setResizable(true);
         LoginView.setTitle("Entrar");
+        LoginView.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         LoginView.setVisible(true);
 
         jPanel11.setLayout(new java.awt.GridLayout(2, 1));
@@ -498,7 +507,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(loginEmailInput, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE))
+                    .addComponent(LoginEmailInput, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel12Layout.setVerticalGroup(
@@ -507,7 +516,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(loginEmailInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(LoginEmailInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -523,7 +532,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(loginPasswordInput, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE))
+                    .addComponent(LoginPasswordInput, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel19Layout.setVerticalGroup(
@@ -532,21 +541,16 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel17)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(loginPasswordInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(LoginPasswordInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         jPanel11.add(jPanel19);
 
-        loginSubmitButton.setText("Entrar");
-        loginSubmitButton.addMouseListener(new java.awt.event.MouseAdapter() {
+        LoginSubmitBtn.setText("Entrar");
+        LoginSubmitBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                loginSubmitButtonMouseClicked(evt);
-            }
-        });
-        loginSubmitButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginSubmitButtonActionPerformed(evt);
+                LoginSubmitBtnMouseClicked(evt);
             }
         });
 
@@ -560,7 +564,7 @@ public class MainPanel extends javax.swing.JFrame {
                     .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(loginSubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(LoginSubmitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -570,7 +574,7 @@ public class MainPanel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(loginSubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(LoginSubmitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
@@ -628,22 +632,13 @@ public class MainPanel extends javax.swing.JFrame {
                     .addContainerGap(16, Short.MAX_VALUE)))
         );
 
-        TransactionsView.setClosable(true);
         TransactionsView.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        TransactionsView.setIconifiable(true);
-        TransactionsView.setResizable(true);
         TransactionsView.setTitle("Transações");
         TransactionsView.setVisible(true);
 
         jPanel2.setLayout(new java.awt.GridLayout(2, 0, 12, 12));
 
         jLabel1.setText("Nome da transação");
-
-        transactionNameInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                transactionNameInputActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
         jPanel20.setLayout(jPanel20Layout);
@@ -698,11 +693,6 @@ public class MainPanel extends javax.swing.JFrame {
         jLabel18.setText("Pagamento");
 
         transactionPaymentMethodSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Crédito", "Débito" }));
-        transactionPaymentMethodSelect.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                transactionPaymentMethodSelectActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel27Layout = new javax.swing.GroupLayout(jPanel27);
         jPanel27.setLayout(jPanel27Layout);
@@ -779,11 +769,6 @@ public class MainPanel extends javax.swing.JFrame {
         jLabel13.setText("Tipo");
 
         transactionTypeSelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Entrada", "Saida" }));
-        transactionTypeSelect.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                transactionTypeSelectActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
         jPanel24.setLayout(jPanel24Layout);
@@ -809,11 +794,6 @@ public class MainPanel extends javax.swing.JFrame {
         jLabel16.setText("Categoria");
 
         transactionCategorySelect.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alimentação", "Saúde" }));
-        transactionCategorySelect.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                transactionCategorySelectActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
         jPanel25.setLayout(jPanel25Layout);
@@ -856,28 +836,8 @@ public class MainPanel extends javax.swing.JFrame {
         );
 
         transactionCancelButton.setText("Cancelar");
-        transactionCancelButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                transactionCancelButtonMouseClicked(evt);
-            }
-        });
-        transactionCancelButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                transactionCancelButtonActionPerformed(evt);
-            }
-        });
 
         transactionSaveButton.setText("Salvar");
-        transactionSaveButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                transactionSaveButtonMouseClicked(evt);
-            }
-        });
-        transactionSaveButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                transactionSaveButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel30Layout = new javax.swing.GroupLayout(jPanel30);
         jPanel30.setLayout(jPanel30Layout);
@@ -992,10 +952,7 @@ public class MainPanel extends javax.swing.JFrame {
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        CategoriesView.setClosable(true);
         CategoriesView.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        CategoriesView.setIconifiable(true);
-        CategoriesView.setResizable(true);
         CategoriesView.setTitle("Categorias");
         CategoriesView.setVisible(true);
 
@@ -1086,18 +1043,8 @@ public class MainPanel extends javax.swing.JFrame {
         );
 
         jButton6.setText("Cancelar");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
 
         jButton7.setText("Salvar");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel37Layout = new javax.swing.GroupLayout(jPanel37);
         jPanel37.setLayout(jPanel37Layout);
@@ -1210,294 +1157,187 @@ public class MainPanel extends javax.swing.JFrame {
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        jDesktopPane1.setLayer(CadastrarView, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(LoginView, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(TransactionsView, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(CategoriesView, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        DesktopPane.setLayer(RegisterView, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        DesktopPane.setLayer(LoginView, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        DesktopPane.setLayer(TransactionsView, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        DesktopPane.setLayer(CategoriesView, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+        javax.swing.GroupLayout DesktopPaneLayout = new javax.swing.GroupLayout(DesktopPane);
+        DesktopPane.setLayout(DesktopPaneLayout);
+        DesktopPaneLayout.setHorizontalGroup(
+            DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DesktopPaneLayout.createSequentialGroup()
                 .addContainerGap(595, Short.MAX_VALUE)
-                .addComponent(CadastrarView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RegisterView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(596, Short.MAX_VALUE))
-            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+            .addGroup(DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DesktopPaneLayout.createSequentialGroup()
                     .addContainerGap(677, Short.MAX_VALUE)
                     .addComponent(LoginView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(677, Short.MAX_VALUE)))
-            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jDesktopPane1Layout.createSequentialGroup()
+            .addGroup(DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(DesktopPaneLayout.createSequentialGroup()
                     .addContainerGap(424, Short.MAX_VALUE)
                     .addComponent(TransactionsView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(425, Short.MAX_VALUE)))
-            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+            .addGroup(DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DesktopPaneLayout.createSequentialGroup()
                     .addContainerGap(602, Short.MAX_VALUE)
                     .addComponent(CategoriesView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(603, Short.MAX_VALUE)))
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+        DesktopPaneLayout.setVerticalGroup(
+            DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DesktopPaneLayout.createSequentialGroup()
                 .addContainerGap(291, Short.MAX_VALUE)
-                .addComponent(CadastrarView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RegisterView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(291, Short.MAX_VALUE))
-            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+            .addGroup(DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DesktopPaneLayout.createSequentialGroup()
                     .addContainerGap(374, Short.MAX_VALUE)
                     .addComponent(LoginView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(375, Short.MAX_VALUE)))
-            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jDesktopPane1Layout.createSequentialGroup()
+            .addGroup(DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(DesktopPaneLayout.createSequentialGroup()
                     .addContainerGap(217, Short.MAX_VALUE)
                     .addComponent(TransactionsView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(217, Short.MAX_VALUE)))
-            .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
+            .addGroup(DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DesktopPaneLayout.createSequentialGroup()
                     .addContainerGap(245, Short.MAX_VALUE)
                     .addComponent(CategoriesView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(245, Short.MAX_VALUE)))
         );
 
-        getContentPane().add(jDesktopPane1);
+        getContentPane().add(DesktopPane);
 
-        jMenu1.setText("Cadastrar");
-        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+        MenuRegister.setText("Cadastrar");
+        MenuRegister.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu1MouseClicked(evt);
+                MenuRegisterMouseClicked(evt);
             }
         });
-        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+        Menu.add(MenuRegister);
+
+        MenuLogin.setText("Entrar");
+        MenuLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MenuLoginMouseClicked(evt);
+            }
+        });
+        Menu.add(MenuLogin);
+
+        MenuTools.setText("Ferramentas");
+
+        MenuTools1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.SHIFT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        MenuTools1.setText("Transações");
+        MenuTools1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu1ActionPerformed(evt);
+                MenuTools1ActionPerformed(evt);
             }
         });
-        jMenuBar1.add(jMenu1);
+        MenuTools.add(MenuTools1);
 
-        jMenu2.setText("Entrar");
-        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu2MouseClicked(evt);
-            }
-        });
-        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+        MenuTools2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.SHIFT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        MenuTools2.setText("Categorias");
+        MenuTools2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu2ActionPerformed(evt);
+                MenuTools2ActionPerformed(evt);
             }
         });
-        jMenuBar1.add(jMenu2);
+        MenuTools.add(MenuTools2);
 
-        jMenu5.setText("Ferramentas");
-        jMenu5.addMouseListener(new java.awt.event.MouseAdapter() {
+        Menu.add(MenuTools);
+
+        MenuLogout.setText("Trocar Usuário");
+        MenuLogout.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu5MouseClicked(evt);
+                MenuLogoutMouseClicked(evt);
             }
         });
+        Menu.add(MenuLogout);
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.SHIFT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jMenuItem1.setText("Transações");
-        jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
+        MenuExit.setText("Fechar");
+        MenuExit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenuItem1MouseClicked(evt);
+                MenuExitMouseClicked(evt);
             }
         });
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu5.add(jMenuItem1);
+        Menu.add(MenuExit);
 
-        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.SHIFT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jMenuItem2.setText("Categorias");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        jMenu5.add(jMenuItem2);
-
-        jMenuBar1.add(jMenu5);
-
-        jMenu4.setText("Fechar");
-        jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu4MouseClicked(evt);
-            }
-        });
-        jMenuBar1.add(jMenu4);
-
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(Menu);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
-    }//GEN-LAST:event_jMenu1ActionPerformed
+    private void MenuExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuExitMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_MenuExitMouseClicked
 
-    private void registerSubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerSubmitButtonActionPerformed
-    }//GEN-LAST:event_registerSubmitButtonActionPerformed
+    private void LoginSubmitBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginSubmitBtnMouseClicked
+        try {
+            String email = LoginEmailInput.getText();
+            String password = LoginPasswordInput.getText();
+            
+            Connection connection = DB.getConnection();
+            
+            UserController userController = UserControllerFactory.createUserController(connection);
+            User userWithSameEmail = userController.getUserByEmail(email);
+            
+            String passwordHash = password;
+                        
+            if (!passwordHash.equals(userWithSameEmail.getPasswordHash())) {
+                throw new RuntimeException("Ops! Credenciais inválidas.");
+            }   
+                        
+            JOptionPane.showMessageDialog(null, "Login feito com sucesso.");
+            this.loggedUser = userWithSameEmail;
+            MenuRegister.setVisible(false);
+            MenuLogin.setVisible(false);
+            MenuTools.setVisible(true);
+            TransactionsView.setVisible(true);
+            MenuLogout.setVisible(true);
+            
+            LoginPasswordInput.setText("");
+        } catch (Exception error) {
+            JOptionPane.showMessageDialog(null, "Ops! Credenciais inválidas.");
+        }
+    }//GEN-LAST:event_LoginSubmitBtnMouseClicked
 
-    private void loginSubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginSubmitButtonActionPerformed
-    }//GEN-LAST:event_loginSubmitButtonActionPerformed
-
-    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
-    }//GEN-LAST:event_jMenu2ActionPerformed
-
-    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
-        TransactionsView.setVisible(false);
+    private void MenuRegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuRegisterMouseClicked
         LoginView.setVisible(false);
-        CategoriesView.setVisible(false);
-        CadastrarView.setVisible(true);
-    }//GEN-LAST:event_jMenu1MouseClicked
+        RegisterView.setVisible(true);
+        RegisterView.requestFocus();
+    }//GEN-LAST:event_MenuRegisterMouseClicked
 
-    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
+    private void MenuLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuLoginMouseClicked
+        LoginView.setVisible(true);
+        RegisterView.setVisible(false);
+    }//GEN-LAST:event_MenuLoginMouseClicked
+
+    private void MenuLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuLogoutMouseClicked
         TransactionsView.setVisible(false);
-        CadastrarView.setVisible(false);
         CategoriesView.setVisible(false);
         LoginView.setVisible(true);
-    }//GEN-LAST:event_jMenu2MouseClicked
+        MenuTools.setVisible(false);
+        MenuLogout.setVisible(false);
+        MenuRegister.setVisible(true);
+        MenuLogin.setVisible(true);
+        LoginView.requestFocus();
+        this.loggedUser = null;
+    }//GEN-LAST:event_MenuLogoutMouseClicked
 
-    private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
-        System.exit(0);
-    }//GEN-LAST:event_jMenu4MouseClicked
+    private void MenuTools2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuTools2ActionPerformed
+        CategoriesView.setVisible(true);
+        TransactionsView.setVisible(false);
+        CategoriesView.requestFocus();
+    }//GEN-LAST:event_MenuTools2ActionPerformed
 
-    private void jMenu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu5MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenu5MouseClicked
-
-    private void jMenuItem1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseClicked
-    }//GEN-LAST:event_jMenuItem1MouseClicked
-
-    private void transactionCancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionCancelButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_transactionCancelButtonActionPerformed
-
-    private void transactionSaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionSaveButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_transactionSaveButtonActionPerformed
-
-    private void transactionTypeSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionTypeSelectActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_transactionTypeSelectActionPerformed
-
-    private void transactionCategorySelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionCategorySelectActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_transactionCategorySelectActionPerformed
-
-    private void transactionPaymentMethodSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionPaymentMethodSelectActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_transactionPaymentMethodSelectActionPerformed
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        LoginView.setVisible(false);
-        CadastrarView.setVisible(false);
+    private void MenuTools1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuTools1ActionPerformed
         CategoriesView.setVisible(false);
         TransactionsView.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        LoginView.setVisible(false);
-        CadastrarView.setVisible(false);
-        TransactionsView.setVisible(false);
-        CategoriesView.setVisible(true);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void registerSubmitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerSubmitButtonMouseClicked
-//        String fullName = registerNameInput.getText();
-//        String email = registerEmailInput.getText();
-//        String cpf = registerCPFInput.getText();
-//        String street = registerStreetInput.getText();
-//        String neighborhood = registerNeighborhoodInput.getText();
-//        String city = registerCityInput.getText();
-//        String state = registerStateInput.getText();
-//        String zipcode = registerZipcodeInput.getText();
-//
-//        UserService userService = UserServiceFactory.createUserService();
-//        UserController userController = new UserController(userService);
-//
-//        Address address = new Address();
-//        address.setCity(city);
-//        address.setNeighborhood(neighborhood);
-//        address.setStreet(street);
-//        address.setState(state);
-//        address.setZipcode(zipcode);
-//
-//        User user = new User();
-//        user.setName(fullName);
-//        user.setEmail(email);
-//        user.setCpf(cpf);
-//        user.setAddress(address);
-//        user.setRoleId(1);
-//
-//        userController.createUser(user);
-//
-//        registerNameInput.setText("");
-//        registerEmailInput.setText("");
-//        registerCPFInput.setText("");
-//        registerPasswordInput.setText("");
-//        registerStreetInput.setText("");
-//        registerZipcodeInput.setText("");
-//        registerNeighborhoodInput.setText("");
-//        registerCityInput.setText("");
-//        registerStateInput.setText("");
-    }//GEN-LAST:event_registerSubmitButtonMouseClicked
-
-    private void loginSubmitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginSubmitButtonMouseClicked
-        String email = loginEmailInput.getText();
-        String password = loginPasswordInput.getText();
-        
-        loginEmailInput.setText("");
-        loginPasswordInput.setText("");
-    }//GEN-LAST:event_loginSubmitButtonMouseClicked
-
-    private void transactionNameInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionNameInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_transactionNameInputActionPerformed
-
-    private void transactionSaveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transactionSaveButtonMouseClicked
-//        String transactionName = transactionNameInput.getText();
-//        String transactionDescription = transactionDescriptionInput.getText();
-//        String transactionAmount = transactionAmountInput.getText();
-//        TransactionType transactionType = new TransactionType();
-//        PaymentStatus transactionStatus = new PaymentStatus();
-//        PaymentMethod transactionPaymentMethod = new PaymentMethod();
-//        User createdBy = new User();
-//        Category transactionCategory = new Category();
-//
-//        Transaction newTransaction = new Transaction();
-//        newTransaction.setAmount(Float.parseFloat(transactionAmount));
-//        newTransaction.setName(transactionName);
-//        newTransaction.setDescription(transactionDescription);
-//        newTransaction.setPaidAt("paid".equals(transactionStatus.getValue()) ? LocalDateTime.now() : null);
-//        newTransaction.setCategory(transactionCategory);
-//        newTransaction.setCreatedBy(createdBy);
-//        newTransaction.setPaymentMethod(transactionPaymentMethod);
-//        newTransaction.setPaymentStatus(transactionStatus);
-//        newTransaction.setTransactionType(transactionType);
-//
-//        TransactionService transactionService = TransactionServiceFactory.createTransactionService();
-//        TransactionController transactionController = new TransactionController(transactionService);
-//
-        // create transaction   
-    }//GEN-LAST:event_transactionSaveButtonMouseClicked
-
-    private void transactionCancelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transactionCancelButtonMouseClicked
-        transactionNameInput.setText("");
-        transactionDescriptionInput.setText("");
-        transactionAmountInput.setText("");
-    }//GEN-LAST:event_transactionCancelButtonMouseClicked
+        TransactionsView.requestFocus();
+    }//GEN-LAST:event_MenuTools1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1516,36 +1356,60 @@ public class MainPanel extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainPanel().setVisible(true);
+                new MainFrame().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel CadastrarPanelView;
-    private javax.swing.JInternalFrame CadastrarView;
     private javax.swing.JPanel CategoriesPanelView;
     private javax.swing.JInternalFrame CategoriesView;
+    private javax.swing.JDesktopPane DesktopPane;
+    private javax.swing.JTextField LoginEmailInput;
     private javax.swing.JPanel LoginPanelView;
+    private javax.swing.JPasswordField LoginPasswordInput;
+    private javax.swing.JButton LoginSubmitBtn;
     private javax.swing.JInternalFrame LoginView;
+    private javax.swing.JMenuBar Menu;
+    private javax.swing.JMenu MenuExit;
+    private javax.swing.JMenu MenuLogin;
+    private javax.swing.JMenu MenuLogout;
+    private javax.swing.JMenu MenuRegister;
+    private javax.swing.JMenu MenuTools;
+    private javax.swing.JMenuItem MenuTools1;
+    private javax.swing.JMenuItem MenuTools2;
+    private javax.swing.JFormattedTextField RegisterCPFInput;
+    private javax.swing.JTextField RegisterCityInput;
+    private javax.swing.JTextField RegisterEmailInput;
+    private javax.swing.JTextField RegisterNameInput;
+    private javax.swing.JTextField RegisterNeighborhoodInput;
+    private javax.swing.JPanel RegisterPanelView;
+    private javax.swing.JPasswordField RegisterPasswordInput;
+    private javax.swing.JTextField RegisterStateInput;
+    private javax.swing.JTextField RegisterStreetInput;
+    private javax.swing.JButton RegisterSubmitBtn;
+    private javax.swing.JInternalFrame RegisterView;
+    private javax.swing.JFormattedTextField RegisterZipcodeInput;
     private javax.swing.JPanel TransactionsPanelView;
     private javax.swing.JInternalFrame TransactionsView;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1566,13 +1430,6 @@ public class MainPanel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -1616,19 +1473,6 @@ public class MainPanel extends javax.swing.JFrame {
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField loginEmailInput;
-    private javax.swing.JPasswordField loginPasswordInput;
-    private javax.swing.JButton loginSubmitButton;
-    private javax.swing.JFormattedTextField registerCPFInput;
-    private javax.swing.JTextField registerCityInput;
-    private javax.swing.JTextField registerEmailInput;
-    private javax.swing.JTextField registerNameInput;
-    private javax.swing.JTextField registerNeighborhoodInput;
-    private javax.swing.JPasswordField registerPasswordInput;
-    private javax.swing.JTextField registerStateInput;
-    private javax.swing.JTextField registerStreetInput;
-    private javax.swing.JButton registerSubmitButton;
-    private javax.swing.JFormattedTextField registerZipcodeInput;
     private javax.swing.JTextField transactionAmountInput;
     private javax.swing.JButton transactionCancelButton;
     private javax.swing.JComboBox<String> transactionCategorySelect;

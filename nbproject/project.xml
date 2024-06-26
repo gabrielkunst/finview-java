@@ -5,13 +5,11 @@
             <name>finview-java</name>
             <source-roots>
                 <root id="src.src.dir" name="src"/>
-                <root id="src.src2.dir" name="src"/>
-                <root id="src.src51.dir" name="src"/>
             </source-roots>
             <test-roots/>
         </data>
         <libraries xmlns="http://www.netbeans.org/ns/ant-project-libraries/1">
-            <definitions>.\main.java.com.gk.finview.lib\nblibraries.properties</definitions>
+            <definitions>.\lib\nblibraries.properties</definitions>
         </libraries>
     </configuration>
 </project>
