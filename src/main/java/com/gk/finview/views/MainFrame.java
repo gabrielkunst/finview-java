@@ -15,8 +15,10 @@ import main.java.com.gk.finview.models.*;
 
 import java.sql.Connection;
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -1544,7 +1546,8 @@ public class MainFrame extends javax.swing.JFrame {
             List<Transaction> transactions = transactionController.getTransactionsByUserId(loggedUser.getId());
 
             DefaultTableModel model = (DefaultTableModel) TransactionsTable.getModel();
-            DecimalFormat dfZero = new DecimalFormat("0.00");
+            DecimalFormat df2 = new DecimalFormat("#.##");
+            df2.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ENGLISH));
 
             while (model.getRowCount() > 0) {
                 model.getDataVector().removeAllElements();
@@ -1555,7 +1558,7 @@ public class MainFrame extends javax.swing.JFrame {
 
                 row.add(transaction.getId());
                 row.add(transaction.getName());
-                row.add(dfZero.format(transaction.getAmount()));
+                row.add(df2.format(transaction.getAmount()));
                 row.add(transaction.getPaymentMethod());
                 row.add(transaction.getTransactionType());
                 row.add(transaction.getCategory());
@@ -1804,7 +1807,7 @@ public class MainFrame extends javax.swing.JFrame {
         
         int transactionId = (int) model.getValueAt(selectedRow, 0);
         String transactionName = (String) model.getValueAt(selectedRow, 1);
-        Double transactionAmount = (Double) model.getValueAt(selectedRow, 2);
+        String transactionAmount = (String) model.getValueAt(selectedRow, 2);
         Object transactionPaymentMethod = model.getValueAt(selectedRow, 3);
         Object transactionType =  model.getValueAt(selectedRow, 4);
         Object transactionCategory = model.getValueAt(selectedRow, 5);
@@ -1816,7 +1819,7 @@ public class MainFrame extends javax.swing.JFrame {
         Transaction transaction = new Transaction();
         transaction.setId(transactionId);
         transaction.setName(transactionName);
-        transaction.setAmount(transactionAmount);
+        transaction.setAmount(Double.parseDouble(transactionAmount));
         transaction.setCategory(categoryInstance);
         transaction.setPaymentMethod(paymentMethodInstance);
         transaction.setTransactionType(transactionTypeInstance);
