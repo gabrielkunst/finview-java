@@ -1322,6 +1322,12 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void MenuExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuExitMouseClicked
+        int input = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja sair?");
+
+        if (input != 0) {
+            return;
+        }
+
         System.exit(0);
     }//GEN-LAST:event_MenuExitMouseClicked
 
@@ -1397,18 +1403,26 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuLogoutMouseClicked
 
     private void MenuTools2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuTools2ActionPerformed
+        clearCategoryForm();
+
         CategoriesView.setVisible(true);
         TransactionsView.setVisible(false);
 
         CategoriesView.requestFocus();
+
+        loadCategoriesTable();
     }//GEN-LAST:event_MenuTools2ActionPerformed
 
     private void MenuTools1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuTools1ActionPerformed
+        clearTransactionForm();
+
         CategoriesView.setVisible(false);
         TransactionsView.setVisible(true);
 
         TransactionsView.requestFocus();
+
         loadTransactionsTable();
+        loadTransactionsCategories();
     }//GEN-LAST:event_MenuTools1ActionPerformed
 
     private void RegisterSubmitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterSubmitBtnActionPerformed
@@ -1474,8 +1488,6 @@ public class MainFrame extends javax.swing.JFrame {
             } catch (Exception error) {
                 JOptionPane.showMessageDialog(null, error.getMessage());
             }
-            
-            DB.closeConnection();
     }//GEN-LAST:event_RegisterSubmitBtnActionPerformed
 
     private void loadTransactionsCategories() {
