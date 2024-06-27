@@ -24,6 +24,8 @@ import javax.swing.table.DefaultTableModel;
 
 public class MainFrame extends javax.swing.JFrame {
     private User loggedUser;
+    private Category selectedCategory;
+    private Transaction selectedTransaction;
 
     public MainFrame() {
         initComponents();
@@ -34,24 +36,24 @@ public class MainFrame extends javax.swing.JFrame {
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setVisible(true);
         
-        LoginView.setVisible(true);
-        RegisterView.setVisible(false);
-        TransactionsView.setVisible(false);
-        CategoriesView.setVisible(false);
+        loginView.setVisible(true);
+        registerView.setVisible(false);
+        transactionsView.setVisible(false);
+        categoriesView.setVisible(false);
         
         MenuTools.setVisible(false);
         MenuLogout.setVisible(false);   
        
-        LoginView.requestFocus();   
+        loginView.requestFocus();   
     }
 
     private void DoLogin(User user) {
         this.loggedUser = user;
 
-        LoginView.setVisible(false);
-        RegisterView.setVisible(false);
-        CategoriesView.setVisible(false);
-        TransactionsView.setVisible(true);
+        loginView.setVisible(false);
+        registerView.setVisible(false);
+        categoriesView.setVisible(false);
+        transactionsView.setVisible(true);
 
         MenuRegister.setVisible(false);
         MenuLogin.setVisible(false);
@@ -66,17 +68,17 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     private void DoLogout() {
-        TransactionsView.setVisible(false);
-        RegisterView.setVisible(false);
-        CategoriesView.setVisible(false);
-        LoginView.setVisible(true);
+        transactionsView.setVisible(false);
+        registerView.setVisible(false);
+        categoriesView.setVisible(false);
+        loginView.setVisible(true);
 
         MenuTools.setVisible(false);
         MenuLogout.setVisible(false);
         MenuRegister.setVisible(true);
         MenuLogin.setVisible(true);
 
-        LoginView.requestFocus();
+        loginView.requestFocus();
 
         this.loggedUser = null;
     }
@@ -85,9 +87,9 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        DesktopPane = new javax.swing.JDesktopPane();
-        RegisterView = new javax.swing.JInternalFrame();
-        RegisterPanelView = new javax.swing.JPanel();
+        desktopPane = new javax.swing.JDesktopPane();
+        registerView = new javax.swing.JInternalFrame();
+        registerViewPanel = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -119,8 +121,8 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         RegisterStateInput = new javax.swing.JTextField();
         RegisterSubmitBtn = new javax.swing.JButton();
-        LoginView = new javax.swing.JInternalFrame();
-        LoginPanelView = new javax.swing.JPanel();
+        loginView = new javax.swing.JInternalFrame();
+        loginViewPanel = new javax.swing.JPanel();
         jPanel16 = new javax.swing.JPanel();
         jPanel17 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
@@ -131,8 +133,8 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         LoginPasswordInput = new javax.swing.JPasswordField();
         LoginSubmitBtn = new javax.swing.JButton();
-        TransactionsView = new javax.swing.JInternalFrame();
-        TransactionsPanelView = new javax.swing.JPanel();
+        transactionsView = new javax.swing.JInternalFrame();
+        transactionsViewPanel = new javax.swing.JPanel();
         jPanel18 = new javax.swing.JPanel();
         jPanel30 = new javax.swing.JPanel();
         jPanel29 = new javax.swing.JPanel();
@@ -161,9 +163,9 @@ public class MainFrame extends javax.swing.JFrame {
         transactionSubmitBtn = new javax.swing.JButton();
         transactionDeleteBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TransactionsTable = new javax.swing.JTable();
-        CategoriesView = new javax.swing.JInternalFrame();
-        CategoriesPanelView = new javax.swing.JPanel();
+        transactionsTable = new javax.swing.JTable();
+        categoriesView = new javax.swing.JInternalFrame();
+        categoriesViewPanel = new javax.swing.JPanel();
         jPanel36 = new javax.swing.JPanel();
         jPanel37 = new javax.swing.JPanel();
         jPanel38 = new javax.swing.JPanel();
@@ -177,6 +179,7 @@ public class MainFrame extends javax.swing.JFrame {
         categoryColorInput = new javax.swing.JTextField();
         categoryCancelBtn = new javax.swing.JButton();
         categorySubmitBtn = new javax.swing.JButton();
+        categoryDeleteBtn = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         categoriesTable = new javax.swing.JTable();
         Menu = new javax.swing.JMenuBar();
@@ -194,11 +197,11 @@ public class MainFrame extends javax.swing.JFrame {
         setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
-        DesktopPane.setPreferredSize(new java.awt.Dimension(1920, 1080));
+        desktopPane.setPreferredSize(new java.awt.Dimension(1920, 1080));
 
-        RegisterView.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        RegisterView.setTitle("Cadastro");
-        RegisterView.setVisible(true);
+        registerView.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        registerView.setTitle("Cadastro");
+        registerView.setVisible(true);
 
         jPanel3.setLayout(new java.awt.GridLayout(5, 1));
 
@@ -486,48 +489,48 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout RegisterPanelViewLayout = new javax.swing.GroupLayout(RegisterPanelView);
-        RegisterPanelView.setLayout(RegisterPanelViewLayout);
-        RegisterPanelViewLayout.setHorizontalGroup(
-            RegisterPanelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(RegisterPanelViewLayout.createSequentialGroup()
+        javax.swing.GroupLayout registerViewPanelLayout = new javax.swing.GroupLayout(registerViewPanel);
+        registerViewPanel.setLayout(registerViewPanelLayout);
+        registerViewPanelLayout.setHorizontalGroup(
+            registerViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(registerViewPanelLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(40, 40, 40))
         );
-        RegisterPanelViewLayout.setVerticalGroup(
-            RegisterPanelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(RegisterPanelViewLayout.createSequentialGroup()
+        registerViewPanelLayout.setVerticalGroup(
+            registerViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(registerViewPanelLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40))
         );
 
-        javax.swing.GroupLayout RegisterViewLayout = new javax.swing.GroupLayout(RegisterView.getContentPane());
-        RegisterView.getContentPane().setLayout(RegisterViewLayout);
-        RegisterViewLayout.setHorizontalGroup(
-            RegisterViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout registerViewLayout = new javax.swing.GroupLayout(registerView.getContentPane());
+        registerView.getContentPane().setLayout(registerViewLayout);
+        registerViewLayout.setHorizontalGroup(
+            registerViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 717, Short.MAX_VALUE)
-            .addGroup(RegisterViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(RegisterViewLayout.createSequentialGroup()
+            .addGroup(registerViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(registerViewLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(RegisterPanelView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(registerViewPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
         );
-        RegisterViewLayout.setVerticalGroup(
-            RegisterViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        registerViewLayout.setVerticalGroup(
+            registerViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 473, Short.MAX_VALUE)
-            .addGroup(RegisterViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(RegisterViewLayout.createSequentialGroup()
+            .addGroup(registerViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(registerViewLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(RegisterPanelView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(registerViewPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        LoginView.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        LoginView.setTitle("Entrar");
-        LoginView.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        LoginView.setVisible(true);
+        loginView.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        loginView.setTitle("Entrar");
+        loginView.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        loginView.setVisible(true);
 
         jPanel11.setLayout(new java.awt.GridLayout(2, 1));
 
@@ -628,47 +631,47 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout LoginPanelViewLayout = new javax.swing.GroupLayout(LoginPanelView);
-        LoginPanelView.setLayout(LoginPanelViewLayout);
-        LoginPanelViewLayout.setHorizontalGroup(
-            LoginPanelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LoginPanelViewLayout.createSequentialGroup()
+        javax.swing.GroupLayout loginViewPanelLayout = new javax.swing.GroupLayout(loginViewPanel);
+        loginViewPanel.setLayout(loginViewPanelLayout);
+        loginViewPanelLayout.setHorizontalGroup(
+            loginViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loginViewPanelLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(40, 40, 40))
         );
-        LoginPanelViewLayout.setVerticalGroup(
-            LoginPanelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LoginPanelViewLayout.createSequentialGroup()
+        loginViewPanelLayout.setVerticalGroup(
+            loginViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loginViewPanelLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40))
         );
 
-        javax.swing.GroupLayout LoginViewLayout = new javax.swing.GroupLayout(LoginView.getContentPane());
-        LoginView.getContentPane().setLayout(LoginViewLayout);
-        LoginViewLayout.setHorizontalGroup(
-            LoginViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout loginViewLayout = new javax.swing.GroupLayout(loginView.getContentPane());
+        loginView.getContentPane().setLayout(loginViewLayout);
+        loginViewLayout.setHorizontalGroup(
+            loginViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 554, Short.MAX_VALUE)
-            .addGroup(LoginViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(LoginViewLayout.createSequentialGroup()
+            .addGroup(loginViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(loginViewLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(LoginPanelView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(loginViewPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
         );
-        LoginViewLayout.setVerticalGroup(
-            LoginViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        loginViewLayout.setVerticalGroup(
+            loginViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 303, Short.MAX_VALUE)
-            .addGroup(LoginViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(LoginViewLayout.createSequentialGroup()
+            .addGroup(loginViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(loginViewLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(LoginPanelView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(loginViewPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(16, Short.MAX_VALUE)))
         );
 
-        TransactionsView.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        TransactionsView.setTitle("Transações");
-        TransactionsView.setVisible(true);
+        transactionsView.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        transactionsView.setTitle("Transações");
+        transactionsView.setVisible(true);
 
         jPanel2.setLayout(new java.awt.GridLayout(2, 0, 12, 12));
 
@@ -881,9 +884,9 @@ public class MainFrame extends javax.swing.JFrame {
                     .addGroup(jPanel30Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(transactionSubmitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
+                        .addGap(12, 12, 12)
                         .addComponent(transactionResetBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
+                        .addGap(12, 12, 12)
                         .addComponent(transactionDeleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         jPanel30Layout.setVerticalGroup(
@@ -892,15 +895,15 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(transactionDeleteBtn)
+                .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(transactionResetBtn)
-                        .addComponent(transactionSubmitBtn)))
+                        .addComponent(transactionSubmitBtn))
+                    .addComponent(transactionDeleteBtn))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        TransactionsTable.setModel(new javax.swing.table.DefaultTableModel(
+        transactionsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -923,7 +926,7 @@ public class MainFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(TransactionsTable);
+        jScrollPane1.setViewportView(transactionsTable);
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
@@ -945,47 +948,47 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(0, 0, 0))
         );
 
-        javax.swing.GroupLayout TransactionsPanelViewLayout = new javax.swing.GroupLayout(TransactionsPanelView);
-        TransactionsPanelView.setLayout(TransactionsPanelViewLayout);
-        TransactionsPanelViewLayout.setHorizontalGroup(
-            TransactionsPanelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TransactionsPanelViewLayout.createSequentialGroup()
+        javax.swing.GroupLayout transactionsViewPanelLayout = new javax.swing.GroupLayout(transactionsViewPanel);
+        transactionsViewPanel.setLayout(transactionsViewPanelLayout);
+        transactionsViewPanelLayout.setHorizontalGroup(
+            transactionsViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(transactionsViewPanelLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(40, 40, 40))
         );
-        TransactionsPanelViewLayout.setVerticalGroup(
-            TransactionsPanelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TransactionsPanelViewLayout.createSequentialGroup()
+        transactionsViewPanelLayout.setVerticalGroup(
+            transactionsViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(transactionsViewPanelLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40))
         );
 
-        javax.swing.GroupLayout TransactionsViewLayout = new javax.swing.GroupLayout(TransactionsView.getContentPane());
-        TransactionsView.getContentPane().setLayout(TransactionsViewLayout);
-        TransactionsViewLayout.setHorizontalGroup(
-            TransactionsViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout transactionsViewLayout = new javax.swing.GroupLayout(transactionsView.getContentPane());
+        transactionsView.getContentPane().setLayout(transactionsViewLayout);
+        transactionsViewLayout.setHorizontalGroup(
+            transactionsViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1059, Short.MAX_VALUE)
-            .addGroup(TransactionsViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(TransactionsViewLayout.createSequentialGroup()
+            .addGroup(transactionsViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(transactionsViewLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(TransactionsPanelView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(transactionsViewPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
         );
-        TransactionsViewLayout.setVerticalGroup(
-            TransactionsViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 622, Short.MAX_VALUE)
-            .addGroup(TransactionsViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(TransactionsViewLayout.createSequentialGroup()
+        transactionsViewLayout.setVerticalGroup(
+            transactionsViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 628, Short.MAX_VALUE)
+            .addGroup(transactionsViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(transactionsViewLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(TransactionsPanelView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(transactionsViewPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        CategoriesView.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        CategoriesView.setTitle("Categorias");
-        CategoriesView.setVisible(true);
+        categoriesView.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        categoriesView.setTitle("Categorias");
+        categoriesView.setVisible(true);
 
         jPanel39.setLayout(new java.awt.GridLayout(1, 0, 12, 12));
 
@@ -1074,6 +1077,13 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        categoryDeleteBtn.setText("Excluir");
+        categoryDeleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                categoryDeleteBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel37Layout = new javax.swing.GroupLayout(jPanel37);
         jPanel37.setLayout(jPanel37Layout);
         jPanel37Layout.setHorizontalGroup(
@@ -1085,8 +1095,10 @@ public class MainFrame extends javax.swing.JFrame {
                     .addGroup(jPanel37Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(categorySubmitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(categoryCancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(12, 12, 12)
+                        .addComponent(categoryCancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(categoryDeleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel37Layout.setVerticalGroup(
@@ -1094,11 +1106,13 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(jPanel37Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
-                .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(categoryCancelBtn)
-                    .addComponent(categorySubmitBtn))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(categoryCancelBtn)
+                        .addComponent(categorySubmitBtn))
+                    .addComponent(categoryDeleteBtn))
+                .addContainerGap())
         );
 
         categoriesTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -1146,97 +1160,97 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(0, 0, 0))
         );
 
-        javax.swing.GroupLayout CategoriesPanelViewLayout = new javax.swing.GroupLayout(CategoriesPanelView);
-        CategoriesPanelView.setLayout(CategoriesPanelViewLayout);
-        CategoriesPanelViewLayout.setHorizontalGroup(
-            CategoriesPanelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CategoriesPanelViewLayout.createSequentialGroup()
+        javax.swing.GroupLayout categoriesViewPanelLayout = new javax.swing.GroupLayout(categoriesViewPanel);
+        categoriesViewPanel.setLayout(categoriesViewPanelLayout);
+        categoriesViewPanelLayout.setHorizontalGroup(
+            categoriesViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(categoriesViewPanelLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jPanel36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(40, 40, 40))
         );
-        CategoriesPanelViewLayout.setVerticalGroup(
-            CategoriesPanelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CategoriesPanelViewLayout.createSequentialGroup()
+        categoriesViewPanelLayout.setVerticalGroup(
+            categoriesViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(categoriesViewPanelLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jPanel36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout CategoriesViewLayout = new javax.swing.GroupLayout(CategoriesView.getContentPane());
-        CategoriesView.getContentPane().setLayout(CategoriesViewLayout);
-        CategoriesViewLayout.setHorizontalGroup(
-            CategoriesViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout categoriesViewLayout = new javax.swing.GroupLayout(categoriesView.getContentPane());
+        categoriesView.getContentPane().setLayout(categoriesViewLayout);
+        categoriesViewLayout.setHorizontalGroup(
+            categoriesViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 703, Short.MAX_VALUE)
-            .addGroup(CategoriesViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(CategoriesViewLayout.createSequentialGroup()
+            .addGroup(categoriesViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(categoriesViewLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(CategoriesPanelView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(categoriesViewPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
         );
-        CategoriesViewLayout.setVerticalGroup(
-            CategoriesViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        categoriesViewLayout.setVerticalGroup(
+            categoriesViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 562, Short.MAX_VALUE)
-            .addGroup(CategoriesViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(CategoriesViewLayout.createSequentialGroup()
+            .addGroup(categoriesViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(categoriesViewLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(CategoriesPanelView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(categoriesViewPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        DesktopPane.setLayer(RegisterView, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        DesktopPane.setLayer(LoginView, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        DesktopPane.setLayer(TransactionsView, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        DesktopPane.setLayer(CategoriesView, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        desktopPane.setLayer(registerView, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        desktopPane.setLayer(loginView, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        desktopPane.setLayer(transactionsView, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        desktopPane.setLayer(categoriesView, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        javax.swing.GroupLayout DesktopPaneLayout = new javax.swing.GroupLayout(DesktopPane);
-        DesktopPane.setLayout(DesktopPaneLayout);
-        DesktopPaneLayout.setHorizontalGroup(
-            DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(DesktopPaneLayout.createSequentialGroup()
+        javax.swing.GroupLayout desktopPaneLayout = new javax.swing.GroupLayout(desktopPane);
+        desktopPane.setLayout(desktopPaneLayout);
+        desktopPaneLayout.setHorizontalGroup(
+            desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(desktopPaneLayout.createSequentialGroup()
                 .addContainerGap(595, Short.MAX_VALUE)
-                .addComponent(RegisterView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(registerView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(596, Short.MAX_VALUE))
-            .addGroup(DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DesktopPaneLayout.createSequentialGroup()
+            .addGroup(desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, desktopPaneLayout.createSequentialGroup()
                     .addContainerGap(677, Short.MAX_VALUE)
-                    .addComponent(LoginView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(loginView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(677, Short.MAX_VALUE)))
-            .addGroup(DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(DesktopPaneLayout.createSequentialGroup()
+            .addGroup(desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(desktopPaneLayout.createSequentialGroup()
                     .addContainerGap(424, Short.MAX_VALUE)
-                    .addComponent(TransactionsView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(transactionsView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(425, Short.MAX_VALUE)))
-            .addGroup(DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DesktopPaneLayout.createSequentialGroup()
+            .addGroup(desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, desktopPaneLayout.createSequentialGroup()
                     .addContainerGap(602, Short.MAX_VALUE)
-                    .addComponent(CategoriesView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(categoriesView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(603, Short.MAX_VALUE)))
         );
-        DesktopPaneLayout.setVerticalGroup(
-            DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DesktopPaneLayout.createSequentialGroup()
+        desktopPaneLayout.setVerticalGroup(
+            desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, desktopPaneLayout.createSequentialGroup()
                 .addContainerGap(291, Short.MAX_VALUE)
-                .addComponent(RegisterView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(registerView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(291, Short.MAX_VALUE))
-            .addGroup(DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DesktopPaneLayout.createSequentialGroup()
+            .addGroup(desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, desktopPaneLayout.createSequentialGroup()
                     .addContainerGap(374, Short.MAX_VALUE)
-                    .addComponent(LoginView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(loginView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(375, Short.MAX_VALUE)))
-            .addGroup(DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(DesktopPaneLayout.createSequentialGroup()
+            .addGroup(desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(desktopPaneLayout.createSequentialGroup()
                     .addContainerGap(217, Short.MAX_VALUE)
-                    .addComponent(TransactionsView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(transactionsView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(217, Short.MAX_VALUE)))
-            .addGroup(DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DesktopPaneLayout.createSequentialGroup()
+            .addGroup(desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, desktopPaneLayout.createSequentialGroup()
                     .addContainerGap(245, Short.MAX_VALUE)
-                    .addComponent(CategoriesView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(categoriesView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(245, Short.MAX_VALUE)))
         );
 
-        getContentPane().add(DesktopPane);
+        getContentPane().add(desktopPane);
 
         MenuRegister.setText("Cadastrar");
         MenuRegister.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1342,20 +1356,20 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_LoginSubmitBtnMouseClicked
 
     private void MenuRegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuRegisterMouseClicked
-        LoginView.setVisible(false);
-        RegisterView.setVisible(true);
+        loginView.setVisible(false);
+        registerView.setVisible(true);
 
-        RegisterView.requestFocus();
+        registerView.requestFocus();
 
         LoginPasswordInput.setText("");
         LoginEmailInput.setText("");
     }//GEN-LAST:event_MenuRegisterMouseClicked
 
     private void MenuLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuLoginMouseClicked
-        LoginView.setVisible(true);
-        RegisterView.setVisible(false);
+        loginView.setVisible(true);
+        registerView.setVisible(false);
 
-        LoginView.requestFocus();
+        loginView.requestFocus();
 
         RegisterNameInput.setText("");
         RegisterEmailInput.setText("");
@@ -1373,17 +1387,17 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuLogoutMouseClicked
 
     private void MenuTools2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuTools2ActionPerformed
-        CategoriesView.setVisible(true);
-        TransactionsView.setVisible(false);
+        categoriesView.setVisible(true);
+        transactionsView.setVisible(false);
 
-        CategoriesView.requestFocus();
+        categoriesView.requestFocus();
     }//GEN-LAST:event_MenuTools2ActionPerformed
 
     private void MenuTools1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuTools1ActionPerformed
-        CategoriesView.setVisible(false);
-        TransactionsView.setVisible(true);
+        categoriesView.setVisible(false);
+        transactionsView.setVisible(true);
 
-        TransactionsView.requestFocus();
+        transactionsView.requestFocus();
         loadTransactionsTable();
     }//GEN-LAST:event_MenuTools1ActionPerformed
 
@@ -1499,7 +1513,7 @@ public class MainFrame extends javax.swing.JFrame {
 
             List<Transaction> transactions = transactionController.getTransactionsByUserId(loggedUser.getId());
 
-            DefaultTableModel model = (DefaultTableModel) TransactionsTable.getModel();
+            DefaultTableModel model = (DefaultTableModel) transactionsTable.getModel();
 
             while (model.getRowCount() > 0) {
                 model.getDataVector().removeAllElements();
@@ -1651,12 +1665,33 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_categoryCancelBtnActionPerformed
 
     private void transactionResetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionResetBtnActionPerformed
-        // TODO add your handling code here:
+        TransactionsTransactionNameInput.setText("");
+        TransactionsTransactionDescriptionInput.setText("");
+        TransactionsTransactionAmountInput.setText("");
+        TransactionsTransactionCategorySelect.setSelectedIndex(0);
+        TransactionsTransactionMethodSelect.setSelectedIndex(0);
+        TransactionsTransactionTypeSelect.setSelectedIndex(0);
     }//GEN-LAST:event_transactionResetBtnActionPerformed
 
     private void transactionDeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionDeleteBtnActionPerformed
-        // TODO add your handling code here:
+        try {
+            if (this.selectedTransaction == null) {
+                throw new RuntimeException("Ops! Selecione uma transação para excluir.");
+            }
+        } catch (Exception error) {
+            JOptionPane.showMessageDialog(null, error.getMessage());
+        }
     }//GEN-LAST:event_transactionDeleteBtnActionPerformed
+
+    private void categoryDeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoryDeleteBtnActionPerformed
+        try {
+            if (this.selectedCategory == null) {
+                throw new RuntimeException("Ops! Selecione uma categoria para excluir.");
+            }
+        } catch (Exception error) {
+            JOptionPane.showMessageDialog(null, error.getMessage());
+        }
+    }//GEN-LAST:event_categoryDeleteBtnActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -1694,14 +1729,9 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel CategoriesPanelView;
-    private javax.swing.JInternalFrame CategoriesView;
-    private javax.swing.JDesktopPane DesktopPane;
     private javax.swing.JTextField LoginEmailInput;
-    private javax.swing.JPanel LoginPanelView;
     private javax.swing.JPasswordField LoginPasswordInput;
     private javax.swing.JButton LoginSubmitBtn;
-    private javax.swing.JInternalFrame LoginView;
     private javax.swing.JMenuBar Menu;
     private javax.swing.JMenu MenuExit;
     private javax.swing.JMenu MenuLogin;
@@ -1715,27 +1745,26 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField RegisterEmailInput;
     private javax.swing.JTextField RegisterNameInput;
     private javax.swing.JTextField RegisterNeighborhoodInput;
-    private javax.swing.JPanel RegisterPanelView;
     private javax.swing.JPasswordField RegisterPasswordInput;
     private javax.swing.JTextField RegisterStateInput;
     private javax.swing.JTextField RegisterStreetInput;
     private javax.swing.JButton RegisterSubmitBtn;
-    private javax.swing.JInternalFrame RegisterView;
     private javax.swing.JFormattedTextField RegisterZipcodeInput;
-    private javax.swing.JPanel TransactionsPanelView;
-    private javax.swing.JTable TransactionsTable;
     private javax.swing.JTextField TransactionsTransactionAmountInput;
     private javax.swing.JComboBox<String> TransactionsTransactionCategorySelect;
     private javax.swing.JTextField TransactionsTransactionDescriptionInput;
     private javax.swing.JComboBox<String> TransactionsTransactionMethodSelect;
     private javax.swing.JTextField TransactionsTransactionNameInput;
     private javax.swing.JComboBox<String> TransactionsTransactionTypeSelect;
-    private javax.swing.JInternalFrame TransactionsView;
     private javax.swing.JTable categoriesTable;
+    private javax.swing.JInternalFrame categoriesView;
+    private javax.swing.JPanel categoriesViewPanel;
     private javax.swing.JButton categoryCancelBtn;
     private javax.swing.JTextField categoryColorInput;
+    private javax.swing.JButton categoryDeleteBtn;
     private javax.swing.JTextField categoryNameInput;
     private javax.swing.JButton categorySubmitBtn;
+    private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1793,8 +1822,15 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JInternalFrame loginView;
+    private javax.swing.JPanel loginViewPanel;
+    private javax.swing.JInternalFrame registerView;
+    private javax.swing.JPanel registerViewPanel;
     private javax.swing.JButton transactionDeleteBtn;
     private javax.swing.JButton transactionResetBtn;
     private javax.swing.JButton transactionSubmitBtn;
+    private javax.swing.JTable transactionsTable;
+    private javax.swing.JInternalFrame transactionsView;
+    private javax.swing.JPanel transactionsViewPanel;
     // End of variables declaration//GEN-END:variables
 }
