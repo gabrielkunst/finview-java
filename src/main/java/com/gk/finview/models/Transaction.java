@@ -7,9 +7,9 @@ public class Transaction {
     private String name;
     private String description;
     private double amount;
-    private int transactionTypeId;
-    private int paymentMethodId;
-    private int categoryId;
+    private TransactionType transactionType;
+    private PaymentMethod paymentMethod;
+    private Category category;
     private int createdBy;
     private Date paidAt;
     private Date createdAt;
@@ -19,14 +19,14 @@ public class Transaction {
         this.createdAt = new Date();
     }
 
-    public Transaction(int id, String name, String description, double amount, int transactionTypeId, int paymentMethodId, int categoryId, int createdBy, Date paidAt, Date createdAt, Date deletedAt) {
+    public Transaction(int id, String name, String description, double amount, TransactionType transactionType, PaymentMethod paymentMethod, Category category, int createdBy, Date paidAt, Date createdAt, Date deletedAt) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.amount = amount;
-        this.transactionTypeId = transactionTypeId;
-        this.paymentMethodId = paymentMethodId;
-        this.categoryId = categoryId;
+        this.transactionType = transactionType;
+        this.paymentMethod = paymentMethod;
+        this.category = category;
         this.createdBy = createdBy;
         this.paidAt = paidAt;
         this.createdAt = createdAt;
@@ -65,28 +65,28 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public int getTransactionTypeId() {
-        return transactionTypeId;
+    public TransactionType getTransactionType() {
+        return transactionType;
     }
 
-    public void setTransactionTypeId(int transactionTypeId) {
-        this.transactionTypeId = transactionTypeId;
+    public void setTransactionType(TransactionType transactionType) {
+        this.transactionType = transactionType;
     }
 
-    public int getPaymentMethodId() {
-        return paymentMethodId;
+    public PaymentMethod getPaymentMethod() {
+        return paymentMethod;
     }
 
-    public void setPaymentMethodId(int paymentMethodId) {
-        this.paymentMethodId = paymentMethodId;
+    public void setPaymentMethod(PaymentMethod paymentMethod) {
+        this.paymentMethod = paymentMethod;
     }
 
-    public int getCategoryId() {
-        return categoryId;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public int getCreatedBy() {
@@ -128,9 +128,9 @@ public class Transaction {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", amount=" + amount +
-                ", transactionTypeId=" + transactionTypeId +
-                ", paymentMethodId=" + paymentMethodId +
-                ", categoryId=" + categoryId +
+                ", transactionType=" + transactionType +
+                ", paymentMethod=" + paymentMethod +
+                ", category=" + category +
                 ", createdBy=" + createdBy +
                 ", paidAt=" + paidAt +
                 ", createdAt=" + createdAt +
