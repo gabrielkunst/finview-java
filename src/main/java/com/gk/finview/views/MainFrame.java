@@ -20,6 +20,8 @@ import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.table.DefaultTableModel;
+import main.java.com.gk.finview.lib.CEP;
+import main.java.com.gk.finview.lib.ViaCEP;
 
 
 public class MainFrame extends javax.swing.JFrame {
@@ -318,6 +320,11 @@ public class MainFrame extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        RegisterZipcodeInput.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                RegisterZipcodeInputFocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -1811,6 +1818,24 @@ public class MainFrame extends javax.swing.JFrame {
         TransactionsTransactionTypeSelect.setSelectedIndex(transactionTypeId - 1);
         TransactionsTransactionCategorySelect.setSelectedIndex(transactionCategoryId - 1);
     }//GEN-LAST:event_TransactionsTableMouseClicked
+
+    private void RegisterZipcodeInputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RegisterZipcodeInputFocusLost
+        try {
+            String zipcode = RegisterZipcodeInput.getText().trim();
+
+            if (zipcode.isEmpty()) {
+                return;
+            }
+
+            ViaCEP viacep = new ViaCEP(zipcode);
+            RegisterCityInput.setText(viacep.getLocalidade());
+            RegisterStateInput.setText(viacep.getUf());
+            RegisterStreetInput.setText(viacep.getLogradouro());
+            RegisterNeighborhoodInput.setText(viacep.getBairro());
+        } catch (Exception error) {
+            JOptionPane.showMessageDialog(null, error.getMessage());
+        }
+    }//GEN-LAST:event_RegisterZipcodeInputFocusLost
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

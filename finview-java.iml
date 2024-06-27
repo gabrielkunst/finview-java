@@ -19,7 +19,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/bcrypt-0.10.2.jar!/" />
+          <root url="jar://$USER_HOME$/Desktop/viacep/json-java.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

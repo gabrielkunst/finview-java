@@ -481,6 +481,9 @@
                                       <Format format="#####-###" subtype="-1" type="5"/>
                                     </Property>
                                   </Properties>
+                                  <Events>
+                                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="RegisterZipcodeInputFocusLost"/>
+                                  </Events>
                                 </Component>
                               </SubComponents>
                             </Container>
