@@ -1527,6 +1527,9 @@ public class MainFrame extends javax.swing.JFrame {
             String name = TransactionsTransactionNameInput.getText().trim();
             String description = TransactionsTransactionDescriptionInput.getText().trim();
             String amount = TransactionsTransactionAmountInput.getText().trim();
+            int paymentMethodId = TransactionsTransactionMethodSelect.getSelectedIndex() + 1;
+            int paymentTypeId = TransactionsTransactionTypeSelect.getSelectedIndex() + 1;
+           
             
             if (name.isEmpty() || amount.isEmpty()) {
                 throw new RuntimeException("Ops! Nome da transação e o valor são obrigatórios.");
@@ -1549,8 +1552,8 @@ public class MainFrame extends javax.swing.JFrame {
             transaction.setCategoryId(2);
             transaction.setCreatedBy(loggedUser.getId());
             transaction.setPaidAt(new Date());
-            transaction.setPaymentMethodId(1);
-            transaction.setTransactionTypeId(1);
+            transaction.setPaymentMethodId(paymentMethodId);
+            transaction.setTransactionTypeId(paymentTypeId);
             
             Connection connection = DB.getConnection();
             TransactionController transactionController = TransactionControllerFactory.createTransactionController(connection);
