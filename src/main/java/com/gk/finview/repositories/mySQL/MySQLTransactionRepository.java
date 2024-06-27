@@ -81,7 +81,7 @@ public class MySQLTransactionRepository implements TransactionRepository {
 
     @Override
     public List<Transaction> getTransactionsByUserId(int userId) {
-        String sql = "SELECT * FROM transacao WHERE usuario_id = ?";
+        String sql = "SELECT * FROM transacao WHERE usuario_id = ? AND deletado_em IS NULL";
 
         try {
             PreparedStatement preparedStatement = this.connection.prepareStatement(sql);

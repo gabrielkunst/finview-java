@@ -36,24 +36,24 @@ public class MainFrame extends javax.swing.JFrame {
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setVisible(true);
         
-        loginView.setVisible(true);
-        registerView.setVisible(false);
-        transactionsView.setVisible(false);
-        categoriesView.setVisible(false);
+        LoginView.setVisible(true);
+        RegisterView.setVisible(false);
+        TransactionsView.setVisible(false);
+        CategoriesView.setVisible(false);
         
         MenuTools.setVisible(false);
         MenuLogout.setVisible(false);   
        
-        loginView.requestFocus();   
+        LoginView.requestFocus();   
     }
 
     private void DoLogin(User user) {
         this.loggedUser = user;
 
-        loginView.setVisible(false);
-        registerView.setVisible(false);
-        categoriesView.setVisible(false);
-        transactionsView.setVisible(true);
+        LoginView.setVisible(false);
+        RegisterView.setVisible(false);
+        CategoriesView.setVisible(false);
+        TransactionsView.setVisible(true);
 
         MenuRegister.setVisible(false);
         MenuLogin.setVisible(false);
@@ -68,17 +68,17 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     private void DoLogout() {
-        transactionsView.setVisible(false);
-        registerView.setVisible(false);
-        categoriesView.setVisible(false);
-        loginView.setVisible(true);
+        TransactionsView.setVisible(false);
+        RegisterView.setVisible(false);
+        CategoriesView.setVisible(false);
+        LoginView.setVisible(true);
 
         MenuTools.setVisible(false);
         MenuLogout.setVisible(false);
         MenuRegister.setVisible(true);
         MenuLogin.setVisible(true);
 
-        loginView.requestFocus();
+        LoginView.requestFocus();
 
         this.loggedUser = null;
     }
@@ -87,9 +87,9 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        desktopPane = new javax.swing.JDesktopPane();
-        registerView = new javax.swing.JInternalFrame();
-        registerViewPanel = new javax.swing.JPanel();
+        DesktopPane = new javax.swing.JDesktopPane();
+        RegisterView = new javax.swing.JInternalFrame();
+        RegisterViewPanel = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -121,8 +121,8 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         RegisterStateInput = new javax.swing.JTextField();
         RegisterSubmitBtn = new javax.swing.JButton();
-        loginView = new javax.swing.JInternalFrame();
-        loginViewPanel = new javax.swing.JPanel();
+        LoginView = new javax.swing.JInternalFrame();
+        LoginViewPanel = new javax.swing.JPanel();
         jPanel16 = new javax.swing.JPanel();
         jPanel17 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
@@ -133,8 +133,8 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         LoginPasswordInput = new javax.swing.JPasswordField();
         LoginSubmitBtn = new javax.swing.JButton();
-        transactionsView = new javax.swing.JInternalFrame();
-        transactionsViewPanel = new javax.swing.JPanel();
+        TransactionsView = new javax.swing.JInternalFrame();
+        TransactionsViewPanel = new javax.swing.JPanel();
         jPanel18 = new javax.swing.JPanel();
         jPanel30 = new javax.swing.JPanel();
         jPanel29 = new javax.swing.JPanel();
@@ -159,13 +159,13 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel25 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         TransactionsTransactionCategorySelect = new javax.swing.JComboBox<>();
-        transactionResetBtn = new javax.swing.JButton();
-        transactionSubmitBtn = new javax.swing.JButton();
-        transactionDeleteBtn = new javax.swing.JButton();
+        TransactionResetBtn = new javax.swing.JButton();
+        TransactionSubmitBtn = new javax.swing.JButton();
+        TransactionDeleteBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        transactionsTable = new javax.swing.JTable();
-        categoriesView = new javax.swing.JInternalFrame();
-        categoriesViewPanel = new javax.swing.JPanel();
+        TransactionsTable = new javax.swing.JTable();
+        CategoriesView = new javax.swing.JInternalFrame();
+        CategoriesViewPanel = new javax.swing.JPanel();
         jPanel36 = new javax.swing.JPanel();
         jPanel37 = new javax.swing.JPanel();
         jPanel38 = new javax.swing.JPanel();
@@ -177,11 +177,11 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel42 = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
         categoryColorInput = new javax.swing.JTextField();
-        categoryCancelBtn = new javax.swing.JButton();
-        categorySubmitBtn = new javax.swing.JButton();
+        CategoryCancelBtn = new javax.swing.JButton();
+        CategorySubmitBtn = new javax.swing.JButton();
         categoryDeleteBtn = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        categoriesTable = new javax.swing.JTable();
+        CategoriesTable = new javax.swing.JTable();
         Menu = new javax.swing.JMenuBar();
         MenuRegister = new javax.swing.JMenu();
         MenuLogin = new javax.swing.JMenu();
@@ -197,11 +197,11 @@ public class MainFrame extends javax.swing.JFrame {
         setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
-        desktopPane.setPreferredSize(new java.awt.Dimension(1920, 1080));
+        DesktopPane.setPreferredSize(new java.awt.Dimension(1920, 1080));
 
-        registerView.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        registerView.setTitle("Cadastro");
-        registerView.setVisible(true);
+        RegisterView.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        RegisterView.setTitle("Cadastro");
+        RegisterView.setVisible(true);
 
         jPanel3.setLayout(new java.awt.GridLayout(5, 1));
 
@@ -489,48 +489,48 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout registerViewPanelLayout = new javax.swing.GroupLayout(registerViewPanel);
-        registerViewPanel.setLayout(registerViewPanelLayout);
-        registerViewPanelLayout.setHorizontalGroup(
-            registerViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(registerViewPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout RegisterViewPanelLayout = new javax.swing.GroupLayout(RegisterViewPanel);
+        RegisterViewPanel.setLayout(RegisterViewPanelLayout);
+        RegisterViewPanelLayout.setHorizontalGroup(
+            RegisterViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RegisterViewPanelLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(40, 40, 40))
         );
-        registerViewPanelLayout.setVerticalGroup(
-            registerViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(registerViewPanelLayout.createSequentialGroup()
+        RegisterViewPanelLayout.setVerticalGroup(
+            RegisterViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RegisterViewPanelLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40))
         );
 
-        javax.swing.GroupLayout registerViewLayout = new javax.swing.GroupLayout(registerView.getContentPane());
-        registerView.getContentPane().setLayout(registerViewLayout);
-        registerViewLayout.setHorizontalGroup(
-            registerViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout RegisterViewLayout = new javax.swing.GroupLayout(RegisterView.getContentPane());
+        RegisterView.getContentPane().setLayout(RegisterViewLayout);
+        RegisterViewLayout.setHorizontalGroup(
+            RegisterViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 717, Short.MAX_VALUE)
-            .addGroup(registerViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(registerViewLayout.createSequentialGroup()
+            .addGroup(RegisterViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(RegisterViewLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(registerViewPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(RegisterViewPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
         );
-        registerViewLayout.setVerticalGroup(
-            registerViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        RegisterViewLayout.setVerticalGroup(
+            RegisterViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 473, Short.MAX_VALUE)
-            .addGroup(registerViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(registerViewLayout.createSequentialGroup()
+            .addGroup(RegisterViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(RegisterViewLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(registerViewPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(RegisterViewPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        loginView.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        loginView.setTitle("Entrar");
-        loginView.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        loginView.setVisible(true);
+        LoginView.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        LoginView.setTitle("Entrar");
+        LoginView.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        LoginView.setVisible(true);
 
         jPanel11.setLayout(new java.awt.GridLayout(2, 1));
 
@@ -631,47 +631,47 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout loginViewPanelLayout = new javax.swing.GroupLayout(loginViewPanel);
-        loginViewPanel.setLayout(loginViewPanelLayout);
-        loginViewPanelLayout.setHorizontalGroup(
-            loginViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loginViewPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout LoginViewPanelLayout = new javax.swing.GroupLayout(LoginViewPanel);
+        LoginViewPanel.setLayout(LoginViewPanelLayout);
+        LoginViewPanelLayout.setHorizontalGroup(
+            LoginViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LoginViewPanelLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(40, 40, 40))
         );
-        loginViewPanelLayout.setVerticalGroup(
-            loginViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loginViewPanelLayout.createSequentialGroup()
+        LoginViewPanelLayout.setVerticalGroup(
+            LoginViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LoginViewPanelLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40))
         );
 
-        javax.swing.GroupLayout loginViewLayout = new javax.swing.GroupLayout(loginView.getContentPane());
-        loginView.getContentPane().setLayout(loginViewLayout);
-        loginViewLayout.setHorizontalGroup(
-            loginViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout LoginViewLayout = new javax.swing.GroupLayout(LoginView.getContentPane());
+        LoginView.getContentPane().setLayout(LoginViewLayout);
+        LoginViewLayout.setHorizontalGroup(
+            LoginViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 554, Short.MAX_VALUE)
-            .addGroup(loginViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(loginViewLayout.createSequentialGroup()
+            .addGroup(LoginViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(LoginViewLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(loginViewPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(LoginViewPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
         );
-        loginViewLayout.setVerticalGroup(
-            loginViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        LoginViewLayout.setVerticalGroup(
+            LoginViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 303, Short.MAX_VALUE)
-            .addGroup(loginViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(loginViewLayout.createSequentialGroup()
+            .addGroup(LoginViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(LoginViewLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(loginViewPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LoginViewPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(16, Short.MAX_VALUE)))
         );
 
-        transactionsView.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        transactionsView.setTitle("Transações");
-        transactionsView.setVisible(true);
+        TransactionsView.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        TransactionsView.setTitle("Transações");
+        TransactionsView.setVisible(true);
 
         jPanel2.setLayout(new java.awt.GridLayout(2, 0, 12, 12));
 
@@ -850,24 +850,24 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(10, Short.MAX_VALUE))
         );
 
-        transactionResetBtn.setText("Limpar");
-        transactionResetBtn.addActionListener(new java.awt.event.ActionListener() {
+        TransactionResetBtn.setText("Limpar");
+        TransactionResetBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                transactionResetBtnActionPerformed(evt);
+                TransactionResetBtnActionPerformed(evt);
             }
         });
 
-        transactionSubmitBtn.setText("Criar");
-        transactionSubmitBtn.addActionListener(new java.awt.event.ActionListener() {
+        TransactionSubmitBtn.setText("Salvar");
+        TransactionSubmitBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                transactionSubmitBtnActionPerformed(evt);
+                TransactionSubmitBtnActionPerformed(evt);
             }
         });
 
-        transactionDeleteBtn.setText("Excluir");
-        transactionDeleteBtn.addActionListener(new java.awt.event.ActionListener() {
+        TransactionDeleteBtn.setText("Excluir");
+        TransactionDeleteBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                transactionDeleteBtnActionPerformed(evt);
+                TransactionDeleteBtnActionPerformed(evt);
             }
         });
 
@@ -883,11 +883,11 @@ public class MainFrame extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(jPanel30Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(transactionSubmitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(TransactionSubmitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
-                        .addComponent(transactionResetBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(TransactionResetBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
-                        .addComponent(transactionDeleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(TransactionDeleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         jPanel30Layout.setVerticalGroup(
             jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -897,25 +897,25 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(transactionResetBtn)
-                        .addComponent(transactionSubmitBtn))
-                    .addComponent(transactionDeleteBtn))
+                        .addComponent(TransactionResetBtn)
+                        .addComponent(TransactionSubmitBtn))
+                    .addComponent(TransactionDeleteBtn))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        transactionsTable.setModel(new javax.swing.table.DefaultTableModel(
+        TransactionsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Nome", "Valor", "Pagamento", "Tipo", "Categoria", "Criado em"
+                "Id", "Nome", "Valor", "Pagamento", "Tipo", "Categoria", "Criado em"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -926,7 +926,12 @@ public class MainFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(transactionsTable);
+        TransactionsTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TransactionsTableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(TransactionsTable);
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
@@ -948,47 +953,47 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(0, 0, 0))
         );
 
-        javax.swing.GroupLayout transactionsViewPanelLayout = new javax.swing.GroupLayout(transactionsViewPanel);
-        transactionsViewPanel.setLayout(transactionsViewPanelLayout);
-        transactionsViewPanelLayout.setHorizontalGroup(
-            transactionsViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(transactionsViewPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout TransactionsViewPanelLayout = new javax.swing.GroupLayout(TransactionsViewPanel);
+        TransactionsViewPanel.setLayout(TransactionsViewPanelLayout);
+        TransactionsViewPanelLayout.setHorizontalGroup(
+            TransactionsViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TransactionsViewPanelLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(40, 40, 40))
         );
-        transactionsViewPanelLayout.setVerticalGroup(
-            transactionsViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(transactionsViewPanelLayout.createSequentialGroup()
+        TransactionsViewPanelLayout.setVerticalGroup(
+            TransactionsViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TransactionsViewPanelLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40))
         );
 
-        javax.swing.GroupLayout transactionsViewLayout = new javax.swing.GroupLayout(transactionsView.getContentPane());
-        transactionsView.getContentPane().setLayout(transactionsViewLayout);
-        transactionsViewLayout.setHorizontalGroup(
-            transactionsViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout TransactionsViewLayout = new javax.swing.GroupLayout(TransactionsView.getContentPane());
+        TransactionsView.getContentPane().setLayout(TransactionsViewLayout);
+        TransactionsViewLayout.setHorizontalGroup(
+            TransactionsViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1059, Short.MAX_VALUE)
-            .addGroup(transactionsViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(transactionsViewLayout.createSequentialGroup()
+            .addGroup(TransactionsViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(TransactionsViewLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(transactionsViewPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(TransactionsViewPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
         );
-        transactionsViewLayout.setVerticalGroup(
-            transactionsViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        TransactionsViewLayout.setVerticalGroup(
+            TransactionsViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 628, Short.MAX_VALUE)
-            .addGroup(transactionsViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(transactionsViewLayout.createSequentialGroup()
+            .addGroup(TransactionsViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(TransactionsViewLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(transactionsViewPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TransactionsViewPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        categoriesView.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        categoriesView.setTitle("Categorias");
-        categoriesView.setVisible(true);
+        CategoriesView.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        CategoriesView.setTitle("Categorias");
+        CategoriesView.setVisible(true);
 
         jPanel39.setLayout(new java.awt.GridLayout(1, 0, 12, 12));
 
@@ -1063,17 +1068,17 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(10, Short.MAX_VALUE))
         );
 
-        categoryCancelBtn.setText("Cancelar");
-        categoryCancelBtn.addActionListener(new java.awt.event.ActionListener() {
+        CategoryCancelBtn.setText("Cancelar");
+        CategoryCancelBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                categoryCancelBtnActionPerformed(evt);
+                CategoryCancelBtnActionPerformed(evt);
             }
         });
 
-        categorySubmitBtn.setText("Salvar");
-        categorySubmitBtn.addActionListener(new java.awt.event.ActionListener() {
+        CategorySubmitBtn.setText("Salvar");
+        CategorySubmitBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                categorySubmitBtnActionPerformed(evt);
+                CategorySubmitBtnActionPerformed(evt);
             }
         });
 
@@ -1094,9 +1099,9 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(jPanel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel37Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(categorySubmitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(CategorySubmitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
-                        .addComponent(categoryCancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(CategoryCancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addComponent(categoryDeleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -1109,25 +1114,25 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(categoryCancelBtn)
-                        .addComponent(categorySubmitBtn))
+                        .addComponent(CategoryCancelBtn)
+                        .addComponent(CategorySubmitBtn))
                     .addComponent(categoryDeleteBtn))
                 .addContainerGap())
         );
 
-        categoriesTable.setModel(new javax.swing.table.DefaultTableModel(
+        CategoriesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Nome", "Cor", "Criado em"
+                "Id", "Nome", "Cor", "Criado em"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                true, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -1138,7 +1143,12 @@ public class MainFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(categoriesTable);
+        CategoriesTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CategoriesTableMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(CategoriesTable);
 
         javax.swing.GroupLayout jPanel36Layout = new javax.swing.GroupLayout(jPanel36);
         jPanel36.setLayout(jPanel36Layout);
@@ -1160,97 +1170,97 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(0, 0, 0))
         );
 
-        javax.swing.GroupLayout categoriesViewPanelLayout = new javax.swing.GroupLayout(categoriesViewPanel);
-        categoriesViewPanel.setLayout(categoriesViewPanelLayout);
-        categoriesViewPanelLayout.setHorizontalGroup(
-            categoriesViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(categoriesViewPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout CategoriesViewPanelLayout = new javax.swing.GroupLayout(CategoriesViewPanel);
+        CategoriesViewPanel.setLayout(CategoriesViewPanelLayout);
+        CategoriesViewPanelLayout.setHorizontalGroup(
+            CategoriesViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CategoriesViewPanelLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jPanel36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(40, 40, 40))
         );
-        categoriesViewPanelLayout.setVerticalGroup(
-            categoriesViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(categoriesViewPanelLayout.createSequentialGroup()
+        CategoriesViewPanelLayout.setVerticalGroup(
+            CategoriesViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CategoriesViewPanelLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jPanel36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout categoriesViewLayout = new javax.swing.GroupLayout(categoriesView.getContentPane());
-        categoriesView.getContentPane().setLayout(categoriesViewLayout);
-        categoriesViewLayout.setHorizontalGroup(
-            categoriesViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout CategoriesViewLayout = new javax.swing.GroupLayout(CategoriesView.getContentPane());
+        CategoriesView.getContentPane().setLayout(CategoriesViewLayout);
+        CategoriesViewLayout.setHorizontalGroup(
+            CategoriesViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 703, Short.MAX_VALUE)
-            .addGroup(categoriesViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(categoriesViewLayout.createSequentialGroup()
+            .addGroup(CategoriesViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(CategoriesViewLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(categoriesViewPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(CategoriesViewPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
         );
-        categoriesViewLayout.setVerticalGroup(
-            categoriesViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        CategoriesViewLayout.setVerticalGroup(
+            CategoriesViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 562, Short.MAX_VALUE)
-            .addGroup(categoriesViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(categoriesViewLayout.createSequentialGroup()
+            .addGroup(CategoriesViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(CategoriesViewLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(categoriesViewPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CategoriesViewPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        desktopPane.setLayer(registerView, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        desktopPane.setLayer(loginView, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        desktopPane.setLayer(transactionsView, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        desktopPane.setLayer(categoriesView, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        DesktopPane.setLayer(RegisterView, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        DesktopPane.setLayer(LoginView, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        DesktopPane.setLayer(TransactionsView, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        DesktopPane.setLayer(CategoriesView, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        javax.swing.GroupLayout desktopPaneLayout = new javax.swing.GroupLayout(desktopPane);
-        desktopPane.setLayout(desktopPaneLayout);
-        desktopPaneLayout.setHorizontalGroup(
-            desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(desktopPaneLayout.createSequentialGroup()
+        javax.swing.GroupLayout DesktopPaneLayout = new javax.swing.GroupLayout(DesktopPane);
+        DesktopPane.setLayout(DesktopPaneLayout);
+        DesktopPaneLayout.setHorizontalGroup(
+            DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DesktopPaneLayout.createSequentialGroup()
                 .addContainerGap(595, Short.MAX_VALUE)
-                .addComponent(registerView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RegisterView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(596, Short.MAX_VALUE))
-            .addGroup(desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, desktopPaneLayout.createSequentialGroup()
+            .addGroup(DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DesktopPaneLayout.createSequentialGroup()
                     .addContainerGap(677, Short.MAX_VALUE)
-                    .addComponent(loginView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LoginView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(677, Short.MAX_VALUE)))
-            .addGroup(desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(desktopPaneLayout.createSequentialGroup()
+            .addGroup(DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(DesktopPaneLayout.createSequentialGroup()
                     .addContainerGap(424, Short.MAX_VALUE)
-                    .addComponent(transactionsView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TransactionsView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(425, Short.MAX_VALUE)))
-            .addGroup(desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, desktopPaneLayout.createSequentialGroup()
+            .addGroup(DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DesktopPaneLayout.createSequentialGroup()
                     .addContainerGap(602, Short.MAX_VALUE)
-                    .addComponent(categoriesView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CategoriesView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(603, Short.MAX_VALUE)))
         );
-        desktopPaneLayout.setVerticalGroup(
-            desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, desktopPaneLayout.createSequentialGroup()
+        DesktopPaneLayout.setVerticalGroup(
+            DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DesktopPaneLayout.createSequentialGroup()
                 .addContainerGap(291, Short.MAX_VALUE)
-                .addComponent(registerView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RegisterView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(291, Short.MAX_VALUE))
-            .addGroup(desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, desktopPaneLayout.createSequentialGroup()
+            .addGroup(DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DesktopPaneLayout.createSequentialGroup()
                     .addContainerGap(374, Short.MAX_VALUE)
-                    .addComponent(loginView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LoginView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(375, Short.MAX_VALUE)))
-            .addGroup(desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(desktopPaneLayout.createSequentialGroup()
+            .addGroup(DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(DesktopPaneLayout.createSequentialGroup()
                     .addContainerGap(217, Short.MAX_VALUE)
-                    .addComponent(transactionsView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TransactionsView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(217, Short.MAX_VALUE)))
-            .addGroup(desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, desktopPaneLayout.createSequentialGroup()
+            .addGroup(DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DesktopPaneLayout.createSequentialGroup()
                     .addContainerGap(245, Short.MAX_VALUE)
-                    .addComponent(categoriesView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CategoriesView, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(245, Short.MAX_VALUE)))
         );
 
-        getContentPane().add(desktopPane);
+        getContentPane().add(DesktopPane);
 
         MenuRegister.setText("Cadastrar");
         MenuRegister.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1356,20 +1366,20 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_LoginSubmitBtnMouseClicked
 
     private void MenuRegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuRegisterMouseClicked
-        loginView.setVisible(false);
-        registerView.setVisible(true);
+        LoginView.setVisible(false);
+        RegisterView.setVisible(true);
 
-        registerView.requestFocus();
+        RegisterView.requestFocus();
 
         LoginPasswordInput.setText("");
         LoginEmailInput.setText("");
     }//GEN-LAST:event_MenuRegisterMouseClicked
 
     private void MenuLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuLoginMouseClicked
-        loginView.setVisible(true);
-        registerView.setVisible(false);
+        LoginView.setVisible(true);
+        RegisterView.setVisible(false);
 
-        loginView.requestFocus();
+        LoginView.requestFocus();
 
         RegisterNameInput.setText("");
         RegisterEmailInput.setText("");
@@ -1387,17 +1397,17 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuLogoutMouseClicked
 
     private void MenuTools2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuTools2ActionPerformed
-        categoriesView.setVisible(true);
-        transactionsView.setVisible(false);
+        CategoriesView.setVisible(true);
+        TransactionsView.setVisible(false);
 
-        categoriesView.requestFocus();
+        CategoriesView.requestFocus();
     }//GEN-LAST:event_MenuTools2ActionPerformed
 
     private void MenuTools1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuTools1ActionPerformed
-        categoriesView.setVisible(false);
-        transactionsView.setVisible(true);
+        CategoriesView.setVisible(false);
+        TransactionsView.setVisible(true);
 
-        transactionsView.requestFocus();
+        TransactionsView.requestFocus();
         loadTransactionsTable();
     }//GEN-LAST:event_MenuTools1ActionPerformed
 
@@ -1473,7 +1483,7 @@ public class MainFrame extends javax.swing.JFrame {
             Connection connection = DB.getConnection();
             CategoryController categoryController = CategoryControllerFactory.createCategoryController(connection);
 
-            List<Category> categories = categoryController.getCategoriesByUserId(loggedUser.getId());
+            List<Category> categories = categoryController.getBaseCategories(loggedUser.getId());
 
             DefaultComboBoxModel model = (DefaultComboBoxModel) TransactionsTransactionCategorySelect.getModel();
 
@@ -1513,7 +1523,7 @@ public class MainFrame extends javax.swing.JFrame {
 
             List<Transaction> transactions = transactionController.getTransactionsByUserId(loggedUser.getId());
 
-            DefaultTableModel model = (DefaultTableModel) transactionsTable.getModel();
+            DefaultTableModel model = (DefaultTableModel) TransactionsTable.getModel();
 
             while (model.getRowCount() > 0) {
                 model.getDataVector().removeAllElements();
@@ -1521,6 +1531,7 @@ public class MainFrame extends javax.swing.JFrame {
 
             for (Transaction transaction : transactions) {
                 Vector row = new Vector();
+                row.add(transaction.getId());
                 row.add(transaction.getName());
                 row.add(transaction.getAmount());
                 row.add(transaction.getPaymentMethodId());
@@ -1554,7 +1565,7 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }
     
-    private void transactionSubmitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionSubmitBtnActionPerformed
+    private void TransactionSubmitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TransactionSubmitBtnActionPerformed
         try {
             String name = TransactionsTransactionNameInput.getText().trim();
             String description = TransactionsTransactionDescriptionInput.getText().trim();
@@ -1590,20 +1601,19 @@ public class MainFrame extends javax.swing.JFrame {
             Connection connection = DB.getConnection();
             TransactionController transactionController = TransactionControllerFactory.createTransactionController(connection);
             
-            transactionController.createTransaction(transaction);
-            
+            if (this.selectedTransaction != null) {
+                transaction.setId(this.selectedTransaction.getId());
+                transactionController.updateTransaction(transaction);
+            } else {
+                transactionController.createTransaction(transaction);
+            }
+
+            this.clearTransactionForm();
             loadTransactionsTable();
-            
-            TransactionsTransactionNameInput.setText("");
-            TransactionsTransactionDescriptionInput.setText("");
-            TransactionsTransactionAmountInput.setText("");
-            TransactionsTransactionCategorySelect.setSelectedIndex(0);
-            TransactionsTransactionMethodSelect.setSelectedIndex(0);
-            TransactionsTransactionTypeSelect.setSelectedIndex(0);
         } catch (Exception error) {
             JOptionPane.showMessageDialog(null, error.getMessage());
         }
-    }//GEN-LAST:event_transactionSubmitBtnActionPerformed
+    }//GEN-LAST:event_TransactionSubmitBtnActionPerformed
 
     private void loadCategoriesTable() {
       try {
@@ -1612,7 +1622,7 @@ public class MainFrame extends javax.swing.JFrame {
 
             List<Category> categories = categoryController.getCategoriesByUserId(loggedUser.getId());
             
-            DefaultTableModel model = (DefaultTableModel) categoriesTable.getModel();
+            DefaultTableModel model = (DefaultTableModel) CategoriesTable.getModel();
 
             while (model.getRowCount() > 0) {
                 model.getDataVector().removeAllElements();
@@ -1620,6 +1630,7 @@ public class MainFrame extends javax.swing.JFrame {
 
             for (Category category : categories) {
                 Vector row = new Vector();
+                row.add(category.getId());
                 row.add(category.getName());
                 row.add(category.getColor().isEmpty() ? "Sem cor" : category.getColor());
                 row.add(category.getCreatedAt().toString());
@@ -1632,7 +1643,7 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }
     
-    private void categorySubmitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categorySubmitBtnActionPerformed
+    private void CategorySubmitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CategorySubmitBtnActionPerformed
         try {
             String categoryName = categoryNameInput.getText().trim();
             String categoryColor = categoryColorInput.getText().trim();
@@ -1648,50 +1659,146 @@ public class MainFrame extends javax.swing.JFrame {
             
             Connection connection = DB.getConnection();
             CategoryController categoryController = CategoryControllerFactory.createCategoryController(connection);
-            categoryController.createCategory(category);
 
-            categoryNameInput.setText("");
-            categoryColorInput.setText("");
+            if (this.selectedCategory != null) {
+                category.setId(this.selectedCategory.getId());
+                categoryController.updateCategory(category);
+            } else {
+                categoryController.createCategory(category);
+            }
 
+            this.clearCategoryForm();
             loadCategoriesTable();
         } catch (Exception error) {
                 JOptionPane.showMessageDialog(null, error.getMessage());
         }
-    }//GEN-LAST:event_categorySubmitBtnActionPerformed
+    }//GEN-LAST:event_CategorySubmitBtnActionPerformed
 
-    private void categoryCancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoryCancelBtnActionPerformed
-            categoryNameInput.setText("");
-            categoryColorInput.setText("");
-    }//GEN-LAST:event_categoryCancelBtnActionPerformed
+    private void clearCategoryForm() {
+        categoryNameInput.setText("");
+        categoryColorInput.setText("");
 
-    private void transactionResetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionResetBtnActionPerformed
+        this.selectedCategory = null;
+    }
+
+
+    private void CategoryCancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CategoryCancelBtnActionPerformed
+        this.clearCategoryForm();
+    }//GEN-LAST:event_CategoryCancelBtnActionPerformed
+
+    private void clearTransactionForm() {
         TransactionsTransactionNameInput.setText("");
         TransactionsTransactionDescriptionInput.setText("");
         TransactionsTransactionAmountInput.setText("");
         TransactionsTransactionCategorySelect.setSelectedIndex(0);
         TransactionsTransactionMethodSelect.setSelectedIndex(0);
         TransactionsTransactionTypeSelect.setSelectedIndex(0);
-    }//GEN-LAST:event_transactionResetBtnActionPerformed
 
-    private void transactionDeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionDeleteBtnActionPerformed
+        this.selectedTransaction = null;
+    }
+
+
+    private void TransactionResetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TransactionResetBtnActionPerformed
+        this.clearTransactionForm();
+    }//GEN-LAST:event_TransactionResetBtnActionPerformed
+
+    private void TransactionDeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TransactionDeleteBtnActionPerformed
         try {
             if (this.selectedTransaction == null) {
                 throw new RuntimeException("Ops! Selecione uma transação para excluir.");
             }
+
+            Connection connection = DB.getConnection();
+            TransactionController transactionController = TransactionControllerFactory.createTransactionController(connection);
+            transactionController.deleteTransactionById(this.selectedTransaction.getId());
+
+            this.clearTransactionForm();
+            loadTransactionsTable();
         } catch (Exception error) {
             JOptionPane.showMessageDialog(null, error.getMessage());
         }
-    }//GEN-LAST:event_transactionDeleteBtnActionPerformed
+    }//GEN-LAST:event_TransactionDeleteBtnActionPerformed
 
     private void categoryDeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoryDeleteBtnActionPerformed
         try {
             if (this.selectedCategory == null) {
                 throw new RuntimeException("Ops! Selecione uma categoria para excluir.");
             }
+
+            Connection connection = DB.getConnection();
+            CategoryController categoryController = CategoryControllerFactory.createCategoryController(connection);
+            categoryController.deleteCategoryById(this.selectedCategory.getId());
+
+            this.clearCategoryForm();
+            loadCategoriesTable();
         } catch (Exception error) {
             JOptionPane.showMessageDialog(null, error.getMessage());
         }
     }//GEN-LAST:event_categoryDeleteBtnActionPerformed
+
+    private void CategoriesTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CategoriesTableMouseClicked
+        int selectedRow =  CategoriesTable.getSelectedRow();
+
+        if (selectedRow == -1) {
+            return;
+        }
+
+        DefaultTableModel model = (DefaultTableModel) CategoriesTable.getModel();
+
+        int categoryId = (int) model.getValueAt(selectedRow, 0);
+        String categoryName = (String) model.getValueAt(selectedRow, 1);
+        String categoryColor = (String) model.getValueAt(selectedRow, 2);
+
+        if (categoryColor.equals("Sem cor")) {
+            categoryColor = "";
+        }
+
+        Category category = new Category();
+        category.setId(categoryId);
+        category.setName(categoryName);
+        category.setColor(categoryColor);
+        category.setCreatedBy(loggedUser.getId());
+
+        this.selectedCategory = category;
+
+        System.out.println("Selected category: " + this.selectedCategory);
+
+        categoryNameInput.setText(categoryName);
+        categoryColorInput.setText(categoryColor);
+    }//GEN-LAST:event_CategoriesTableMouseClicked
+
+    private void TransactionsTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TransactionsTableMouseClicked
+        int selectedRow = TransactionsTable.getSelectedRow();
+        
+        if (selectedRow == -1) {
+            return;
+        }
+        
+        DefaultTableModel model = (DefaultTableModel) TransactionsTable.getModel();
+        
+        int transactionId = (int) model.getValueAt(selectedRow, 0);
+        String transactionName = (String) model.getValueAt(selectedRow, 1);
+        Double transactionAmount = (Double) model.getValueAt(selectedRow, 2);
+        int transactionPaymentMethodId = (int) model.getValueAt(selectedRow, 3);
+        int transactionTypeId = (int) model.getValueAt(selectedRow, 4);
+        int transactionCategoryId = (int) model.getValueAt(selectedRow, 5);
+
+        Transaction transaction = new Transaction();
+        transaction.setId(transactionId);
+        transaction.setName(transactionName);
+        transaction.setAmount(transactionAmount);
+        transaction.setPaymentMethodId(transactionPaymentMethodId);
+        transaction.setTransactionTypeId(transactionTypeId);
+        transaction.setCategoryId(transactionCategoryId);
+
+        this.selectedTransaction = transaction;
+
+        TransactionsTransactionNameInput.setText(transactionName);
+        TransactionsTransactionAmountInput.setText(transactionAmount.toString());
+        TransactionsTransactionMethodSelect.setSelectedIndex(transactionPaymentMethodId - 1);
+        TransactionsTransactionTypeSelect.setSelectedIndex(transactionTypeId - 1);
+        TransactionsTransactionCategorySelect.setSelectedIndex(transactionCategoryId - 1);
+    }//GEN-LAST:event_TransactionsTableMouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -1729,9 +1836,17 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable CategoriesTable;
+    private javax.swing.JInternalFrame CategoriesView;
+    private javax.swing.JPanel CategoriesViewPanel;
+    private javax.swing.JButton CategoryCancelBtn;
+    private javax.swing.JButton CategorySubmitBtn;
+    private javax.swing.JDesktopPane DesktopPane;
     private javax.swing.JTextField LoginEmailInput;
     private javax.swing.JPasswordField LoginPasswordInput;
     private javax.swing.JButton LoginSubmitBtn;
+    private javax.swing.JInternalFrame LoginView;
+    private javax.swing.JPanel LoginViewPanel;
     private javax.swing.JMenuBar Menu;
     private javax.swing.JMenu MenuExit;
     private javax.swing.JMenu MenuLogin;
@@ -1749,22 +1864,24 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField RegisterStateInput;
     private javax.swing.JTextField RegisterStreetInput;
     private javax.swing.JButton RegisterSubmitBtn;
+    private javax.swing.JInternalFrame RegisterView;
+    private javax.swing.JPanel RegisterViewPanel;
     private javax.swing.JFormattedTextField RegisterZipcodeInput;
+    private javax.swing.JButton TransactionDeleteBtn;
+    private javax.swing.JButton TransactionResetBtn;
+    private javax.swing.JButton TransactionSubmitBtn;
+    private javax.swing.JTable TransactionsTable;
     private javax.swing.JTextField TransactionsTransactionAmountInput;
     private javax.swing.JComboBox<String> TransactionsTransactionCategorySelect;
     private javax.swing.JTextField TransactionsTransactionDescriptionInput;
     private javax.swing.JComboBox<String> TransactionsTransactionMethodSelect;
     private javax.swing.JTextField TransactionsTransactionNameInput;
     private javax.swing.JComboBox<String> TransactionsTransactionTypeSelect;
-    private javax.swing.JTable categoriesTable;
-    private javax.swing.JInternalFrame categoriesView;
-    private javax.swing.JPanel categoriesViewPanel;
-    private javax.swing.JButton categoryCancelBtn;
+    private javax.swing.JInternalFrame TransactionsView;
+    private javax.swing.JPanel TransactionsViewPanel;
     private javax.swing.JTextField categoryColorInput;
     private javax.swing.JButton categoryDeleteBtn;
     private javax.swing.JTextField categoryNameInput;
-    private javax.swing.JButton categorySubmitBtn;
-    private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1822,15 +1939,5 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JInternalFrame loginView;
-    private javax.swing.JPanel loginViewPanel;
-    private javax.swing.JInternalFrame registerView;
-    private javax.swing.JPanel registerViewPanel;
-    private javax.swing.JButton transactionDeleteBtn;
-    private javax.swing.JButton transactionResetBtn;
-    private javax.swing.JButton transactionSubmitBtn;
-    private javax.swing.JTable transactionsTable;
-    private javax.swing.JInternalFrame transactionsView;
-    private javax.swing.JPanel transactionsViewPanel;
     // End of variables declaration//GEN-END:variables
 }

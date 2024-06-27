@@ -25,6 +25,14 @@ public class CategoryController {
             throw new RuntimeException("Ops! Ocorreu um erro ao criar a categoria.");
         }
     }
+    
+    public List<Category> getBaseCategories(int userId) {
+        try {
+            return this.categoryService.getBaseCategories(userId);
+        } catch (Exception error) {
+            throw new RuntimeException("Ops! Ocorreu um erro ao buscar pelas categorias.");
+        }
+    }
 
     public void updateCategory (Category category) {
         try {
