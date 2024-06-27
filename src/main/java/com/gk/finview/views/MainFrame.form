@@ -193,7 +193,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="462" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="473" max="32767" attributes="0"/>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
@@ -675,7 +675,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="295" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="303" max="32767" attributes="0"/>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
@@ -885,7 +885,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="610" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="622" max="32767" attributes="0"/>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
@@ -1355,7 +1355,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="554" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="562" max="32767" attributes="0"/>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
@@ -1427,9 +1427,9 @@
                                       <Component id="jPanel38" alignment="0" max="32767" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                          <Component id="CategoriesSaveBtn" min="-2" pref="120" max="-2" attributes="0"/>
+                                          <Component id="categorySubmitBtn" min="-2" pref="120" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                          <Component id="CategoriesCancelBtn" min="-2" pref="120" max="-2" attributes="0"/>
+                                          <Component id="categoryCancelBtn" min="-2" pref="120" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -1443,8 +1443,8 @@
                                   <Component id="jPanel38" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="CategoriesCancelBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="CategoriesSaveBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="categoryCancelBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="categorySubmitBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
@@ -1493,7 +1493,7 @@
                                               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="jLabel2" alignment="0" pref="293" max="32767" attributes="0"/>
-                                                  <Component id="CategoriesCategoryNameInput" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="categoryNameInput" alignment="0" max="32767" attributes="0"/>
                                               </Group>
                                               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                           </Group>
@@ -1505,7 +1505,7 @@
                                               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="CategoriesCategoryNameInput" min="-2" max="-2" attributes="0"/>
+                                              <Component id="categoryNameInput" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -1517,7 +1517,7 @@
                                         <Property name="text" type="java.lang.String" value="Nome da categoria"/>
                                       </Properties>
                                     </Component>
-                                    <Component class="javax.swing.JTextField" name="CategoriesCategoryNameInput">
+                                    <Component class="javax.swing.JTextField" name="categoryNameInput">
                                     </Component>
                                   </SubComponents>
                                 </Container>
@@ -1539,7 +1539,7 @@
                                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
                                                       <Component id="jLabel22" alignment="0" max="32767" attributes="0"/>
-                                                      <Component id="CategoriesCategoryColorInput" alignment="0" pref="140" max="32767" attributes="0"/>
+                                                      <Component id="categoryColorInput" alignment="0" pref="293" max="32767" attributes="0"/>
                                                   </Group>
                                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                               </Group>
@@ -1551,7 +1551,7 @@
                                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                                   <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="CategoriesCategoryColorInput" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="categoryColorInput" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
@@ -1563,24 +1563,9 @@
                                             <Property name="text" type="java.lang.String" value="Cor"/>
                                           </Properties>
                                         </Component>
-                                        <Component class="javax.swing.JTextField" name="CategoriesCategoryColorInput">
+                                        <Component class="javax.swing.JTextField" name="categoryColorInput">
                                         </Component>
                                       </SubComponents>
-                                    </Container>
-                                    <Container class="javax.swing.JPanel" name="jPanel44">
-
-                                      <Layout>
-                                        <DimensionLayout dim="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <EmptySpace min="0" pref="140" max="32767" attributes="0"/>
-                                          </Group>
-                                        </DimensionLayout>
-                                        <DimensionLayout dim="1">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <EmptySpace min="0" pref="44" max="32767" attributes="0"/>
-                                          </Group>
-                                        </DimensionLayout>
-                                      </Layout>
                                     </Container>
                                   </SubComponents>
                                 </Container>
@@ -1588,15 +1573,21 @@
                             </Container>
                           </SubComponents>
                         </Container>
-                        <Component class="javax.swing.JButton" name="CategoriesCancelBtn">
+                        <Component class="javax.swing.JButton" name="categoryCancelBtn">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Cancelar"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="categoryCancelBtnActionPerformed"/>
+                          </Events>
                         </Component>
-                        <Component class="javax.swing.JButton" name="CategoriesSaveBtn">
+                        <Component class="javax.swing.JButton" name="categorySubmitBtn">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Salvar"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="categorySubmitBtnActionPerformed"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -1607,22 +1598,13 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTable" name="jTable2">
+                        <Component class="javax.swing.JTable" name="categoriesTable">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="3" rowCount="2">
-                                <Column editable="false" title="Nome" type="java.lang.String">
-                                  <Data value="Investimentos"/>
-                                  <Data value="Academia"/>
-                                </Column>
-                                <Column editable="false" title="Cor" type="java.lang.String">
-                                  <Data value="#ff0000"/>
-                                  <Data value="#0000ff"/>
-                                </Column>
-                                <Column editable="false" title="Criado em" type="java.lang.String">
-                                  <Data value="2024-05-24"/>
-                                  <Data value="2024-05-24"/>
-                                </Column>
+                              <Table columnCount="3" rowCount="0">
+                                <Column editable="false" title="Nome" type="java.lang.String"/>
+                                <Column editable="false" title="Cor" type="java.lang.String"/>
+                                <Column editable="false" title="Criado em" type="java.lang.String"/>
                               </Table>
                             </Property>
                           </Properties>

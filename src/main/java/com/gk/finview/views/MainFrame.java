@@ -62,6 +62,7 @@ public class MainFrame extends javax.swing.JFrame {
         loadTransactionsPaymentMethods();
         loadTransactionsCategories();
         loadTransactionsTypes();
+        loadCategoriesTable();
     }
 
     private void DoLogout() {
@@ -168,16 +169,15 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel39 = new javax.swing.JPanel();
         jPanel40 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        CategoriesCategoryNameInput = new javax.swing.JTextField();
+        categoryNameInput = new javax.swing.JTextField();
         jPanel41 = new javax.swing.JPanel();
         jPanel42 = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
-        CategoriesCategoryColorInput = new javax.swing.JTextField();
-        jPanel44 = new javax.swing.JPanel();
-        CategoriesCancelBtn = new javax.swing.JButton();
-        CategoriesSaveBtn = new javax.swing.JButton();
+        categoryColorInput = new javax.swing.JTextField();
+        categoryCancelBtn = new javax.swing.JButton();
+        categorySubmitBtn = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        categoriesTable = new javax.swing.JTable();
         Menu = new javax.swing.JMenuBar();
         MenuRegister = new javax.swing.JMenu();
         MenuLogin = new javax.swing.JMenu();
@@ -515,7 +515,7 @@ public class MainFrame extends javax.swing.JFrame {
         );
         RegisterViewLayout.setVerticalGroup(
             RegisterViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 462, Short.MAX_VALUE)
+            .addGap(0, 473, Short.MAX_VALUE)
             .addGroup(RegisterViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(RegisterViewLayout.createSequentialGroup()
                     .addContainerGap()
@@ -657,7 +657,7 @@ public class MainFrame extends javax.swing.JFrame {
         );
         LoginViewLayout.setVerticalGroup(
             LoginViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 295, Short.MAX_VALUE)
+            .addGap(0, 303, Short.MAX_VALUE)
             .addGroup(LoginViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(LoginViewLayout.createSequentialGroup()
                     .addContainerGap()
@@ -957,7 +957,7 @@ public class MainFrame extends javax.swing.JFrame {
         );
         TransactionsViewLayout.setVerticalGroup(
             TransactionsViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 610, Short.MAX_VALUE)
+            .addGap(0, 622, Short.MAX_VALUE)
             .addGroup(TransactionsViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(TransactionsViewLayout.createSequentialGroup()
                     .addContainerGap()
@@ -981,7 +981,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
-                    .addComponent(CategoriesCategoryNameInput))
+                    .addComponent(categoryNameInput))
                 .addGap(0, 0, 0))
         );
         jPanel40Layout.setVerticalGroup(
@@ -990,7 +990,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CategoriesCategoryNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(categoryNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
 
@@ -1008,7 +1008,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addGroup(jPanel42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(CategoriesCategoryColorInput, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
+                    .addComponent(categoryColorInput, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE))
                 .addGap(0, 0, 0))
         );
         jPanel42Layout.setVerticalGroup(
@@ -1017,24 +1017,11 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(jLabel22)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CategoriesCategoryColorInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(categoryColorInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
 
         jPanel41.add(jPanel42);
-
-        javax.swing.GroupLayout jPanel44Layout = new javax.swing.GroupLayout(jPanel44);
-        jPanel44.setLayout(jPanel44Layout);
-        jPanel44Layout.setHorizontalGroup(
-            jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 140, Short.MAX_VALUE)
-        );
-        jPanel44Layout.setVerticalGroup(
-            jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 44, Short.MAX_VALUE)
-        );
-
-        jPanel41.add(jPanel44);
 
         jPanel39.add(jPanel41);
 
@@ -1055,9 +1042,19 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(10, Short.MAX_VALUE))
         );
 
-        CategoriesCancelBtn.setText("Cancelar");
+        categoryCancelBtn.setText("Cancelar");
+        categoryCancelBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                categoryCancelBtnActionPerformed(evt);
+            }
+        });
 
-        CategoriesSaveBtn.setText("Salvar");
+        categorySubmitBtn.setText("Salvar");
+        categorySubmitBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                categorySubmitBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel37Layout = new javax.swing.GroupLayout(jPanel37);
         jPanel37.setLayout(jPanel37Layout);
@@ -1069,9 +1066,9 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(jPanel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel37Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(CategoriesSaveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(categorySubmitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
-                        .addComponent(CategoriesCancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(categoryCancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel37Layout.setVerticalGroup(
@@ -1081,15 +1078,14 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(jPanel38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
                 .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CategoriesCancelBtn)
-                    .addComponent(CategoriesSaveBtn))
+                    .addComponent(categoryCancelBtn)
+                    .addComponent(categorySubmitBtn))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        categoriesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Investimentos", "#ff0000", "2024-05-24"},
-                {"Academia", "#0000ff", "2024-05-24"}
+
             },
             new String [] {
                 "Nome", "Cor", "Criado em"
@@ -1110,7 +1106,7 @@ public class MainFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(categoriesTable);
 
         javax.swing.GroupLayout jPanel36Layout = new javax.swing.GroupLayout(jPanel36);
         jPanel36.setLayout(jPanel36Layout);
@@ -1162,7 +1158,7 @@ public class MainFrame extends javax.swing.JFrame {
         );
         CategoriesViewLayout.setVerticalGroup(
             CategoriesViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 554, Short.MAX_VALUE)
+            .addGap(0, 562, Short.MAX_VALUE)
             .addGroup(CategoriesViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(CategoriesViewLayout.createSequentialGroup()
                     .addContainerGap()
@@ -1519,7 +1515,7 @@ public class MainFrame extends javax.swing.JFrame {
             model.removeAllElements();
 
             for (PaymentMethod paymentMethod : paymentMethods) {
-                model.addElement(paymentMethod);
+                model.addElement(paymentMethod.getName());
             }
         } catch (Exception error) {
             JOptionPane.showMessageDialog(null, error.getMessage());
@@ -1574,6 +1570,65 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_TransactionsSubmitBtnActionPerformed
 
+    private void loadCategoriesTable() {
+      try {
+            Connection connection = DB.getConnection();
+            CategoryController categoryController = CategoryControllerFactory.createCategoryController(connection);
+
+            List<Category> categories = categoryController.getCategoriesByUserId(loggedUser.getId());
+            
+            DefaultTableModel model = (DefaultTableModel) categoriesTable.getModel();
+
+            while (model.getRowCount() > 0) {
+                model.getDataVector().removeAllElements();
+            }
+
+            for (Category category : categories) {
+                Vector row = new Vector();
+                row.add(category.getName());
+                row.add(category.getColor().isEmpty() ? "Sem cor" : category.getColor());
+                row.add(category.getCreatedAt().toString());
+               
+                model.addRow(row);
+            }
+  
+        } catch (Exception error) {
+            JOptionPane.showMessageDialog(null, error.getMessage());
+        }
+    }
+    
+    private void categorySubmitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categorySubmitBtnActionPerformed
+        try {
+            String categoryName = categoryNameInput.getText().trim();
+            String categoryColor = categoryColorInput.getText().trim();
+
+            if (categoryName.isEmpty()) {
+                throw new RuntimeException("Ops! Nome da categoria é obrigatório.");
+            }
+
+            Category category = new Category();
+            category.setName(categoryName);
+            category.setColor(categoryColor);
+            category.setCreatedBy(loggedUser.getId());
+            
+            Connection connection = DB.getConnection();
+            CategoryController categoryController = CategoryControllerFactory.createCategoryController(connection);
+            categoryController.createCategory(category);
+
+            categoryNameInput.setText("");
+            categoryColorInput.setText("");
+
+            loadCategoriesTable();
+        } catch (Exception error) {
+                JOptionPane.showMessageDialog(null, error.getMessage());
+        }
+    }//GEN-LAST:event_categorySubmitBtnActionPerformed
+
+    private void categoryCancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoryCancelBtnActionPerformed
+            categoryNameInput.setText("");
+            categoryColorInput.setText("");
+    }//GEN-LAST:event_categoryCancelBtnActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -1610,11 +1665,7 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CategoriesCancelBtn;
-    private javax.swing.JTextField CategoriesCategoryColorInput;
-    private javax.swing.JTextField CategoriesCategoryNameInput;
     private javax.swing.JPanel CategoriesPanelView;
-    private javax.swing.JButton CategoriesSaveBtn;
     private javax.swing.JInternalFrame CategoriesView;
     private javax.swing.JDesktopPane DesktopPane;
     private javax.swing.JTextField LoginEmailInput;
@@ -1653,6 +1704,11 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField TransactionsTransactionNameInput;
     private javax.swing.JComboBox<String> TransactionsTransactionTypeSelect;
     private javax.swing.JInternalFrame TransactionsView;
+    private javax.swing.JTable categoriesTable;
+    private javax.swing.JButton categoryCancelBtn;
+    private javax.swing.JTextField categoryColorInput;
+    private javax.swing.JTextField categoryNameInput;
+    private javax.swing.JButton categorySubmitBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1703,7 +1759,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel40;
     private javax.swing.JPanel jPanel41;
     private javax.swing.JPanel jPanel42;
-    private javax.swing.JPanel jPanel44;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
@@ -1711,6 +1766,5 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 }
