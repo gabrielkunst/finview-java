@@ -157,8 +157,9 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel25 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         TransactionsTransactionCategorySelect = new javax.swing.JComboBox<>();
-        TransactionsResetBtn = new javax.swing.JButton();
-        TransactionsSubmitBtn = new javax.swing.JButton();
+        transactionResetBtn = new javax.swing.JButton();
+        transactionSubmitBtn = new javax.swing.JButton();
+        transactionDeleteBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TransactionsTable = new javax.swing.JTable();
         CategoriesView = new javax.swing.JInternalFrame();
@@ -846,12 +847,24 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap(10, Short.MAX_VALUE))
         );
 
-        TransactionsResetBtn.setText("Limpar");
-
-        TransactionsSubmitBtn.setText("Criar");
-        TransactionsSubmitBtn.addActionListener(new java.awt.event.ActionListener() {
+        transactionResetBtn.setText("Limpar");
+        transactionResetBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TransactionsSubmitBtnActionPerformed(evt);
+                transactionResetBtnActionPerformed(evt);
+            }
+        });
+
+        transactionSubmitBtn.setText("Criar");
+        transactionSubmitBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transactionSubmitBtnActionPerformed(evt);
+            }
+        });
+
+        transactionDeleteBtn.setText("Excluir");
+        transactionDeleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                transactionDeleteBtnActionPerformed(evt);
             }
         });
 
@@ -862,24 +875,29 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(jPanel30Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel30Layout.createSequentialGroup()
+                        .addComponent(jPanel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
                     .addGroup(jPanel30Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(TransactionsSubmitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(transactionSubmitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
-                        .addComponent(TransactionsResetBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addComponent(transactionResetBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(transactionDeleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         jPanel30Layout.setVerticalGroup(
             jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel30Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TransactionsResetBtn)
-                    .addComponent(TransactionsSubmitBtn))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(transactionDeleteBtn)
+                    .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(transactionResetBtn)
+                        .addComponent(transactionSubmitBtn)))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         TransactionsTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -1522,7 +1540,7 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }
     
-    private void TransactionsSubmitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TransactionsSubmitBtnActionPerformed
+    private void transactionSubmitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionSubmitBtnActionPerformed
         try {
             String name = TransactionsTransactionNameInput.getText().trim();
             String description = TransactionsTransactionDescriptionInput.getText().trim();
@@ -1571,7 +1589,7 @@ public class MainFrame extends javax.swing.JFrame {
         } catch (Exception error) {
             JOptionPane.showMessageDialog(null, error.getMessage());
         }
-    }//GEN-LAST:event_TransactionsSubmitBtnActionPerformed
+    }//GEN-LAST:event_transactionSubmitBtnActionPerformed
 
     private void loadCategoriesTable() {
       try {
@@ -1631,6 +1649,14 @@ public class MainFrame extends javax.swing.JFrame {
             categoryNameInput.setText("");
             categoryColorInput.setText("");
     }//GEN-LAST:event_categoryCancelBtnActionPerformed
+
+    private void transactionResetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionResetBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_transactionResetBtnActionPerformed
+
+    private void transactionDeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transactionDeleteBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_transactionDeleteBtnActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -1697,8 +1723,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JInternalFrame RegisterView;
     private javax.swing.JFormattedTextField RegisterZipcodeInput;
     private javax.swing.JPanel TransactionsPanelView;
-    private javax.swing.JButton TransactionsResetBtn;
-    private javax.swing.JButton TransactionsSubmitBtn;
     private javax.swing.JTable TransactionsTable;
     private javax.swing.JTextField TransactionsTransactionAmountInput;
     private javax.swing.JComboBox<String> TransactionsTransactionCategorySelect;
@@ -1769,5 +1793,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton transactionDeleteBtn;
+    private javax.swing.JButton transactionResetBtn;
+    private javax.swing.JButton transactionSubmitBtn;
     // End of variables declaration//GEN-END:variables
 }
