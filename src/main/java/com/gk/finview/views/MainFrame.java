@@ -922,7 +922,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false
@@ -1512,7 +1512,7 @@ public class MainFrame extends javax.swing.JFrame {
             model.removeAllElements();
 
             for (Category category : categories) {
-                model.addElement(category);
+                model.addElement(category.getName());
             }
         } catch (Exception error) {
             JOptionPane.showMessageDialog(null, error.getMessage());
@@ -1531,7 +1531,7 @@ public class MainFrame extends javax.swing.JFrame {
             model.removeAllElements();
 
             for (TransactionType transactionType : transactionTypes) {
-                model.addElement(transactionType);
+                model.addElement(transactionType.getName());
             }
         } catch (Exception error) {
             JOptionPane.showMessageDialog(null, error.getMessage());
@@ -1559,9 +1559,9 @@ public class MainFrame extends javax.swing.JFrame {
                 row.add(transaction.getId());
                 row.add(transaction.getName());
                 row.add(df2.format(transaction.getAmount()));
-                row.add(transaction.getPaymentMethod());
-                row.add(transaction.getTransactionType());
-                row.add(transaction.getCategory());
+                row.add(transaction.getPaymentMethod().getName());
+                row.add(transaction.getTransactionType().getName());
+                row.add(transaction.getCategory().getName());
                 row.add(transaction.getCreatedAt().toString());
                
                 model.addRow(row);
@@ -1583,7 +1583,7 @@ public class MainFrame extends javax.swing.JFrame {
             model.removeAllElements();
 
             for (PaymentMethod paymentMethod : paymentMethods) {
-                model.addElement(paymentMethod);
+                model.addElement(paymentMethod.getName());
             }
         } catch (Exception error) {
             JOptionPane.showMessageDialog(null, error.getMessage());
@@ -1808,13 +1808,18 @@ public class MainFrame extends javax.swing.JFrame {
         int transactionId = (int) model.getValueAt(selectedRow, 0);
         String transactionName = (String) model.getValueAt(selectedRow, 1);
         String transactionAmount = (String) model.getValueAt(selectedRow, 2);
-        Object transactionPaymentMethod = model.getValueAt(selectedRow, 3);
-        Object transactionType =  model.getValueAt(selectedRow, 4);
-        Object transactionCategory = model.getValueAt(selectedRow, 5);
+        String transactionPaymentMethodName = (String) model.getValueAt(selectedRow, 3);
+        String transactionTypeName =  (String) model.getValueAt(selectedRow, 4);
+        String transactionCategoryName = (String) model.getValueAt(selectedRow, 5);
 
-        PaymentMethod paymentMethodInstance = PaymentMethod.class.cast(transactionPaymentMethod);
-        TransactionType transactionTypeInstance = TransactionType.class.cast(transactionType);
-        Category categoryInstance = Category.class.cast(transactionCategory);
+        PaymentMethod paymentMethodInstance = new PaymentMethod();
+        paymentMethodInstance.setName(transactionPaymentMethodName);
+
+        TransactionType transactionTypeInstance = new TransactionType();
+        transactionTypeInstance.setName(transactionTypeName);
+
+        Category categoryInstance = new Category();
+        categoryInstance.setName(transactionCategoryName);
 
         Transaction transaction = new Transaction();
         transaction.setId(transactionId);
@@ -1829,16 +1834,32 @@ public class MainFrame extends javax.swing.JFrame {
 
         TransactionsTransactionNameInput.setText(transactionName);
         TransactionsTransactionAmountInput.setText(transactionAmount.toString());
-        TransactionsTransactionMethodSelect.setSelectedIndex(paymentMethodInstance.getId() - 1);
-        TransactionsTransactionTypeSelect.setSelectedIndex(transactionTypeInstance.getId() - 1);
 
         for (int i = 0; i < TransactionsTransactionCategorySelect.getItemCount(); i++) {
-            Category category = Category.class.cast(TransactionsTransactionCategorySelect.getItemAt(i));
-            if (category.getId() == categoryInstance.getId()) {
+            String category = TransactionsTransactionCategorySelect.getItemAt(i).toString();
+            if (category.equals(transactionCategoryName)) {
                 TransactionsTransactionCategorySelect.setSelectedIndex(i);
                 break;
             }
         }
+
+        for (int i = 0; i < TransactionsTransactionMethodSelect.getItemCount(); i++) {
+            String paymentMethod = TransactionsTransactionMethodSelect.getItemAt(i).toString();
+            if (paymentMethod.equals(transactionPaymentMethodName)) {
+                TransactionsTransactionMethodSelect.setSelectedIndex(i);
+                break;
+            }
+        }
+
+        for (int i = 0; i < TransactionsTransactionTypeSelect.getItemCount(); i++) {
+            String transactionType = TransactionsTransactionTypeSelect.getItemAt(i).toString();
+            if (transactionType.equals(transactionTypeName)) {
+                TransactionsTransactionTypeSelect.setSelectedIndex(i);
+                break;
+            }
+        }
+
+
     }//GEN-LAST:event_TransactionsTableMouseClicked
 
     private void RegisterZipcodeInputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RegisterZipcodeInputFocusLost
