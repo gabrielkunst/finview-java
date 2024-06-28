@@ -35,6 +35,17 @@ public class CategoryService {
         return categoryFromDB;
     }
 
+
+    public Category getCategoryByName(String name) {
+        Category categoryFromDB = this.categoryRepository.getCategoryByName(name);
+
+        if (categoryFromDB == null) {
+            throw new ResourceNotFoundException();
+        }
+
+        return categoryFromDB;
+    }
+
     public List<Category> getCategoriesByUserId(int userId) {
         return this.categoryRepository.getCategoriesByUserId(userId);
     }

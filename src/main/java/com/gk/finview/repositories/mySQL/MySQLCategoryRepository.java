@@ -82,6 +82,34 @@ public class MySQLCategoryRepository implements CategoryRepository {
     }
 
     @Override
+    public Category getCategoryByName(String name) {
+        String sql = "SELECT * FROM categoria WHERE nome = ?";
+
+        try {
+            PreparedStatement preparedStatement = this.connection.prepareStatement(sql);
+            preparedStatement.setString(1, name);
+
+            ResultSet result = preparedStatement.executeQuery();
+
+            Category category = null;
+
+            while (result.next()) {
+                category = new Category();
+                category.setId(result.getInt("categoria_id"));
+                category.setName(result.getString("nome"));
+                category.setCreatedBy(result.getInt("usuario_id"));
+                category.setColor(result.getString("cor"));
+                category.setCreatedAt(result.getDate("criado_em"));
+            }
+
+            return category;
+        } catch (SQLException error) {
+            System.err.println(error.getMessage());
+            throw new RuntimeException("Error getting category: " + error.getMessage());
+        }
+    }
+
+    @Override
     public List<Category> getCategoriesByUserId(int userId) {
         String sql = "SELECT * FROM categoria WHERE usuario_id = ?";
 

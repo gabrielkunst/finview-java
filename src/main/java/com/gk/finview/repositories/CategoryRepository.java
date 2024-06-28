@@ -8,6 +8,7 @@ public interface CategoryRepository {
     void createCategory(Category category);
     void updateCategoryById(int id, Category category);
     Category getCategoryById(int id);
+    Category getCategoryByName(String name);
     List<Category> getCategoriesByUserId(int userId);
     void deleteCategoryById(int id);
 }

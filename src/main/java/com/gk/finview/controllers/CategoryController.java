@@ -58,6 +58,18 @@ public class CategoryController {
         }
     }
 
+    public Category getCategoryByName (String name) {
+        try {
+            return this.categoryService.getCategoryByName(name);
+        } catch (Exception error) {
+            if (error instanceof ResourceNotFoundException) {
+                throw new RuntimeException("Ops! A categoria não foi encontrada.");
+            }
+
+            throw new RuntimeException("Ops! Ocorreu um erro ao buscar a categoria.");
+        }
+    }
+
     public List<Category> getCategoriesByUserId (int userId) {
         try {
             return this.categoryService.getCategoriesByUserId(userId);

@@ -1597,7 +1597,7 @@ public class MainFrame extends javax.swing.JFrame {
             String amount = TransactionsTransactionAmountInput.getText().trim();
             int paymentMethodId = TransactionsTransactionMethodSelect.getSelectedIndex() + 1;
             int paymentTypeId = TransactionsTransactionTypeSelect.getSelectedIndex() + 1;
-            Category categoryObject = (Category) TransactionsTransactionCategorySelect.getSelectedItem();
+            String categoryName = (String) TransactionsTransactionCategorySelect.getSelectedItem();
 
             if (name.isEmpty() || amount.isEmpty()) {
                 throw new RuntimeException("Ops! Nome da transação e o valor são obrigatórios.");
@@ -1615,7 +1615,11 @@ public class MainFrame extends javax.swing.JFrame {
                 throw new RuntimeException("Ops! O valor não é um número válido.");
             }
 
-            category.setId(categoryObject.getId());
+            CategoryController categoryController = CategoryControllerFactory.createCategoryController(DB.getConnection());
+            Category categoryFromDB = categoryController.getCategoryByName(categoryName);
+
+
+            category.setId(categoryFromDB.getId());
             paymentMethod.setId(paymentMethodId);
             transactionType.setId(paymentTypeId);
 
